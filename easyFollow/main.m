@@ -2,8 +2,8 @@
 //  main.m
 //  easyFollow
 //
-//  Created by Qiu Han on 9/7/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by goshan on 9/7/12.
+//  Copyright (c) 2012 getForever. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

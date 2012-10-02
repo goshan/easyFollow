@@ -2,23 +2,23 @@
 //  goshanAppDelegate.m
 //  easyFollow
 //
-//  Created by Qiu Han on 9/7/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by goshan on 9/7/12.
+//  Copyright (c) 2012 getForever. All rights reserved.
 //
 
 #import "goshanAppDelegate.h"
 
-#import "goshanViewController.h"
+#import "RegistViewController.h"
 
 @implementation goshanAppDelegate
 
 @synthesize window = _window;
-@synthesize viewController = _viewController;
+@synthesize navController = _navController;
 
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
+    [_navController release];
     [super dealloc];
 }
 
@@ -26,12 +26,9 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-        self.viewController = [[[goshanViewController alloc] initWithNibName:@"goshanViewController_iPhone" bundle:nil] autorelease];
-    } else {
-        self.viewController = [[[goshanViewController alloc] initWithNibName:@"goshanViewController_iPad" bundle:nil] autorelease];
-    }
-    self.window.rootViewController = self.viewController;
+    registViewController *regist = [[[registViewController alloc] initWithNibName:@"RegistViewController" bundle:nil] autorelease];
+    _navController = [[UINavigationController alloc] initWithRootViewController:regist];
+    [self.window addSubview:_navController.view];
     [self.window makeKeyAndVisible];
     return YES;
 }

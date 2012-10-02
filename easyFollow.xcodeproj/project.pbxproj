@@ -7,20 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D81F4E5A161B041500B58C14 /* registViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D81F4E58161B041500B58C14 /* registViewController.m */; };
+		D81F4E5B161B041500B58C14 /* registViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81F4E59161B041500B58C14 /* registViewController.xib */; };
 		D884C6FC15F9CE5C00E08417 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FB15F9CE5C00E08417 /* UIKit.framework */; };
 		D884C6FE15F9CE5C00E08417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FD15F9CE5C00E08417 /* Foundation.framework */; };
 		D884C70015F9CE5C00E08417 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FF15F9CE5C00E08417 /* CoreGraphics.framework */; };
 		D884C70615F9CE5C00E08417 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D884C70415F9CE5C00E08417 /* InfoPlist.strings */; };
 		D884C70815F9CE5C00E08417 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D884C70715F9CE5C00E08417 /* main.m */; };
 		D884C70C15F9CE5C00E08417 /* goshanAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D884C70B15F9CE5C00E08417 /* goshanAppDelegate.m */; };
-		D884C70F15F9CE5C00E08417 /* goshanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D884C70E15F9CE5C00E08417 /* goshanViewController.m */; };
-		D884C71215F9CE5C00E08417 /* goshanViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = D884C71015F9CE5C00E08417 /* goshanViewController_iPhone.xib */; };
-		D884C71515F9CE5C00E08417 /* goshanViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = D884C71315F9CE5C00E08417 /* goshanViewController_iPad.xib */; };
 		D884C71D15F9CE5C00E08417 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C71C15F9CE5C00E08417 /* SenTestingKit.framework */; };
 		D884C71E15F9CE5C00E08417 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FB15F9CE5C00E08417 /* UIKit.framework */; };
 		D884C71F15F9CE5C00E08417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FD15F9CE5C00E08417 /* Foundation.framework */; };
 		D884C72715F9CE5C00E08417 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D884C72515F9CE5C00E08417 /* InfoPlist.strings */; };
 		D884C72A15F9CE5C00E08417 /* easyFollowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D884C72915F9CE5C00E08417 /* easyFollowTests.m */; };
+		D884C74015F9D47E00E08417 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D884C74215F9D47E00E08417 /* Localizable.strings */; };
+		D884C74915F9D85300E08417 /* registCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D884C74815F9D85300E08417 /* registCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,26 +35,27 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D81F4E57161B041500B58C14 /* registViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = registViewController.h; sourceTree = "<group>"; };
+		D81F4E58161B041500B58C14 /* registViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = registViewController.m; sourceTree = "<group>"; };
+		D81F4E59161B041500B58C14 /* registViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = registViewController.xib; sourceTree = "<group>"; };
 		D884C6F715F9CE5C00E08417 /* easyFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = easyFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D884C6FB15F9CE5C00E08417 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D884C6FD15F9CE5C00E08417 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D884C6FF15F9CE5C00E08417 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D884C70315F9CE5C00E08417 /* easyFollow-Info.plist */ = {isa = PBXFileReference; path = "easyFollow-Info.plist"; sourceTree = "<group>"; };
+		D884C70315F9CE5C00E08417 /* easyFollow-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "easyFollow-Info.plist"; sourceTree = "<group>"; };
 		D884C70515F9CE5C00E08417 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D884C70715F9CE5C00E08417 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D884C70915F9CE5C00E08417 /* easyFollow-Prefix.pch */ = {isa = PBXFileReference; path = "easyFollow-Prefix.pch"; sourceTree = "<group>"; };
-		D884C70A15F9CE5C00E08417 /* goshanAppDelegate.h */ = {isa = PBXFileReference; path = goshanAppDelegate.h; sourceTree = "<group>"; };
+		D884C70915F9CE5C00E08417 /* easyFollow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "easyFollow-Prefix.pch"; sourceTree = "<group>"; };
+		D884C70A15F9CE5C00E08417 /* goshanAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = goshanAppDelegate.h; sourceTree = "<group>"; };
 		D884C70B15F9CE5C00E08417 /* goshanAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = goshanAppDelegate.m; sourceTree = "<group>"; };
-		D884C70D15F9CE5C00E08417 /* goshanViewController.h */ = {isa = PBXFileReference; path = goshanViewController.h; sourceTree = "<group>"; };
-		D884C70E15F9CE5C00E08417 /* goshanViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = goshanViewController.m; sourceTree = "<group>"; };
-		D884C71115F9CE5C00E08417 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/goshanViewController_iPhone.xib; sourceTree = "<group>"; };
-		D884C71415F9CE5C00E08417 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/goshanViewController_iPad.xib; sourceTree = "<group>"; };
 		D884C71B15F9CE5C00E08417 /* easyFollowTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = easyFollowTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D884C71C15F9CE5C00E08417 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		D884C72415F9CE5C00E08417 /* easyFollowTests-Info.plist */ = {isa = PBXFileReference; path = "easyFollowTests-Info.plist"; sourceTree = "<group>"; };
+		D884C72415F9CE5C00E08417 /* easyFollowTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "easyFollowTests-Info.plist"; sourceTree = "<group>"; };
 		D884C72615F9CE5C00E08417 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		D884C72815F9CE5C00E08417 /* easyFollowTests.h */ = {isa = PBXFileReference; path = easyFollowTests.h; sourceTree = "<group>"; };
+		D884C72815F9CE5C00E08417 /* easyFollowTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = easyFollowTests.h; sourceTree = "<group>"; };
 		D884C72915F9CE5C00E08417 /* easyFollowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = easyFollowTests.m; sourceTree = "<group>"; };
+		D884C74115F9D47E00E08417 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D884C74815F9D85300E08417 /* registCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = registCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,10 +117,8 @@
 			children = (
 				D884C70A15F9CE5C00E08417 /* goshanAppDelegate.h */,
 				D884C70B15F9CE5C00E08417 /* goshanAppDelegate.m */,
-				D884C70D15F9CE5C00E08417 /* goshanViewController.h */,
-				D884C70E15F9CE5C00E08417 /* goshanViewController.m */,
-				D884C71015F9CE5C00E08417 /* goshanViewController_iPhone.xib */,
-				D884C71315F9CE5C00E08417 /* goshanViewController_iPad.xib */,
+				D884C73C15F9D40900E08417 /* Controllers */,
+				D884C73D15F9D42E00E08417 /* Views */,
 				D884C70215F9CE5C00E08417 /* Supporting Files */,
 			);
 			path = easyFollow;
@@ -131,6 +131,7 @@
 				D884C70415F9CE5C00E08417 /* InfoPlist.strings */,
 				D884C70715F9CE5C00E08417 /* main.m */,
 				D884C70915F9CE5C00E08417 /* easyFollow-Prefix.pch */,
+				D884C74215F9D47E00E08417 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -152,6 +153,24 @@
 				D884C72515F9CE5C00E08417 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D884C73C15F9D40900E08417 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D81F4E57161B041500B58C14 /* registViewController.h */,
+				D81F4E58161B041500B58C14 /* registViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D884C73D15F9D42E00E08417 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D81F4E59161B041500B58C14 /* registViewController.xib */,
+				D884C74815F9D85300E08417 /* registCell.xib */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +226,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 			);
 			mainGroup = D884C6EC15F9CE5C00E08417;
 			productRefGroup = D884C6F815F9CE5C00E08417 /* Products */;
@@ -225,8 +245,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D884C70615F9CE5C00E08417 /* InfoPlist.strings in Resources */,
-				D884C71215F9CE5C00E08417 /* goshanViewController_iPhone.xib in Resources */,
-				D884C71515F9CE5C00E08417 /* goshanViewController_iPad.xib in Resources */,
+				D884C74015F9D47E00E08417 /* Localizable.strings in Resources */,
+				D884C74915F9D85300E08417 /* registCell.xib in Resources */,
+				D81F4E5B161B041500B58C14 /* registViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,7 +284,7 @@
 			files = (
 				D884C70815F9CE5C00E08417 /* main.m in Sources */,
 				D884C70C15F9CE5C00E08417 /* goshanAppDelegate.m in Sources */,
-				D884C70F15F9CE5C00E08417 /* goshanViewController.m in Sources */,
+				D81F4E5A161B041500B58C14 /* registViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,28 +315,20 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		D884C71015F9CE5C00E08417 /* goshanViewController_iPhone.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D884C71115F9CE5C00E08417 /* en */,
-			);
-			name = goshanViewController_iPhone.xib;
-			sourceTree = "<group>";
-		};
-		D884C71315F9CE5C00E08417 /* goshanViewController_iPad.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D884C71415F9CE5C00E08417 /* en */,
-			);
-			name = goshanViewController_iPad.xib;
-			sourceTree = "<group>";
-		};
 		D884C72515F9CE5C00E08417 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D884C72615F9CE5C00E08417 /* en */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D884C74215F9D47E00E08417 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D884C74115F9D47E00E08417 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -441,6 +454,7 @@
 				D884C72F15F9CE5C00E08417 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D884C73015F9CE5C00E08417 /* Build configuration list for PBXNativeTarget "easyFollowTests" */ = {
 			isa = XCConfigurationList;
@@ -449,6 +463,7 @@
 				D884C73215F9CE5C00E08417 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

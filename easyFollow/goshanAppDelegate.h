@@ -2,8 +2,8 @@
 //  goshanAppDelegate.h
 //  easyFollow
 //
-//  Created by Qiu Han on 9/7/12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by goshan on 9/7/12.
+//  Copyright (c) 2012 getForever. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
@@ -14,6 +14,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) goshanViewController *viewController;
+@property (strong, nonatomic) UINavigationController *navController;
 
 @end
