@@ -7,8 +7,9 @@
 //
 
 #import "goshanAppDelegate.h"
-
+#import "shakingWindow.h"
 #import "RegistViewController.h"
+#import "mainViewController.h"
 
 @implementation goshanAppDelegate
 
@@ -24,10 +25,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[[shakingWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
     registViewController *regist = [[[registViewController alloc] initWithNibName:@"RegistViewController" bundle:nil] autorelease];
-    _navController = [[UINavigationController alloc] initWithRootViewController:regist];
+    mainViewController *main = [[[mainViewController alloc] initWithNibName:@"mainViewController" bundle:nil] autorelease];
+    _navController = [[UINavigationController alloc] initWithRootViewController:main];
     [self.window addSubview:_navController.view];
     [self.window makeKeyAndVisible];
     return YES;

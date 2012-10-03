@@ -10,4 +10,8 @@
 
 @interface mainViewController : UIViewController
 
+@property (retain, nonatomic) IBOutlet UIImageView *imageUp;
+
+@property (retain, nonatomic) IBOutlet UIImageView *imageDown;
+
 @end

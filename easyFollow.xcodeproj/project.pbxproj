@@ -11,6 +11,13 @@
 		D81F4E5B161B041500B58C14 /* registViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81F4E59161B041500B58C14 /* registViewController.xib */; };
 		D820FA95161BF0C30085757E /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D820FA93161BF0C30085757E /* mainViewController.m */; };
 		D820FA96161BF0C30085757E /* mainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820FA94161BF0C30085757E /* mainViewController.xib */; };
+		D820FAA4161C13180085757E /* foundPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D820FAA2161C13180085757E /* foundPersonViewController.m */; };
+		D820FAA5161C13180085757E /* foundPersonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820FAA3161C13180085757E /* foundPersonViewController.xib */; };
+		D820FAAD161C15AE0085757E /* Shake_01@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D820FAAB161C15AE0085757E /* Shake_01@2x.png */; };
+		D820FAAE161C15AE0085757E /* Shake_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D820FAAC161C15AE0085757E /* Shake_02@2x.png */; };
+		D820FAB0161C15B90085757E /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = D820FAAF161C15B90085757E /* glass.wav */; };
+		D820FABD161C1E390085757E /* shakingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D820FABC161C1E390085757E /* shakingWindow.m */; };
+		D820FAC0161C2ABB0085757E /* find_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D820FABF161C2ABB0085757E /* find_bg@2x.png */; };
 		D884C6FC15F9CE5C00E08417 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FB15F9CE5C00E08417 /* UIKit.framework */; };
 		D884C6FE15F9CE5C00E08417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FD15F9CE5C00E08417 /* Foundation.framework */; };
 		D884C70015F9CE5C00E08417 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FF15F9CE5C00E08417 /* CoreGraphics.framework */; };
@@ -43,6 +50,15 @@
 		D820FA92161BF0C30085757E /* mainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
 		D820FA93161BF0C30085757E /* mainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
 		D820FA94161BF0C30085757E /* mainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mainViewController.xib; sourceTree = "<group>"; };
+		D820FAA1161C13180085757E /* foundPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foundPersonViewController.h; sourceTree = "<group>"; };
+		D820FAA2161C13180085757E /* foundPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = foundPersonViewController.m; sourceTree = "<group>"; };
+		D820FAA3161C13180085757E /* foundPersonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = foundPersonViewController.xib; sourceTree = "<group>"; };
+		D820FAAB161C15AE0085757E /* Shake_01@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shake_01@2x.png"; sourceTree = "<group>"; };
+		D820FAAC161C15AE0085757E /* Shake_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Shake_02@2x.png"; sourceTree = "<group>"; };
+		D820FAAF161C15B90085757E /* glass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glass.wav; sourceTree = "<group>"; };
+		D820FABB161C1E390085757E /* shakingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shakingWindow.h; sourceTree = "<group>"; };
+		D820FABC161C1E390085757E /* shakingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shakingWindow.m; sourceTree = "<group>"; };
+		D820FABF161C2ABB0085757E /* find_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_bg@2x.png"; sourceTree = "<group>"; };
 		D884C6F715F9CE5C00E08417 /* easyFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = easyFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D884C6FB15F9CE5C00E08417 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D884C6FD15F9CE5C00E08417 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -87,6 +103,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D820FAAA161C15940085757E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D820FABF161C2ABB0085757E /* find_bg@2x.png */,
+				D820FAAF161C15B90085757E /* glass.wav */,
+				D820FAAB161C15AE0085757E /* Shake_01@2x.png */,
+				D820FAAC161C15AE0085757E /* Shake_02@2x.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		D884C6EC15F9CE5C00E08417 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +151,7 @@
 				D884C70B15F9CE5C00E08417 /* goshanAppDelegate.m */,
 				D884C73C15F9D40900E08417 /* Controllers */,
 				D884C73D15F9D42E00E08417 /* Views */,
+				D820FAAA161C15940085757E /* Resources */,
 				D884C70215F9CE5C00E08417 /* Supporting Files */,
 			);
 			path = easyFollow;
@@ -167,6 +195,8 @@
 				D81F4E58161B041500B58C14 /* registViewController.m */,
 				D820FA92161BF0C30085757E /* mainViewController.h */,
 				D820FA93161BF0C30085757E /* mainViewController.m */,
+				D820FAA1161C13180085757E /* foundPersonViewController.h */,
+				D820FAA2161C13180085757E /* foundPersonViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -174,9 +204,12 @@
 		D884C73D15F9D42E00E08417 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				D820FABB161C1E390085757E /* shakingWindow.h */,
+				D820FABC161C1E390085757E /* shakingWindow.m */,
 				D81F4E59161B041500B58C14 /* registViewController.xib */,
 				D884C74815F9D85300E08417 /* registCell.xib */,
 				D820FA94161BF0C30085757E /* mainViewController.xib */,
+				D820FAA3161C13180085757E /* foundPersonViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -257,6 +290,11 @@
 				D884C74915F9D85300E08417 /* registCell.xib in Resources */,
 				D81F4E5B161B041500B58C14 /* registViewController.xib in Resources */,
 				D820FA96161BF0C30085757E /* mainViewController.xib in Resources */,
+				D820FAA5161C13180085757E /* foundPersonViewController.xib in Resources */,
+				D820FAAD161C15AE0085757E /* Shake_01@2x.png in Resources */,
+				D820FAAE161C15AE0085757E /* Shake_02@2x.png in Resources */,
+				D820FAB0161C15B90085757E /* glass.wav in Resources */,
+				D820FAC0161C2ABB0085757E /* find_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +333,8 @@
 				D884C70C15F9CE5C00E08417 /* goshanAppDelegate.m in Sources */,
 				D81F4E5A161B041500B58C14 /* registViewController.m in Sources */,
 				D820FA95161BF0C30085757E /* mainViewController.m in Sources */,
+				D820FAA4161C13180085757E /* foundPersonViewController.m in Sources */,
+				D820FABD161C1E390085757E /* shakingWindow.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
