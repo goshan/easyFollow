@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D81F4E5A161B041500B58C14 /* registViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D81F4E58161B041500B58C14 /* registViewController.m */; };
 		D81F4E5B161B041500B58C14 /* registViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D81F4E59161B041500B58C14 /* registViewController.xib */; };
+		D820FA95161BF0C30085757E /* mainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D820FA93161BF0C30085757E /* mainViewController.m */; };
+		D820FA96161BF0C30085757E /* mainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820FA94161BF0C30085757E /* mainViewController.xib */; };
 		D884C6FC15F9CE5C00E08417 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FB15F9CE5C00E08417 /* UIKit.framework */; };
 		D884C6FE15F9CE5C00E08417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FD15F9CE5C00E08417 /* Foundation.framework */; };
 		D884C70015F9CE5C00E08417 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FF15F9CE5C00E08417 /* CoreGraphics.framework */; };
@@ -38,6 +40,9 @@
 		D81F4E57161B041500B58C14 /* registViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = registViewController.h; sourceTree = "<group>"; };
 		D81F4E58161B041500B58C14 /* registViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = registViewController.m; sourceTree = "<group>"; };
 		D81F4E59161B041500B58C14 /* registViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = registViewController.xib; sourceTree = "<group>"; };
+		D820FA92161BF0C30085757E /* mainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mainViewController.h; sourceTree = "<group>"; };
+		D820FA93161BF0C30085757E /* mainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = mainViewController.m; sourceTree = "<group>"; };
+		D820FA94161BF0C30085757E /* mainViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = mainViewController.xib; sourceTree = "<group>"; };
 		D884C6F715F9CE5C00E08417 /* easyFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = easyFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D884C6FB15F9CE5C00E08417 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D884C6FD15F9CE5C00E08417 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -160,6 +165,8 @@
 			children = (
 				D81F4E57161B041500B58C14 /* registViewController.h */,
 				D81F4E58161B041500B58C14 /* registViewController.m */,
+				D820FA92161BF0C30085757E /* mainViewController.h */,
+				D820FA93161BF0C30085757E /* mainViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -169,6 +176,7 @@
 			children = (
 				D81F4E59161B041500B58C14 /* registViewController.xib */,
 				D884C74815F9D85300E08417 /* registCell.xib */,
+				D820FA94161BF0C30085757E /* mainViewController.xib */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -248,6 +256,7 @@
 				D884C74015F9D47E00E08417 /* Localizable.strings in Resources */,
 				D884C74915F9D85300E08417 /* registCell.xib in Resources */,
 				D81F4E5B161B041500B58C14 /* registViewController.xib in Resources */,
+				D820FA96161BF0C30085757E /* mainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +294,7 @@
 				D884C70815F9CE5C00E08417 /* main.m in Sources */,
 				D884C70C15F9CE5C00E08417 /* goshanAppDelegate.m in Sources */,
 				D81F4E5A161B041500B58C14 /* registViewController.m in Sources */,
+				D820FA95161BF0C30085757E /* mainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

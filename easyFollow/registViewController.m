@@ -11,6 +11,13 @@
 
 
 
+
+CGFloat keyboardHeight = 216.0;
+CGFloat rowHeight = 40.0;
+CGFloat sectionHeaderHeight = 50.0;
+CGFloat sectionHeight = 150.0;
+
+
 @implementation registViewController
 
 @synthesize tableView = _tableView;
@@ -25,7 +32,7 @@
     
 }
 
-- (int) getIndexForTextField:(UITextField *)textField{
+- (int) getIndexPathForTextField:(UITextField *)textField{
     for (int i=0; i<_allTextField.count; i++){
         if (textField == [_allTextField objectAtIndex:i]){
             return i/2;
@@ -37,38 +44,34 @@
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     _activeField = textField;
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    _activeField = nil;
-}
-
-- (void) showKeyboard:(NSNotification*)notification{
-    NSDictionary* info = [notification userInfo];
-    CGSize keyboardSize = [[info objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
+    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight, 0.0);
     _tableView.contentInset = contentInsets;
     _tableView.scrollIndicatorInsets = contentInsets;
     
     // If active text field is hidden by keyboard, scroll it so it's visible
     // Your application might not need or want this behavior.
     
-    //resize table height
-    CGRect frame = _tableView.frame;
-    frame.size.height -= keyboardSize.height+_activeField.frame.size.height+15.0;
+    //get screen shown size
+    CGRect shownContent = CGRectMake(_tableView.contentOffset.x, _tableView.contentOffset.y, _tableView.frame.size.width, _tableView.frame.size.height-keyboardHeight);
     
-    //get textField y pos
-    CGRect activeFrame = _activeField.frame;
-    int index = [self getIndexForTextField:_activeField];
-    activeFrame.origin.y += 142.0*index;
+    //get section start pos and end pos in Y
+    int sectionIndex = [self getIndexPathForTextField:_activeField];
+    CGPoint startPoint = CGPointMake(0, sectionHeight*sectionIndex);
+    CGPoint endPoint = CGPointMake(0, sectionHeight*(sectionIndex+1));
     
-    if (!CGRectContainsPoint(frame, activeFrame.origin) ) {
-        CGFloat offsetY = activeFrame.origin.y-frame.size.height;
+    if (!CGRectContainsPoint(shownContent, startPoint) || !CGRectContainsPoint(shownContent, endPoint) ) {
+        CGFloat offsetY = endPoint.y-shownContent.size.height;
+        if (offsetY < 0.0){
+            offsetY = 0.0;
+        }
         CGPoint scrollPoint = CGPointMake(0.0, offsetY);
         [_tableView setContentOffset:scrollPoint animated:YES];
     }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    _activeField = nil;
 }
 
 - (void) hiddenKeyboard:(NSNotification*)notification{
@@ -115,8 +118,10 @@
     
     _tableView.allowsSelection = NO;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showKeyboard:) name:UIKeyboardDidShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddenKeyboard:) name:UIKeyboardWillHideNotification object:nil];
+    
+    UITapGestureRecognizer *sigleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(willHiddenKeyboard)];
+    [_tableView addGestureRecognizer:sigleTap];
 }
 
 - (void)viewDidUnload
@@ -131,13 +136,31 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
     return 2;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return sectionHeaderHeight;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    switch (section) {
+        case 0:
+            return @"人人";
+            break;
+        case 1:
+            return @"新浪";
+            break;
+        default:
+            return @"";
+            break;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -151,38 +174,29 @@
     }
     
     // Set up the cell...
-    UILabel *sectionName = (UILabel *)[cell viewWithTag:1];
-    UILabel *user = (UILabel *)[cell viewWithTag:2];
-    UILabel *pass = (UILabel *)[cell viewWithTag:3];
-    UITextField *user_text = (UITextField *)[cell viewWithTag:4];
-    UITextField *pass_text = (UITextField *)[cell viewWithTag:5];
+    
+    UILabel *label = (UILabel *)[cell viewWithTag:1];
+    UITextField *textField = (UITextField *)[cell viewWithTag:2];
     
     if (indexPath.row == 0){
-        sectionName.text = @"人人";
+        label.text = @"账户";
     }
     else {
-        sectionName.text = @"微博";
+        label.text = @"密码";
     }
-    user.text = @"账户";
-    pass.text = @"密码";
     
     //set delegate for text editing function to set _activeField
-    user_text.delegate = self;
-    pass_text.delegate = self;
+    textField.delegate = self;
     
     //add to _allTextField for getIndexForTextField function
-    [_allTextField addObject:user_text];
-    [_allTextField addObject:pass_text];
-    
-    UITapGestureRecognizer *sigleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(willHiddenKeyboard)];
-    [cell addGestureRecognizer:sigleTap];
+    [_allTextField addObject:textField];
     
     return cell;
 }
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 142.0;
+    return rowHeight;
 }
 
 
