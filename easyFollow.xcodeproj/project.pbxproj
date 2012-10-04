@@ -18,6 +18,8 @@
 		D820FAB0161C15B90085757E /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = D820FAAF161C15B90085757E /* glass.wav */; };
 		D820FABD161C1E390085757E /* shakingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D820FABC161C1E390085757E /* shakingWindow.m */; };
 		D820FAC0161C2ABB0085757E /* find_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D820FABF161C2ABB0085757E /* find_bg@2x.png */; };
+		D8633C7F161D633000998982 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8633C7E161D633000998982 /* AudioToolbox.framework */; };
+		D8633C82161D651C00998982 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8633C81161D651C00998982 /* CoreLocation.framework */; };
 		D884C6FC15F9CE5C00E08417 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FB15F9CE5C00E08417 /* UIKit.framework */; };
 		D884C6FE15F9CE5C00E08417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FD15F9CE5C00E08417 /* Foundation.framework */; };
 		D884C70015F9CE5C00E08417 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FF15F9CE5C00E08417 /* CoreGraphics.framework */; };
@@ -59,6 +61,8 @@
 		D820FABB161C1E390085757E /* shakingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shakingWindow.h; sourceTree = "<group>"; };
 		D820FABC161C1E390085757E /* shakingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shakingWindow.m; sourceTree = "<group>"; };
 		D820FABF161C2ABB0085757E /* find_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "find_bg@2x.png"; sourceTree = "<group>"; };
+		D8633C7E161D633000998982 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		D8633C81161D651C00998982 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D884C6F715F9CE5C00E08417 /* easyFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = easyFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D884C6FB15F9CE5C00E08417 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D884C6FD15F9CE5C00E08417 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -84,6 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8633C82161D651C00998982 /* CoreLocation.framework in Frameworks */,
+				D8633C7F161D633000998982 /* AudioToolbox.framework in Frameworks */,
 				D884C6FC15F9CE5C00E08417 /* UIKit.framework in Frameworks */,
 				D884C6FE15F9CE5C00E08417 /* Foundation.framework in Frameworks */,
 				D884C70015F9CE5C00E08417 /* CoreGraphics.framework in Frameworks */,
@@ -136,6 +142,8 @@
 		D884C6FA15F9CE5C00E08417 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8633C81161D651C00998982 /* CoreLocation.framework */,
+				D8633C7E161D633000998982 /* AudioToolbox.framework */,
 				D884C6FB15F9CE5C00E08417 /* UIKit.framework */,
 				D884C6FD15F9CE5C00E08417 /* Foundation.framework */,
 				D884C6FF15F9CE5C00E08417 /* CoreGraphics.framework */,

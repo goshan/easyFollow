@@ -7,11 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <CoreLocation/CoreLocation.h>
 
-@interface mainViewController : UIViewController
+@interface mainViewController : UIViewController <CLLocationManagerDelegate>
+
+
+@property (nonatomic) SystemSoundID soundID;
 
 @property (retain, nonatomic) IBOutlet UIImageView *imageUp;
 
 @property (retain, nonatomic) IBOutlet UIImageView *imageDown;
+
+@property(retain, nonatomic) CLLocationManager *locationManager;
 
 @end
