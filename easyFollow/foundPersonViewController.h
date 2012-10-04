@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
-@interface foundPersonViewController : UIViewController
+@interface foundPersonViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
 
+@property (retain, nonatomic) IBOutlet UIImageView *avatar;
+
+@property (retain, nonatomic) IBOutlet UILabel *name;
+
+@property (retain, nonatomic) IBOutlet UITableView *infoTable;
+
+@property(retain, nonatomic) NSDictionary *friendData;
+
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil friendData:(NSDictionary *)data;
 
 @end

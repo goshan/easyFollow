@@ -11,11 +11,19 @@
 @implementation foundPersonViewController
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+@synthesize avatar = _avatar;
+@synthesize name = _name;
+@synthesize infoTable = _infoTable;
+@synthesize friendData = _friendData;
+
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil friendData:(NSDictionary *)data
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        _friendData = data;
     }
     return self;
 }
@@ -34,13 +42,92 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    _infoTable.allowsSelection = NO;
+    _avatar.image = [UIImage imageNamed:[_friendData objectForKey:@"avatar"]];
+    _name.text = [_friendData objectForKey:@"name"];
 }
 
 - (void)viewDidUnload
 {
+    [self setAvatar:nil];
+    [self setName:nil];
+    [self setInfoTable:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
+
+- (void)dealloc {
+    [_avatar release];
+    [_name release];
+    [_infoTable release];
+    [_friendData release];
+    [super dealloc];
+}
+
+#pragma mark - Table View data source
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    // Return the number of sections.
+    return 2;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    // Return the number of rows in the section.
+    return 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
+    return 50.0;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    switch (section) {
+        case 0:
+            return @"人人";
+            break;
+        case 1:
+            return @"新浪";
+            break;
+        default:
+            return @"";
+            break;
+    }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"personCell_id";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        NSArray* objects =  [[NSBundle  mainBundle] loadNibNamed:@"personCell" owner:nil options:nil];
+        cell = [objects objectAtIndex:0];
+    }
+    
+    // Set up the cell...
+    UIImageView *snsAvatar = (UIImageView *)[cell viewWithTag:1];
+    UILabel *snsName = (UILabel *)[cell viewWithTag:2];
+    
+    if (indexPath.section == 0){
+        snsAvatar.image = [UIImage imageNamed:[_friendData objectForKey:@"renren_avatar"]];
+        snsName.text = [_friendData objectForKey:@"renren_name"];
+    }
+    else {
+        snsAvatar.image = [UIImage imageNamed:[_friendData objectForKey:@"sina_avatar"]];
+        snsName.text = [_friendData objectForKey:@"sina_name"];
+    }
+    
+    return cell;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50.0;
+}
+
+
 
 @end

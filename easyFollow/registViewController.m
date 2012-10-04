@@ -28,8 +28,8 @@ CGFloat sectionHeight = 150.0;
 
 
 
-- (void) regist{
-    
+- (IBAction)regist:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (int) getIndexPathForTextField:(UITextField *)textField{
@@ -113,8 +113,6 @@ CGFloat sectionHeight = 150.0;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = @"注册";
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"完成" style:UIBarButtonItemStyleBordered target:self action:@selector(regist)];
     
     _tableView.allowsSelection = NO;
     

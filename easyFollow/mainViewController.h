@@ -9,16 +9,21 @@
 #import <UIKit/UIKit.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <CoreLocation/CoreLocation.h>
+#import "foundPersonViewController.h"
 
 @interface mainViewController : UIViewController <CLLocationManagerDelegate>
 
 
 @property (nonatomic) SystemSoundID soundID;
 
+@property (retain, nonatomic) IBOutlet UIView *personView;
+
 @property (retain, nonatomic) IBOutlet UIImageView *imageUp;
 
 @property (retain, nonatomic) IBOutlet UIImageView *imageDown;
 
 @property(retain, nonatomic) CLLocationManager *locationManager;
+
+@property(retain, nonatomic) foundPersonViewController *personViewController;
 
 @end

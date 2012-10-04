@@ -27,10 +27,16 @@
 {
     self.window = [[[shakingWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
-    registViewController *regist = [[[registViewController alloc] initWithNibName:@"RegistViewController" bundle:nil] autorelease];
     mainViewController *main = [[[mainViewController alloc] initWithNibName:@"mainViewController" bundle:nil] autorelease];
     _navController = [[UINavigationController alloc] initWithRootViewController:main];
     [self.window addSubview:_navController.view];
+    
+    //login when need
+    if (YES){
+        registViewController *regist = [[[registViewController alloc] initWithNibName:@"RegistViewController" bundle:nil] autorelease];
+        [_navController presentModalViewController:regist animated:YES];
+    }
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

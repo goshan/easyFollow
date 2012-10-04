@@ -16,4 +16,8 @@
 
 @property(retain, nonatomic) NSMutableArray *allTextField;
 
+
+
+- (IBAction)regist:(id)sender;
+
 @end
