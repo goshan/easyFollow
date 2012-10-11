@@ -27,10 +27,11 @@
 - (IBAction)regist:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    //prepair for user data
+    //push user regist data to server
+    //**** prepair for user data
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    //**** get renren data
+    //******** get renren data
     NSString *renren_token = [defaults objectForKey:@"gsf_renren_token"];
     NSString *renren_expir = [dateFormatter stringFromDate:[defaults objectForKey:@"gsf_renren_expir"]];
     NSString *renren_permissions = [[[NSString alloc] init] autorelease];
@@ -38,13 +39,14 @@
         renren_permissions = [renren_permissions stringByAppendingFormat:@"%@,", permission];
     }
     renren_permissions = [renren_permissions substringToIndex:renren_permissions.length-1];
-    //**** get iphone imei
+    //******** get iphone imei
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     
     //make url request
     NSURL *url = [NSURL URLWithString:@"http://localhost:3000"];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"goshan", @"name", 
                             renren_token, @"renren_token",
                             renren_expir, @"renren_expir",
                             renren_permissions, @"renren_permissions", 
@@ -59,14 +61,13 @@
         BOOL result = [[feedback objectForKey:@"sucess"] isEqual:@"1"] ? YES : NO;
         if (result){
             NSLog(@"regist sucess!!");
-            [defaults setObject:[feedback objectForKey:@"user_id"] forKey:@"gsf_user_id"];
-            [defaults setObject:[feedback objectForKey:@"easy_token"] forKey:@"gsf_easy_token"];
+            
         }
         else {
             NSLog(@"this iphone has registed!!");
-            [defaults setObject:[feedback objectForKey:@"user_id"] forKey:@"gsf_user_id"];
-            [defaults setObject:[feedback objectForKey:@"easy_token"] forKey:@"gsf_easy_token"];
         }
+        [defaults setObject:[feedback objectForKey:@"user_id"] forKey:@"gsf_user_id"];
+        [defaults setObject:[feedback objectForKey:@"token"] forKey:@"gsf_token"];
         
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];

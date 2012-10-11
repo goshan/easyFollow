@@ -8,6 +8,7 @@
 
 #import "mainViewController.h"
 #import "registViewController.h"
+#import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 #import "Renren.h"
 
@@ -64,21 +65,45 @@ BOOL isOpen = NO;
 }
 
 - (void) lookForNearbyWithLatitude:(CGFloat)latitude andLongitude:(CGFloat)longitude{
+    NSLog(@"Our current Longitude is %f",longitude);
     NSLog(@"Our current Latitude is %f",latitude);
-	NSLog(@"Our current Longitude is %f",longitude);
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     //push location to server
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:3000/users/lookfor.json?latitude=%f&longitude=%f", latitude, longitude]];
-    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    //**** prepair for user data
+    //******** get renren data
+    NSString *token = [defaults objectForKey:@"gsf_token"];
+    NSString *longitude_str = [NSString stringWithFormat:@"%f", longitude];
+    NSString *latitude_str = [NSString stringWithFormat:@"%f", latitude];
+    
+    //***** make url request
+    NSURL *url = [NSURL URLWithString:@"http://localhost:3000"];
+    AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            token, @"token",
+                            longitude_str, @"longitude",
+                            latitude_str, @"latitude", 
+                            nil];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/users/lookfor.json" parameters:params];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request 
         success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
             //get friend json from server
             NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
+            NSString *result = [feedback objectForKey:@"result"];
+            if ([result isEqualToString:@"sucess"]){
+                //show person view with feedback data
+                [self performSelector:@selector(loadPersonViewWith:) withObject:[feedback objectForKey:@"nearby"] afterDelay:0.5];
+                //[self loadPersonViewWith:feedback];
+            }
+            else if ([result isEqualToString:@"nearby_not_found"]){
+                NSLog(@"nearby not found!!");
+            }
+            else if ([result isEqualToString:@"not_regist"]){
+                NSLog(@"you have not regist!!");
+            }
             
-            //show person view with feedback data
-            [self performSelector:@selector(loadPersonViewWith:) withObject:feedback afterDelay:0.5];
-            //[self loadPersonViewWith:feedback];
             
             [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         } 

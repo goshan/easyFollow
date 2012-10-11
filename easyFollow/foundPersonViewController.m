@@ -45,6 +45,7 @@
     _infoTable.allowsSelection = NO;
     _avatar.image = [UIImage imageNamed:@"avatar_test.png"];
     _name.text = [_friendData objectForKey:@"name"];
+    NSLog(@"=====name: %@", [_friendData objectForKey:@"name"]);
 }
 
 - (void)viewDidUnload
@@ -70,7 +71,7 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
