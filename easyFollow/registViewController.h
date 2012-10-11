@@ -8,15 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface registViewController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+@interface registViewController : UIViewController <RenrenDelegate>
 
-@property (retain, nonatomic) IBOutlet UITableView *tableView;
-
-@property(retain, nonatomic) UITextField *activeField;
-
-@property(retain, nonatomic) NSMutableArray *allTextField;
-
-
+- (IBAction)renrenLogin:(id)sender;
 
 - (IBAction)regist:(id)sender;
 

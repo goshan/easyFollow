@@ -31,12 +31,6 @@
     _navController = [[UINavigationController alloc] initWithRootViewController:main];
     [self.window addSubview:_navController.view];
     
-    //login when need
-    if (YES){
-        registViewController *regist = [[[registViewController alloc] initWithNibName:@"RegistViewController" bundle:nil] autorelease];
-        [_navController presentModalViewController:regist animated:YES];
-    }
-    
     [self.window makeKeyAndVisible];
     return YES;
 }

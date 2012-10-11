@@ -7,7 +7,9 @@
 //
 
 #import "mainViewController.h"
-
+#import "registViewController.h"
+#import "AFJSONRequestOperation.h"
+#import "Renren.h"
 
 
 
@@ -61,17 +63,35 @@ BOOL isOpen = NO;
     [self.navigationItem.rightBarButtonItem setAction:@selector(follow)];
 }
 
-- (void) lookForNearby{
-    //get current location
-    [_locationManager startUpdatingLocation];
+- (void) lookForNearbyWithLatitude:(CGFloat)latitude andLongitude:(CGFloat)longitude{
+    NSLog(@"Our current Latitude is %f",latitude);
+	NSLog(@"Our current Longitude is %f",longitude);
     
     //push location to server
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://localhost:3000/users/lookfor.json?latitude=%f&longitude=%f", latitude, longitude]];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
     
-    //get friend json from server
-    NSDictionary *feedback = [[NSDictionary alloc] initWithObjectsAndKeys:[NSNumber numberWithInt:0], @"user_id", @"avatar_test", @"avatar", @"goshan", @"name", @"sns_avatar_renren_test", @"renren_avatar", @"邱晗/goshan=1", @"renren_name", @"sns_avatar_sina_test", @"sina_avatar", @"邱晗_goshan", @"sina_name", nil];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request 
+        success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+            //get friend json from server
+            NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
+            
+            //show person view with feedback data
+            [self performSelector:@selector(loadPersonViewWith:) withObject:feedback afterDelay:0.5];
+            //[self loadPersonViewWith:feedback];
+            
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        } 
+        failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+            NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+            [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        }
+    ];
+    [operation start];
     
-    //show person view with feedback data
-    [self loadPersonViewWith:feedback];
+    //open image cover
+    isOpen = YES;
+    [self performSelector:@selector(moveImageCover) withObject:nil afterDelay:0.6];
 }
 
 //image animation
@@ -88,7 +108,7 @@ BOOL isOpen = NO;
         imageDownOriY = 208.0;
     }
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDuration:0.4];
     
     CGRect imageUpFrame = _imageUp.frame;
     imageUpFrame.origin.y = imageUpOriY;
@@ -102,17 +122,16 @@ BOOL isOpen = NO;
 }
 
 - (void) shakePhone{
+    //play sound
     AudioServicesPlaySystemSound (_soundID);
     
     //close image cover
     isOpen = NO;
     [self performSelector:@selector(moveImageCover)];
     
-    [self performSelector:@selector(lookForNearby) withObject:nil afterDelay:0.8];
+    //get current location
+    [_locationManager startUpdatingLocation];
     
-    //open image cover
-    isOpen = YES;
-    [self performSelector:@selector(moveImageCover) withObject:nil afterDelay:1.0];
 }
 
 
@@ -164,6 +183,12 @@ BOOL isOpen = NO;
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shakePhone) name:@"shake" object:nil];
     
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"摇一摇" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
+    
+    //login when need
+    if (![[Renren sharedRenren] isSessionValid]){
+        registViewController *regist = [[[registViewController alloc] initWithNibName:@"RegistViewController" bundle:nil] autorelease];
+        [self.navigationController presentModalViewController:regist animated:YES];
+    }
 }
 
 - (void)viewDidUnload
@@ -193,13 +218,13 @@ BOOL isOpen = NO;
 #pragma mark - CLLocation delegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-    
-    NSLog(@"======!!!!");
-    
+    //get current location
 	CLLocation *location = newLocation;
-	NSLog(@"Our current Latitude is %f",location.coordinate.latitude);
-	NSLog(@"Our current Longitude is %f",location.coordinate.longitude);
     
+    //call lookfor function to make server find friend nearby
+    [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
+    
+    //stop location
 	[_locationManager stopUpdatingLocation];
 }
 

@@ -7,85 +7,78 @@
 //
 
 #import "registViewController.h"
+#import "AFHTTPClient.h"
+#import "AFJSONRequestOperation.h"
+#import "Renren.h"
+#import "UIDevice+IdentifierAddition.h"
 
 
-
-
-
-CGFloat keyboardHeight = 216.0;
-CGFloat rowHeight = 40.0;
-CGFloat sectionHeaderHeight = 50.0;
-CGFloat sectionHeight = 150.0;
 
 
 @implementation registViewController
 
-@synthesize tableView = _tableView;
-@synthesize activeField = _activeField;
-@synthesize allTextField = _allTextField;
 
 
-
-
+- (IBAction)renrenLogin:(id)sender {
+    NSArray *permission = [NSArray arrayWithObjects:@"send_message", @"send_notification", @"publish_feed", nil];
+    [[Renren sharedRenren] authorizationWithPermisson:permission andDelegate:self];
+}
 
 - (IBAction)regist:(id)sender {
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //prepair for user data
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    //**** get renren data
+    NSString *renren_token = [defaults objectForKey:@"gsf_renren_token"];
+    NSString *renren_expir = [dateFormatter stringFromDate:[defaults objectForKey:@"gsf_renren_expir"]];
+    NSString *renren_permissions = [[[NSString alloc] init] autorelease];
+    for (NSString *permission in [defaults objectForKey:@"gsf_renren_permissions"]){
+        renren_permissions = [renren_permissions stringByAppendingFormat:@"%@,", permission];
+    }
+    renren_permissions = [renren_permissions substringToIndex:renren_permissions.length-1];
+    //**** get iphone imei
+    NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    
+    //make url request
+    NSURL *url = [NSURL URLWithString:@"http://localhost:3000"];
+    AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            renren_token, @"renren_token",
+                            renren_expir, @"renren_expir",
+                            renren_permissions, @"renren_permissions", 
+                            imei, @"iphone_imei", 
+                            nil];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/users/create_user.json" parameters:params];
+    
+    //put request
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        //get respond json from server
+        NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
+        BOOL result = [[feedback objectForKey:@"sucess"] isEqual:@"1"] ? YES : NO;
+        if (result){
+            NSLog(@"regist sucess!!");
+            [defaults setObject:[feedback objectForKey:@"user_id"] forKey:@"gsf_user_id"];
+            [defaults setObject:[feedback objectForKey:@"easy_token"] forKey:@"gsf_easy_token"];
+        }
+        else {
+            NSLog(@"this iphone has registed!!");
+            [defaults setObject:[feedback objectForKey:@"user_id"] forKey:@"gsf_user_id"];
+            [defaults setObject:[feedback objectForKey:@"easy_token"] forKey:@"gsf_easy_token"];
+        }
+        
+        
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    }];
+    [operation start];
+    
+    //dismiss regist view
     [self dismissModalViewControllerAnimated:YES];
 }
-
-- (int) getIndexPathForTextField:(UITextField *)textField{
-    for (int i=0; i<_allTextField.count; i++){
-        if (textField == [_allTextField objectAtIndex:i]){
-            return i/2;
-        }
-    }
-    return -1;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField
-{
-    _activeField = textField;
-    UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardHeight, 0.0);
-    _tableView.contentInset = contentInsets;
-    _tableView.scrollIndicatorInsets = contentInsets;
-    
-    // If active text field is hidden by keyboard, scroll it so it's visible
-    // Your application might not need or want this behavior.
-    
-    //get screen shown size
-    CGRect shownContent = CGRectMake(_tableView.contentOffset.x, _tableView.contentOffset.y, _tableView.frame.size.width, _tableView.frame.size.height-keyboardHeight);
-    
-    //get section start pos and end pos in Y
-    int sectionIndex = [self getIndexPathForTextField:_activeField];
-    CGPoint startPoint = CGPointMake(0, sectionHeight*sectionIndex);
-    CGPoint endPoint = CGPointMake(0, sectionHeight*(sectionIndex+1));
-    
-    if (!CGRectContainsPoint(shownContent, startPoint) || !CGRectContainsPoint(shownContent, endPoint) ) {
-        CGFloat offsetY = endPoint.y-shownContent.size.height;
-        if (offsetY < 0.0){
-            offsetY = 0.0;
-        }
-        CGPoint scrollPoint = CGPointMake(0.0, offsetY);
-        [_tableView setContentOffset:scrollPoint animated:YES];
-    }
-}
-
-- (void)textFieldDidEndEditing:(UITextField *)textField
-{
-    _activeField = nil;
-}
-
-- (void) hiddenKeyboard:(NSNotification*)notification{
-    UIEdgeInsets contentInsets = UIEdgeInsetsZero;
-    _tableView.contentInset = contentInsets;
-    _tableView.scrollIndicatorInsets = contentInsets;
-}
-
-- (void) willHiddenKeyboard{
-    [_activeField resignFirstResponder];
-}
-
-
-
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -93,8 +86,6 @@ CGFloat sectionHeight = 150.0;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _activeField = nil;
-        _allTextField = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -107,100 +98,61 @@ CGFloat sectionHeight = 150.0;
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)dealloc {
+    [super dealloc];
+}
+
+
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
-    _tableView.allowsSelection = NO;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(hiddenKeyboard:) name:UIKeyboardWillHideNotification object:nil];
-    
-    UITapGestureRecognizer *sigleTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(willHiddenKeyboard)];
-    [_tableView addGestureRecognizer:sigleTap];
 }
 
 - (void)viewDidUnload
 {
-    [self setTableView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
-#pragma mark - Table View data source
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+
+#pragma mark - renren delegate
+
+/**
+ * 授权登录成功时被调用，第三方开发者实现这个方法
+ * @param renren 传回代理授权登录接口请求的Renren类型对象。
+ */
+- (void)renrenDidLogin:(Renren *)renren
 {
-    // Return the number of sections.
-    return 2;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:renren.accessToken forKey:@"gsf_renren_token"];
+    [defaults setObject:renren.expirationDate forKey:@"gsf_renren_expir"];
+    [defaults setObject:renren.permissions forKey:@"gsf_renren_permissions"];
+    
+    [[Renren sharedRenren] logout:self];
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+/**
+ * 用户登出成功后被调用 第三方开发者实现这个方法
+ * @param renren 传回代理登出接口请求的Renren类型对象。
+ */
+- (void)renrenDidLogout:(Renren *)renren
 {
-    // Return the number of rows in the section.
-    return 2;
+    NSLog(@"========%@", renren);
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return sectionHeaderHeight;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    switch (section) {
-        case 0:
-            return @"人人";
-            break;
-        case 1:
-            return @"新浪";
-            break;
-        default:
-            return @"";
-            break;
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+/**
+ * 授权登录失败时被调用，第三方开发者实现这个方法
+ * @param renren 传回代理授权登录接口请求的Renren类型对象。
+ */
+- (void)renren:(Renren *)renren loginFailWithError:(ROError*)error
 {
-    static NSString *CellIdentifier = @"registCell_id";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        NSArray* objects =  [[NSBundle  mainBundle] loadNibNamed:@"registCell" owner:nil options:nil];
-        cell = [objects objectAtIndex:0];
-    }
-    
-    // Set up the cell...
-    
-    UILabel *label = (UILabel *)[cell viewWithTag:1];
-    UITextField *textField = (UITextField *)[cell viewWithTag:2];
-    
-    if (indexPath.row == 0){
-        label.text = @"账户";
-    }
-    else {
-        label.text = @"密码";
-    }
-    
-    //set delegate for text editing function to set _activeField
-    textField.delegate = self;
-    
-    //add to _allTextField for getIndexForTextField function
-    [_allTextField addObject:textField];
-    
-    return cell;
+    NSLog(@"========%@", renren);
+    NSLog(@"========%@", error);
 }
 
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return rowHeight;
-}
-
-
-
-- (void)dealloc {
-    [_tableView release];
-    [super dealloc];
-}
 @end

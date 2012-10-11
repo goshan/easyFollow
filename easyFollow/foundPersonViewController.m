@@ -43,7 +43,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _infoTable.allowsSelection = NO;
-    _avatar.image = [UIImage imageNamed:[_friendData objectForKey:@"avatar"]];
+    _avatar.image = [UIImage imageNamed:@"avatar_test.png"];
     _name.text = [_friendData objectForKey:@"name"];
 }
 
