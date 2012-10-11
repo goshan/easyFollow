@@ -58,7 +58,7 @@
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         //get respond json from server
         NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
-        BOOL result = [[feedback objectForKey:@"sucess"] isEqual:@"1"] ? YES : NO;
+        BOOL result = [[feedback objectForKey:@"result"] isEqual:@"1"] ? YES : NO;
         if (result){
             NSLog(@"regist sucess!!");
             

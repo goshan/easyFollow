@@ -159,6 +159,10 @@ BOOL isOpen = NO;
     
 }
 
+- (void) stopFinding{
+    
+}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -207,6 +211,7 @@ BOOL isOpen = NO;
     // The "shake" nofification is posted by the PaintingWindow object when user shakes the device
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shakePhone) name:@"shake" object:nil];
     
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(stopFinding)] autorelease];
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"摇一摇" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
     
     //login when need

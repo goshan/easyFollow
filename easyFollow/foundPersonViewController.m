@@ -45,7 +45,6 @@
     _infoTable.allowsSelection = NO;
     _avatar.image = [UIImage imageNamed:@"avatar_test.png"];
     _name.text = [_friendData objectForKey:@"name"];
-    NSLog(@"=====name: %@", [_friendData objectForKey:@"name"]);
 }
 
 - (void)viewDidUnload
