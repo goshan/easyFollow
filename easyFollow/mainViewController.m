@@ -78,7 +78,7 @@ BOOL isOpen = NO;
     NSString *latitude_str = [NSString stringWithFormat:@"%f", latitude];
     
     //***** make url request
-    NSURL *url = [NSURL URLWithString:@"http://localhost:3000"];
+    NSURL *url = [NSURL URLWithString:@"http://192.168.1.103:3000"];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             token, @"token",
@@ -216,7 +216,7 @@ BOOL isOpen = NO;
     
     //login when need
     if (![[Renren sharedRenren] isSessionValid]){
-        registViewController *regist = [[[registViewController alloc] initWithNibName:@"RegistViewController" bundle:nil] autorelease];
+        registViewController *regist = [[[registViewController alloc] initWithNibName:@"registViewController" bundle:nil] autorelease];
         [self.navigationController presentModalViewController:regist animated:YES];
     }
 }
