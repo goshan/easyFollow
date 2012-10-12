@@ -216,7 +216,7 @@ BOOL isOpen = NO;
     
     //login when need
     if (![[Renren sharedRenren] isSessionValid]){
-        registViewController *regist = [[[registViewController alloc] initWithNibName:@"RegistViewController" bundle:nil] autorelease];
+        registViewController *regist = [[[registViewController alloc] initWithNibName:@"registViewController" bundle:nil] autorelease];
         [self.navigationController presentModalViewController:regist animated:YES];
     }
 }
