@@ -17,6 +17,11 @@
 
 @implementation registViewController
 
+@synthesize nameText = _nameText;
+@synthesize IPText = _IPText;
+
+
+
 
 
 - (IBAction)renrenLogin:(id)sender {
@@ -27,8 +32,14 @@
 - (IBAction)regist:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    NSString *server_ip = _IPText.text;
+    [defaults setObject:server_ip forKey:@"server_ip"];
+    
     //push user regist data to server
     //**** prepair for user data
+    //******** get user name
+    NSString* user_name = _nameText.text;
+    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     //******** get renren data
@@ -43,10 +54,11 @@
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     
     //make url request
-    NSURL *url = [NSURL URLWithString:@"http://192.168.1.105"];
+    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
+    NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            @"goshan", @"name", 
+                            user_name, @"name", 
                             renren_token, @"renren_token",
                             renren_expir, @"renren_expir",
                             renren_permissions, @"renren_permissions", 
@@ -101,6 +113,8 @@
 }
 
 - (void)dealloc {
+    [_nameText release];
+    [_IPText release];
     [super dealloc];
 }
 
@@ -116,6 +130,8 @@
 
 - (void)viewDidUnload
 {
+    [self setNameText:nil];
+    [self setIPText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;

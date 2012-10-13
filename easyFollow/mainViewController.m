@@ -78,7 +78,9 @@ BOOL isOpen = NO;
     NSString *latitude_str = [NSString stringWithFormat:@"%f", latitude];
     
     //***** make url request
-    NSURL *url = [NSURL URLWithString:@"http://192.168.1.105"];
+    NSString *server_ip = [defaults objectForKey:@"server_ip"];
+    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
+    NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             token, @"token",

@@ -10,6 +10,11 @@
 
 @interface registViewController : UIViewController <RenrenDelegate>
 
+@property (retain, nonatomic) IBOutlet UITextField *nameText;
+
+@property (retain, nonatomic) IBOutlet UITextField *IPText;
+
+
 - (IBAction)renrenLogin:(id)sender;
 
 - (IBAction)regist:(id)sender;
