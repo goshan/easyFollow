@@ -25,7 +25,7 @@
 
 
 - (IBAction)renrenLogin:(id)sender {
-    NSArray *permission = [NSArray arrayWithObjects:@"send_message", @"send_notification", @"publish_feed", nil];
+    NSArray *permission = [NSArray arrayWithObjects:@"send_message", @"send_notification", @"publish_feed", @"read_user_status", @"publish_comment", nil];
     [[Renren sharedRenren] authorizationWithPermisson:permission andDelegate:self];
 }
 

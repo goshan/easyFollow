@@ -29,10 +29,6 @@ BOOL isOpen = NO;
 
 
 //nav bar button function
-- (void)follow {
-    NSLog(@"follow clicked!");
-}
-
 - (void)cancel {
     NSLog(@"cancel clicked!");
     
@@ -49,6 +45,47 @@ BOOL isOpen = NO;
     self.navigationItem.leftBarButtonItem = nil;
     [self.navigationItem.rightBarButtonItem setTitle:@"摇一摇"];
     [self.navigationItem.rightBarButtonItem setAction:@selector(shakePhone)];
+}
+
+- (void)follow {
+    NSLog(@"follow clicked!");
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *server_ip = [defaults objectForKey:@"server_ip"];
+    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
+    NSURL *url = [NSURL URLWithString:url_str];
+    AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
+    
+    NSString *token = [defaults objectForKey:@"gsf_token"];
+    NSString *followed_id = [_personViewController.friendData objectForKey:@"id"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            token, @"token", 
+                            followed_id, @"followed_id",
+                            nil];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/users/follow.json" parameters:params];
+    
+    //put request
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        //get respond json from server
+        NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
+        NSString *result = [feedback objectForKey:@"result"];
+        
+        if ([result isEqualToString:@"sucess"]){
+            NSLog(@"follow sucess!!");
+            [self cancel];
+            
+        }
+        else {
+            NSLog(@"follow failed");
+        }
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    }];
+    [operation start];
 }
 
 //data exchange
