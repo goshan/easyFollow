@@ -35,12 +35,6 @@
 		D82230BE1625218500687623 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230361625218500687623 /* FMDatabase.m */; };
 		D82230BF1625218500687623 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230381625218500687623 /* FMDatabaseAdditions.m */; };
 		D82230C01625218500687623 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D822303A1625218500687623 /* FMResultSet.m */; };
-		D82230C11625218500687623 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D822303E1625218500687623 /* NSObject+SBJSON.m */; };
-		D82230C21625218500687623 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230401625218500687623 /* NSString+SBJSON.m */; };
-		D82230C31625218500687623 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230421625218500687623 /* SBJSON.m */; };
-		D82230C41625218500687623 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230441625218500687623 /* SBJsonBase.m */; };
-		D82230C51625218500687623 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230461625218500687623 /* SBJsonParser.m */; };
-		D82230C61625218500687623 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230481625218500687623 /* SBJsonWriter.m */; };
 		D82230C71625218500687623 /* Renren.m in Sources */ = {isa = PBXBuildFile; fileRef = D822304B1625218500687623 /* Renren.m */; };
 		D82230C81625218500687623 /* RenrenPay.m in Sources */ = {isa = PBXBuildFile; fileRef = D822304D1625218500687623 /* RenrenPay.m */; };
 		D82230C91625218500687623 /* ROBaseDialogViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230511625218500687623 /* ROBaseDialogViewController.m */; };
@@ -108,15 +102,6 @@
 		D8633C88161D7DD600998982 /* personCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8633C87161D7DD600998982 /* personCell.xib */; };
 		D864976B162D5DD100672747 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D864976A162D5DD100672747 /* logo@2x.png */; };
 		D8649775162D641B00672747 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8649774162D641B00672747 /* Security.framework */; };
-		D864979F162D6CAA00672747 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D864977D162D6CAA00672747 /* GTMBase64.m */; };
-		D86497A6162D6CAA00672747 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D864978F162D6CAA00672747 /* SFHFKeychainUtils.m */; };
-		D86497A7162D6CAA00672747 /* WBAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = D8649791162D6CAA00672747 /* WBAuthorize.m */; };
-		D86497A8162D6CAA00672747 /* WBAuthorizeWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8649793162D6CAA00672747 /* WBAuthorizeWebView.m */; };
-		D86497A9162D6CAA00672747 /* WBEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D8649795162D6CAA00672747 /* WBEngine.m */; };
-		D86497AA162D6CAA00672747 /* WBLogInAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8649797162D6CAA00672747 /* WBLogInAlertView.m */; };
-		D86497AB162D6CAA00672747 /* WBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8649799162D6CAA00672747 /* WBRequest.m */; };
-		D86497AC162D6CAA00672747 /* WBSendView.m in Sources */ = {isa = PBXBuildFile; fileRef = D864979C162D6CAA00672747 /* WBSendView.m */; };
-		D86497AD162D6CAA00672747 /* WBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D864979E162D6CAA00672747 /* WBUtil.m */; };
 		D884C6FC15F9CE5C00E08417 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FB15F9CE5C00E08417 /* UIKit.framework */; };
 		D884C6FE15F9CE5C00E08417 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FD15F9CE5C00E08417 /* Foundation.framework */; };
 		D884C70015F9CE5C00E08417 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D884C6FF15F9CE5C00E08417 /* CoreGraphics.framework */; };
@@ -131,6 +116,21 @@
 		D884C74015F9D47E00E08417 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D884C74215F9D47E00E08417 /* Localizable.strings */; };
 		D88E93E816266B4500736FF9 /* NSString+MD5Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = D88E93E516266B4500736FF9 /* NSString+MD5Addition.m */; };
 		D88E93E916266B4500736FF9 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = D88E93E716266B4500736FF9 /* UIDevice+IdentifierAddition.m */; };
+		D8ED0177162D9BE900D8EDE5 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED016C162D9BE900D8EDE5 /* NSObject+SBJSON.m */; };
+		D8ED0178162D9BE900D8EDE5 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED016E162D9BE900D8EDE5 /* NSString+SBJSON.m */; };
+		D8ED0179162D9BE900D8EDE5 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED0170162D9BE900D8EDE5 /* SBJSON.m */; };
+		D8ED017A162D9BE900D8EDE5 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED0172162D9BE900D8EDE5 /* SBJsonBase.m */; };
+		D8ED017B162D9BE900D8EDE5 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED0174162D9BE900D8EDE5 /* SBJsonParser.m */; };
+		D8ED017C162D9BE900D8EDE5 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED0176162D9BE900D8EDE5 /* SBJsonWriter.m */; };
+		D8ED01B2162D9C6000D8EDE5 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED019E162D9C6000D8EDE5 /* GTMBase64.m */; };
+		D8ED01B3162D9C6000D8EDE5 /* SFHFKeychainUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED01A2162D9C6000D8EDE5 /* SFHFKeychainUtils.m */; };
+		D8ED01B4162D9C6000D8EDE5 /* WBAuthorize.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED01A4162D9C6000D8EDE5 /* WBAuthorize.m */; };
+		D8ED01B5162D9C6000D8EDE5 /* WBAuthorizeWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED01A6162D9C6000D8EDE5 /* WBAuthorizeWebView.m */; };
+		D8ED01B6162D9C6000D8EDE5 /* WBEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED01A8162D9C6000D8EDE5 /* WBEngine.m */; };
+		D8ED01B7162D9C6000D8EDE5 /* WBLogInAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED01AA162D9C6000D8EDE5 /* WBLogInAlertView.m */; };
+		D8ED01B8162D9C6000D8EDE5 /* WBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED01AC162D9C6000D8EDE5 /* WBRequest.m */; };
+		D8ED01B9162D9C6000D8EDE5 /* WBSendView.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED01AF162D9C6000D8EDE5 /* WBSendView.m */; };
+		D8ED01BA162D9C6000D8EDE5 /* WBUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED01B1162D9C6000D8EDE5 /* WBUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -190,19 +190,6 @@
 		D82230381625218500687623 /* FMDatabaseAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabaseAdditions.m; sourceTree = "<group>"; };
 		D82230391625218500687623 /* FMResultSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMResultSet.h; sourceTree = "<group>"; };
 		D822303A1625218500687623 /* FMResultSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMResultSet.m; sourceTree = "<group>"; };
-		D822303C1625218500687623 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSON.h; sourceTree = "<group>"; };
-		D822303D1625218500687623 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+SBJSON.h"; sourceTree = "<group>"; };
-		D822303E1625218500687623 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+SBJSON.m"; sourceTree = "<group>"; };
-		D822303F1625218500687623 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SBJSON.h"; sourceTree = "<group>"; };
-		D82230401625218500687623 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SBJSON.m"; sourceTree = "<group>"; };
-		D82230411625218500687623 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJSON.h; sourceTree = "<group>"; };
-		D82230421625218500687623 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJSON.m; sourceTree = "<group>"; };
-		D82230431625218500687623 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonBase.h; sourceTree = "<group>"; };
-		D82230441625218500687623 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonBase.m; sourceTree = "<group>"; };
-		D82230451625218500687623 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
-		D82230461625218500687623 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
-		D82230471625218500687623 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
-		D82230481625218500687623 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		D822304A1625218500687623 /* Renren.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Renren.h; sourceTree = "<group>"; };
 		D822304B1625218500687623 /* Renren.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Renren.m; sourceTree = "<group>"; };
 		D822304C1625218500687623 /* RenrenPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RenrenPay.h; sourceTree = "<group>"; };
@@ -312,26 +299,6 @@
 		D8633C87161D7DD600998982 /* personCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = personCell.xib; sourceTree = "<group>"; };
 		D864976A162D5DD100672747 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		D8649774162D641B00672747 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		D864977C162D6CAA00672747 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
-		D864977D162D6CAA00672747 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
-		D864977E162D6CAA00672747 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		D864978E162D6CAA00672747 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
-		D864978F162D6CAA00672747 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
-		D8649790162D6CAA00672747 /* WBAuthorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAuthorize.h; sourceTree = "<group>"; };
-		D8649791162D6CAA00672747 /* WBAuthorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAuthorize.m; sourceTree = "<group>"; };
-		D8649792162D6CAA00672747 /* WBAuthorizeWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBAuthorizeWebView.h; sourceTree = "<group>"; };
-		D8649793162D6CAA00672747 /* WBAuthorizeWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBAuthorizeWebView.m; sourceTree = "<group>"; };
-		D8649794162D6CAA00672747 /* WBEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBEngine.h; sourceTree = "<group>"; };
-		D8649795162D6CAA00672747 /* WBEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBEngine.m; sourceTree = "<group>"; };
-		D8649796162D6CAA00672747 /* WBLogInAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBLogInAlertView.h; sourceTree = "<group>"; };
-		D8649797162D6CAA00672747 /* WBLogInAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBLogInAlertView.m; sourceTree = "<group>"; };
-		D8649798162D6CAA00672747 /* WBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBRequest.h; sourceTree = "<group>"; };
-		D8649799162D6CAA00672747 /* WBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBRequest.m; sourceTree = "<group>"; };
-		D864979A162D6CAA00672747 /* WBSDKGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSDKGlobal.h; sourceTree = "<group>"; };
-		D864979B162D6CAA00672747 /* WBSendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBSendView.h; sourceTree = "<group>"; };
-		D864979C162D6CAA00672747 /* WBSendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBSendView.m; sourceTree = "<group>"; };
-		D864979D162D6CAA00672747 /* WBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WBUtil.h; sourceTree = "<group>"; };
-		D864979E162D6CAA00672747 /* WBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WBUtil.m; sourceTree = "<group>"; };
 		D884C6F715F9CE5C00E08417 /* easyFollow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = easyFollow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D884C6FB15F9CE5C00E08417 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D884C6FD15F9CE5C00E08417 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -353,6 +320,39 @@
 		D88E93E516266B4500736FF9 /* NSString+MD5Addition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+MD5Addition.m"; path = "UDID/NSString+MD5Addition.m"; sourceTree = "<group>"; };
 		D88E93E616266B4500736FF9 /* UIDevice+IdentifierAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIDevice+IdentifierAddition.h"; path = "UDID/UIDevice+IdentifierAddition.h"; sourceTree = "<group>"; };
 		D88E93E716266B4500736FF9 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+IdentifierAddition.m"; path = "UDID/UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
+		D8ED016A162D9BE900D8EDE5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON_for_API/JSON.h; sourceTree = "<group>"; };
+		D8ED016B162D9BE900D8EDE5 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJSON.h"; path = "JSON_for_API/NSObject+SBJSON.h"; sourceTree = "<group>"; };
+		D8ED016C162D9BE900D8EDE5 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJSON.m"; path = "JSON_for_API/NSObject+SBJSON.m"; sourceTree = "<group>"; };
+		D8ED016D162D9BE900D8EDE5 /* NSString+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+SBJSON.h"; path = "JSON_for_API/NSString+SBJSON.h"; sourceTree = "<group>"; };
+		D8ED016E162D9BE900D8EDE5 /* NSString+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+SBJSON.m"; path = "JSON_for_API/NSString+SBJSON.m"; sourceTree = "<group>"; };
+		D8ED016F162D9BE900D8EDE5 /* SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJSON.h; path = JSON_for_API/SBJSON.h; sourceTree = "<group>"; };
+		D8ED0170162D9BE900D8EDE5 /* SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJSON.m; path = JSON_for_API/SBJSON.m; sourceTree = "<group>"; };
+		D8ED0171162D9BE900D8EDE5 /* SBJsonBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonBase.h; path = JSON_for_API/SBJsonBase.h; sourceTree = "<group>"; };
+		D8ED0172162D9BE900D8EDE5 /* SBJsonBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonBase.m; path = JSON_for_API/SBJsonBase.m; sourceTree = "<group>"; };
+		D8ED0173162D9BE900D8EDE5 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonParser.h; path = JSON_for_API/SBJsonParser.h; sourceTree = "<group>"; };
+		D8ED0174162D9BE900D8EDE5 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonParser.m; path = JSON_for_API/SBJsonParser.m; sourceTree = "<group>"; };
+		D8ED0175162D9BE900D8EDE5 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SBJsonWriter.h; path = JSON_for_API/SBJsonWriter.h; sourceTree = "<group>"; };
+		D8ED0176162D9BE900D8EDE5 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SBJsonWriter.m; path = JSON_for_API/SBJsonWriter.m; sourceTree = "<group>"; };
+		D8ED019D162D9C6000D8EDE5 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		D8ED019E162D9C6000D8EDE5 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		D8ED019F162D9C6000D8EDE5 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		D8ED01A1162D9C6000D8EDE5 /* SFHFKeychainUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SFHFKeychainUtils.h; sourceTree = "<group>"; };
+		D8ED01A2162D9C6000D8EDE5 /* SFHFKeychainUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SFHFKeychainUtils.m; sourceTree = "<group>"; };
+		D8ED01A3162D9C6000D8EDE5 /* WBAuthorize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBAuthorize.h; path = SinaWeiBo_API/WBAuthorize.h; sourceTree = "<group>"; };
+		D8ED01A4162D9C6000D8EDE5 /* WBAuthorize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBAuthorize.m; path = SinaWeiBo_API/WBAuthorize.m; sourceTree = "<group>"; };
+		D8ED01A5162D9C6000D8EDE5 /* WBAuthorizeWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBAuthorizeWebView.h; path = SinaWeiBo_API/WBAuthorizeWebView.h; sourceTree = "<group>"; };
+		D8ED01A6162D9C6000D8EDE5 /* WBAuthorizeWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBAuthorizeWebView.m; path = SinaWeiBo_API/WBAuthorizeWebView.m; sourceTree = "<group>"; };
+		D8ED01A7162D9C6000D8EDE5 /* WBEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBEngine.h; path = SinaWeiBo_API/WBEngine.h; sourceTree = "<group>"; };
+		D8ED01A8162D9C6000D8EDE5 /* WBEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBEngine.m; path = SinaWeiBo_API/WBEngine.m; sourceTree = "<group>"; };
+		D8ED01A9162D9C6000D8EDE5 /* WBLogInAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBLogInAlertView.h; path = SinaWeiBo_API/WBLogInAlertView.h; sourceTree = "<group>"; };
+		D8ED01AA162D9C6000D8EDE5 /* WBLogInAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBLogInAlertView.m; path = SinaWeiBo_API/WBLogInAlertView.m; sourceTree = "<group>"; };
+		D8ED01AB162D9C6000D8EDE5 /* WBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBRequest.h; path = SinaWeiBo_API/WBRequest.h; sourceTree = "<group>"; };
+		D8ED01AC162D9C6000D8EDE5 /* WBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBRequest.m; path = SinaWeiBo_API/WBRequest.m; sourceTree = "<group>"; };
+		D8ED01AD162D9C6000D8EDE5 /* WBSDKGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBSDKGlobal.h; path = SinaWeiBo_API/WBSDKGlobal.h; sourceTree = "<group>"; };
+		D8ED01AE162D9C6000D8EDE5 /* WBSendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBSendView.h; path = SinaWeiBo_API/WBSendView.h; sourceTree = "<group>"; };
+		D8ED01AF162D9C6000D8EDE5 /* WBSendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBSendView.m; path = SinaWeiBo_API/WBSendView.m; sourceTree = "<group>"; };
+		D8ED01B0162D9C6000D8EDE5 /* WBUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WBUtil.h; path = SinaWeiBo_API/WBUtil.h; sourceTree = "<group>"; };
+		D8ED01B1162D9C6000D8EDE5 /* WBUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WBUtil.m; path = SinaWeiBo_API/WBUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -386,6 +386,7 @@
 		D80F1F89161E9E8900F59755 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				D8ED0169162D9BC400D8EDE5 /* JSON_for_API */,
 				D8649769162D5AD800672747 /* SinaWeibo_API */,
 				D88E93E316266B2400736FF9 /* UDID */,
 				D8222EA41624014100687623 /* Renren_API */,
@@ -440,7 +441,6 @@
 			isa = PBXGroup;
 			children = (
 				D82230341625218500687623 /* FMDB */,
-				D822303B1625218500687623 /* JSON */,
 				D82230491625218500687623 /* Renren */,
 			);
 			name = Renren_API;
@@ -458,27 +458,6 @@
 			);
 			name = FMDB;
 			path = Renren_API/FMDB;
-			sourceTree = "<group>";
-		};
-		D822303B1625218500687623 /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				D822303C1625218500687623 /* JSON.h */,
-				D822303D1625218500687623 /* NSObject+SBJSON.h */,
-				D822303E1625218500687623 /* NSObject+SBJSON.m */,
-				D822303F1625218500687623 /* NSString+SBJSON.h */,
-				D82230401625218500687623 /* NSString+SBJSON.m */,
-				D82230411625218500687623 /* SBJSON.h */,
-				D82230421625218500687623 /* SBJSON.m */,
-				D82230431625218500687623 /* SBJsonBase.h */,
-				D82230441625218500687623 /* SBJsonBase.m */,
-				D82230451625218500687623 /* SBJsonParser.h */,
-				D82230461625218500687623 /* SBJsonParser.m */,
-				D82230471625218500687623 /* SBJsonWriter.h */,
-				D82230481625218500687623 /* SBJsonWriter.m */,
-			);
-			name = JSON;
-			path = Renren_API/JSON;
 			sourceTree = "<group>";
 		};
 		D82230491625218500687623 /* Renren */ = {
@@ -699,52 +678,25 @@
 		D8649769162D5AD800672747 /* SinaWeibo_API */ = {
 			isa = PBXGroup;
 			children = (
-				D864977A162D6CAA00672747 /* SinaWeiBoSDK */,
+				D8ED019C162D9C6000D8EDE5 /* CTMBase64 */,
+				D8ED01A0162D9C6000D8EDE5 /* SFHFKeychainUtils */,
+				D8ED01A3162D9C6000D8EDE5 /* WBAuthorize.h */,
+				D8ED01A4162D9C6000D8EDE5 /* WBAuthorize.m */,
+				D8ED01A5162D9C6000D8EDE5 /* WBAuthorizeWebView.h */,
+				D8ED01A6162D9C6000D8EDE5 /* WBAuthorizeWebView.m */,
+				D8ED01A7162D9C6000D8EDE5 /* WBEngine.h */,
+				D8ED01A8162D9C6000D8EDE5 /* WBEngine.m */,
+				D8ED01A9162D9C6000D8EDE5 /* WBLogInAlertView.h */,
+				D8ED01AA162D9C6000D8EDE5 /* WBLogInAlertView.m */,
+				D8ED01AB162D9C6000D8EDE5 /* WBRequest.h */,
+				D8ED01AC162D9C6000D8EDE5 /* WBRequest.m */,
+				D8ED01AD162D9C6000D8EDE5 /* WBSDKGlobal.h */,
+				D8ED01AE162D9C6000D8EDE5 /* WBSendView.h */,
+				D8ED01AF162D9C6000D8EDE5 /* WBSendView.m */,
+				D8ED01B0162D9C6000D8EDE5 /* WBUtil.h */,
+				D8ED01B1162D9C6000D8EDE5 /* WBUtil.m */,
 			);
 			name = SinaWeibo_API;
-			sourceTree = "<group>";
-		};
-		D864977A162D6CAA00672747 /* SinaWeiBoSDK */ = {
-			isa = PBXGroup;
-			children = (
-				D864977B162D6CAA00672747 /* CTMBase64 */,
-				D864978D162D6CAA00672747 /* SFHFKeychainUtils */,
-				D8649790162D6CAA00672747 /* WBAuthorize.h */,
-				D8649791162D6CAA00672747 /* WBAuthorize.m */,
-				D8649792162D6CAA00672747 /* WBAuthorizeWebView.h */,
-				D8649793162D6CAA00672747 /* WBAuthorizeWebView.m */,
-				D8649794162D6CAA00672747 /* WBEngine.h */,
-				D8649795162D6CAA00672747 /* WBEngine.m */,
-				D8649796162D6CAA00672747 /* WBLogInAlertView.h */,
-				D8649797162D6CAA00672747 /* WBLogInAlertView.m */,
-				D8649798162D6CAA00672747 /* WBRequest.h */,
-				D8649799162D6CAA00672747 /* WBRequest.m */,
-				D864979A162D6CAA00672747 /* WBSDKGlobal.h */,
-				D864979B162D6CAA00672747 /* WBSendView.h */,
-				D864979C162D6CAA00672747 /* WBSendView.m */,
-				D864979D162D6CAA00672747 /* WBUtil.h */,
-				D864979E162D6CAA00672747 /* WBUtil.m */,
-			);
-			path = SinaWeiBoSDK;
-			sourceTree = "<group>";
-		};
-		D864977B162D6CAA00672747 /* CTMBase64 */ = {
-			isa = PBXGroup;
-			children = (
-				D864977C162D6CAA00672747 /* GTMBase64.h */,
-				D864977D162D6CAA00672747 /* GTMBase64.m */,
-				D864977E162D6CAA00672747 /* GTMDefines.h */,
-			);
-			path = CTMBase64;
-			sourceTree = "<group>";
-		};
-		D864978D162D6CAA00672747 /* SFHFKeychainUtils */ = {
-			isa = PBXGroup;
-			children = (
-				D864978E162D6CAA00672747 /* SFHFKeychainUtils.h */,
-				D864978F162D6CAA00672747 /* SFHFKeychainUtils.m */,
-			);
-			path = SFHFKeychainUtils;
 			sourceTree = "<group>";
 		};
 		D884C6EC15F9CE5C00E08417 = {
@@ -863,6 +815,47 @@
 				D88E93E716266B4500736FF9 /* UIDevice+IdentifierAddition.m */,
 			);
 			name = UDID;
+			sourceTree = "<group>";
+		};
+		D8ED0169162D9BC400D8EDE5 /* JSON_for_API */ = {
+			isa = PBXGroup;
+			children = (
+				D8ED016A162D9BE900D8EDE5 /* JSON.h */,
+				D8ED016B162D9BE900D8EDE5 /* NSObject+SBJSON.h */,
+				D8ED016C162D9BE900D8EDE5 /* NSObject+SBJSON.m */,
+				D8ED016D162D9BE900D8EDE5 /* NSString+SBJSON.h */,
+				D8ED016E162D9BE900D8EDE5 /* NSString+SBJSON.m */,
+				D8ED016F162D9BE900D8EDE5 /* SBJSON.h */,
+				D8ED0170162D9BE900D8EDE5 /* SBJSON.m */,
+				D8ED0171162D9BE900D8EDE5 /* SBJsonBase.h */,
+				D8ED0172162D9BE900D8EDE5 /* SBJsonBase.m */,
+				D8ED0173162D9BE900D8EDE5 /* SBJsonParser.h */,
+				D8ED0174162D9BE900D8EDE5 /* SBJsonParser.m */,
+				D8ED0175162D9BE900D8EDE5 /* SBJsonWriter.h */,
+				D8ED0176162D9BE900D8EDE5 /* SBJsonWriter.m */,
+			);
+			name = JSON_for_API;
+			sourceTree = "<group>";
+		};
+		D8ED019C162D9C6000D8EDE5 /* CTMBase64 */ = {
+			isa = PBXGroup;
+			children = (
+				D8ED019D162D9C6000D8EDE5 /* GTMBase64.h */,
+				D8ED019E162D9C6000D8EDE5 /* GTMBase64.m */,
+				D8ED019F162D9C6000D8EDE5 /* GTMDefines.h */,
+			);
+			name = CTMBase64;
+			path = SinaWeiBo_API/CTMBase64;
+			sourceTree = "<group>";
+		};
+		D8ED01A0162D9C6000D8EDE5 /* SFHFKeychainUtils */ = {
+			isa = PBXGroup;
+			children = (
+				D8ED01A1162D9C6000D8EDE5 /* SFHFKeychainUtils.h */,
+				D8ED01A2162D9C6000D8EDE5 /* SFHFKeychainUtils.m */,
+			);
+			name = SFHFKeychainUtils;
+			path = SinaWeiBo_API/SFHFKeychainUtils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1025,12 +1018,6 @@
 				D82230BE1625218500687623 /* FMDatabase.m in Sources */,
 				D82230BF1625218500687623 /* FMDatabaseAdditions.m in Sources */,
 				D82230C01625218500687623 /* FMResultSet.m in Sources */,
-				D82230C11625218500687623 /* NSObject+SBJSON.m in Sources */,
-				D82230C21625218500687623 /* NSString+SBJSON.m in Sources */,
-				D82230C31625218500687623 /* SBJSON.m in Sources */,
-				D82230C41625218500687623 /* SBJsonBase.m in Sources */,
-				D82230C51625218500687623 /* SBJsonParser.m in Sources */,
-				D82230C61625218500687623 /* SBJsonWriter.m in Sources */,
 				D82230C71625218500687623 /* Renren.m in Sources */,
 				D82230C81625218500687623 /* RenrenPay.m in Sources */,
 				D82230C91625218500687623 /* ROBaseDialogViewController.m in Sources */,
@@ -1073,15 +1060,21 @@
 				D82231031625218500687623 /* ROPublishPhotoInternal.m in Sources */,
 				D88E93E816266B4500736FF9 /* NSString+MD5Addition.m in Sources */,
 				D88E93E916266B4500736FF9 /* UIDevice+IdentifierAddition.m in Sources */,
-				D864979F162D6CAA00672747 /* GTMBase64.m in Sources */,
-				D86497A6162D6CAA00672747 /* SFHFKeychainUtils.m in Sources */,
-				D86497A7162D6CAA00672747 /* WBAuthorize.m in Sources */,
-				D86497A8162D6CAA00672747 /* WBAuthorizeWebView.m in Sources */,
-				D86497A9162D6CAA00672747 /* WBEngine.m in Sources */,
-				D86497AA162D6CAA00672747 /* WBLogInAlertView.m in Sources */,
-				D86497AB162D6CAA00672747 /* WBRequest.m in Sources */,
-				D86497AC162D6CAA00672747 /* WBSendView.m in Sources */,
-				D86497AD162D6CAA00672747 /* WBUtil.m in Sources */,
+				D8ED0177162D9BE900D8EDE5 /* NSObject+SBJSON.m in Sources */,
+				D8ED0178162D9BE900D8EDE5 /* NSString+SBJSON.m in Sources */,
+				D8ED0179162D9BE900D8EDE5 /* SBJSON.m in Sources */,
+				D8ED017A162D9BE900D8EDE5 /* SBJsonBase.m in Sources */,
+				D8ED017B162D9BE900D8EDE5 /* SBJsonParser.m in Sources */,
+				D8ED017C162D9BE900D8EDE5 /* SBJsonWriter.m in Sources */,
+				D8ED01B2162D9C6000D8EDE5 /* GTMBase64.m in Sources */,
+				D8ED01B3162D9C6000D8EDE5 /* SFHFKeychainUtils.m in Sources */,
+				D8ED01B4162D9C6000D8EDE5 /* WBAuthorize.m in Sources */,
+				D8ED01B5162D9C6000D8EDE5 /* WBAuthorizeWebView.m in Sources */,
+				D8ED01B6162D9C6000D8EDE5 /* WBEngine.m in Sources */,
+				D8ED01B7162D9C6000D8EDE5 /* WBLogInAlertView.m in Sources */,
+				D8ED01B8162D9C6000D8EDE5 /* WBRequest.m in Sources */,
+				D8ED01B9162D9C6000D8EDE5 /* WBSendView.m in Sources */,
+				D8ED01BA162D9C6000D8EDE5 /* WBUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
