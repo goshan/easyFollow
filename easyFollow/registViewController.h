@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "WBEngine.h"
 
-@interface registViewController : UIViewController <RenrenDelegate>
+@interface registViewController : UIViewController <RenrenDelegate, WBEngineDelegate>
+
+@property(retain, nonatomic) WBEngine *sina;
 
 @property (retain, nonatomic) IBOutlet UITextField *nameText;
 
@@ -16,6 +19,8 @@
 
 
 - (IBAction)renrenLogin:(id)sender;
+
+- (IBAction)sinaLogin:(id)sender;
 
 - (IBAction)regist:(id)sender;
 

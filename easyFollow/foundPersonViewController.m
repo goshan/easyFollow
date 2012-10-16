@@ -43,7 +43,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _infoTable.allowsSelection = NO;
-    NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"renren_avatar"]];
+    NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
     _avatar.image = image;
@@ -115,7 +115,7 @@
     UILabel *snsName = (UILabel *)[cell viewWithTag:2];
     
     if (indexPath.section == 0){
-        NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"renren_avatar"]];
+        NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
         NSData *data = [NSData dataWithContentsOfURL:url];
         UIImage *image = [UIImage imageWithData:data];
         snsAvatar.image = image;
