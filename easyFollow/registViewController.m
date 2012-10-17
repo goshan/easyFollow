@@ -21,7 +21,6 @@
 @implementation registViewController
 
 @synthesize sina = _sina;
-@synthesize nameText = _nameText;
 @synthesize IPText = _IPText;
 
 
@@ -45,9 +44,6 @@
     
     //push user regist data to server
     //**** prepair for user data
-    //******** get user name
-    NSString* user_name = _nameText.text;
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     //******** get renren data
@@ -58,6 +54,10 @@
         renren_permissions = [renren_permissions stringByAppendingFormat:@"%@,", permission];
     }
     renren_permissions = [renren_permissions substringToIndex:renren_permissions.length-1];
+    //******** get sina data
+    NSString *sina_token = [defaults objectForKey:@"gsf_sina_token"];
+    NSString *sina_expir = [defaults objectForKey:@"gsf_sina_expir"];
+    NSString *sina_id = [defaults objectForKey:@"gsf_sina_id"];
     //******** get iphone imei
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     
@@ -66,10 +66,12 @@
     NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            user_name, @"name", 
                             renren_token, @"renren_token",
                             renren_expir, @"renren_expir",
                             renren_permissions, @"renren_permissions", 
+                            sina_id, @"sina_id", 
+                            sina_token, @"sina_token", 
+                            sina_expir, @"sina_expir", 
                             imei, @"iphone_imei", 
                             nil];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/users/create_user.json" parameters:params];
@@ -127,7 +129,6 @@
 
 - (void)dealloc {
     [_sina release];
-    [_nameText release];
     [_IPText release];
     [super dealloc];
 }
@@ -144,7 +145,6 @@
 
 - (void)viewDidUnload
 {
-    [self setNameText:nil];
     [self setIPText:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.

@@ -13,8 +13,6 @@
 
 @property(retain, nonatomic) WBEngine *sina;
 
-@property (retain, nonatomic) IBOutlet UITextField *nameText;
-
 @property (retain, nonatomic) IBOutlet UITextField *IPText;
 
 
