@@ -16,12 +16,6 @@
 
 @property (nonatomic) SystemSoundID soundID;
 
-@property (retain, nonatomic) IBOutlet UIView *personView;
-
-@property (retain, nonatomic) IBOutlet UIImageView *imageUp;
-
-@property (retain, nonatomic) IBOutlet UIImageView *imageDown;
-
 @property(retain, nonatomic) CLLocationManager *locationManager;
 
 @property(retain, nonatomic) foundPersonViewController *personViewController;

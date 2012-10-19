@@ -18,9 +18,14 @@
 #define SinaAPPKey @"1799175553"
 #define SinaScretKey @"4c2180d2a60b0fa917960e5b7f824a04"
 
+#define TencentAPPKey @"801255147"
+#define TencentScretKey @"875d58fb566cb9e9183830dde6515fbc"
+
+
 @implementation registViewController
 
 @synthesize sina = _sina;
+@synthesize tencent = _tencent;
 @synthesize IPText = _IPText;
 
 
@@ -34,6 +39,10 @@
 
 - (IBAction)sinaLogin:(id)sender {
     [_sina logIn];
+}
+
+- (IBAction)tencentLogin:(id)sender {
+    [_tencent LoginWith:self.view];
 }
 
 - (IBAction)regist:(id)sender {
@@ -115,6 +124,9 @@
         [_sina setDelegate:self];
         [_sina setRedirectURI:@"http://"];
         [_sina setIsUserExclusive:NO];
+        
+        _tencent = [[gTencentApi alloc] initWithAppKey:TencentAPPKey andAppScret:TencentScretKey];
+        _tencent.delegate = self;
     }
     return self;
 }
@@ -128,6 +140,7 @@
 }
 
 - (void)dealloc {
+    [_tencent release];
     [_sina release];
     [_IPText release];
     [super dealloc];
@@ -238,5 +251,28 @@
     [engine logOut];
     [engine logIn];
 }
+
+
+
+
+#pragma mark gTencent delegate
+
+- (void) loginSucess:(gTencentApi *)tencentApi{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:tencentApi.tencent.accessToken forKey:@"gsf_tencent_token"];
+    [defaults setObject:tencentApi.tencent.expireIn forKey:@"gsf_tencent_expir"];
+    [defaults setObject:tencentApi.tencent.openid forKey:@"gsf_tencent_openid"];
+    [defaults setObject:tencentApi.tencent.openkey forKey:@"gsf_tencent_openkey"];
+}
+
+- (void) responseDidFinishLoad:(UIWebView *)webView{
+    NSLog(@"========tencent load view finished=======");
+}
+
+- (void) responseWebView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
+    NSLog(@"========tencent load view failed=======");
+}
+
+
 
 @end

@@ -29,6 +29,7 @@
     // Override point for customization after application launch.
     mainViewController *main = [[[mainViewController alloc] initWithNibName:@"mainViewController" bundle:nil] autorelease];
     _navController = [[UINavigationController alloc] initWithRootViewController:main];
+    [_navController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg"] forBarMetrics:UIBarMetricsDefault];
     [self.window addSubview:_navController.view];
     
     [self.window makeKeyAndVisible];
