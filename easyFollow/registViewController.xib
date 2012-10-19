@@ -374,20 +374,17 @@
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="IPText">UITextField</string>
-						<string key="tencentLoginView">UIWebView</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="IPText">
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">IPText</string>
+						<string key="NS.object.0">UITextField</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">IPText</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
 							<string key="name">IPText</string>
 							<string key="candidateClassName">UITextField</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="tencentLoginView">
-							<string key="name">tencentLoginView</string>
-							<string key="candidateClassName">UIWebView</string>
-						</object>
-					</dictionary>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/registViewController.h</string>

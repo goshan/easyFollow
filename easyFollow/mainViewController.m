@@ -18,6 +18,7 @@ BOOL isOpen = NO;
 
 @implementation mainViewController
 
+@synthesize starView = _starView;
 @synthesize soundID = _soundID;
 @synthesize locationManager = _locationManager;
 @synthesize personViewController = _personViewController;
@@ -27,21 +28,37 @@ BOOL isOpen = NO;
 
 
 //================function--state: waiting ==begin====================//
-- (void)wobble {
+- (void)wobbleLeft {
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.1];
-//    CGFloat rotation = (5.0 * M_PI) / 180.0;
-//    CGAffineTransform wobbleLeft = CGAffineTransformMakeRotation(rotation);
-//    CGAffineTransform wobbleRight = CGAffineTransformMakeRotation(-rotation);
-//    if (left == 0){
-//        _IPText.transform = wobbleLeft;
-//        left = 1;
-//    }
-//    else {
-//        _IPText.transform = wobbleRight;
-//        left = 0;
-//    }
+    CGFloat rotation = (5.0 * M_PI) / 180.0;
+    CGAffineTransform wobbleLeft = CGAffineTransformMakeRotation(rotation);
+    _starView.transform = wobbleLeft;
     [UIView commitAnimations];
+}
+
+- (void)wobbleRight {
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.1];
+    CGFloat rotation = (-5.0 * M_PI) / 180.0;
+    CGAffineTransform wobbleRight = CGAffineTransformMakeRotation(rotation);
+    _starView.transform = wobbleRight;
+    [UIView commitAnimations];
+}
+
+- (void)wobbleMiddle {
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.1];
+    CGFloat rotation = 0.0;
+    CGAffineTransform wobbleMiddle = CGAffineTransformMakeRotation(rotation);
+    _starView.transform = wobbleMiddle;
+    [UIView commitAnimations];
+}
+
+- (void) starWobble{
+    [self performSelector:@selector(wobbleLeft) withObject:nil afterDelay:0.0];
+    [self performSelector:@selector(wobbleRight) withObject:nil afterDelay:0.1];
+    [self performSelector:@selector(wobbleMiddle) withObject:nil afterDelay:0.2];
 }
 
 //================function--state: waiting ==end====================//
@@ -220,9 +237,6 @@ BOOL isOpen = NO;
         [_locationManager startUpdatingLocation];
         [_locationManager stopUpdatingLocation];
         
-        
-        
-        //[NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(wobble) userInfo:nil repeats:YES];
     }
     return self;
 }
@@ -243,6 +257,14 @@ BOOL isOpen = NO;
     // Do any additional setup after loading the view from its nib.
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
     
+    UIView *view = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
+    CGRect frame = view.frame;
+    NSLog(@"========%f   %f", frame.size.height, frame.size.width);
+    
+    //[self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"barbuttonItem_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(starWobble) userInfo:nil repeats:YES];
+    
     // The "shake" nofification is posted by the PaintingWindow object when user shakes the device
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shakePhone) name:@"shake" object:nil];
     
@@ -255,6 +277,7 @@ BOOL isOpen = NO;
 
 - (void)viewDidUnload
 {
+    [self setStarView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -267,6 +290,7 @@ BOOL isOpen = NO;
 }
 
 - (void)dealloc {
+    [_starView release];
     [super dealloc];
 }
 

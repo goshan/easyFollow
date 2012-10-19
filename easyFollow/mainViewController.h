@@ -13,6 +13,7 @@
 
 @interface mainViewController : UIViewController <CLLocationManagerDelegate>
 
+@property (retain, nonatomic) IBOutlet UIImageView *starView;
 
 @property (nonatomic) SystemSoundID soundID;
 
