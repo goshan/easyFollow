@@ -14,69 +14,174 @@
 
 
 
-BOOL isOpen = NO;
+
+#define starWobbleAngle 5.0
+#define starWobbleTime 0.1
+#define starWobbleFrequency 1.0
+#define starBlinkTime 0.5
+#define starBlinkFrequency 1.5
+
 
 @implementation mainViewController
 
-@synthesize starView = _starView;
+@synthesize starViewNormal = _starViewNormal;
+@synthesize starViewShining = _starViewShining;
+@synthesize shakeButton = _shakeButton;
+@synthesize showButton = _showButton;
 @synthesize soundID = _soundID;
 @synthesize locationManager = _locationManager;
 @synthesize personViewController = _personViewController;
+@synthesize starWobbleTimer = _starWobbleTimer;
+@synthesize starBlinkTimer = _starBlinkTimer;
 
 
 
 
 
-//================function--state: waiting ==begin====================//
+
+//================image view: wobble star ==begin====================//
 - (void)wobbleLeft {
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.1];
-    CGFloat rotation = (5.0 * M_PI) / 180.0;
+    [UIView setAnimationDuration:starWobbleTime];
+    CGFloat rotation = (starWobbleAngle * M_PI) / 180.0;
     CGAffineTransform wobbleLeft = CGAffineTransformMakeRotation(rotation);
-    _starView.transform = wobbleLeft;
+    _starViewNormal.transform = wobbleLeft;
     [UIView commitAnimations];
 }
 
 - (void)wobbleRight {
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.1];
-    CGFloat rotation = (-5.0 * M_PI) / 180.0;
+    [UIView setAnimationDuration:starWobbleTime];
+    CGFloat rotation = (-starWobbleAngle * M_PI) / 180.0;
     CGAffineTransform wobbleRight = CGAffineTransformMakeRotation(rotation);
-    _starView.transform = wobbleRight;
+    _starViewNormal.transform = wobbleRight;
     [UIView commitAnimations];
 }
 
 - (void)wobbleMiddle {
     [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.1];
+    [UIView setAnimationDuration:starWobbleTime];
     CGFloat rotation = 0.0;
     CGAffineTransform wobbleMiddle = CGAffineTransformMakeRotation(rotation);
-    _starView.transform = wobbleMiddle;
+    _starViewNormal.transform = wobbleMiddle;
     [UIView commitAnimations];
 }
 
 - (void) starWobble{
     [self performSelector:@selector(wobbleLeft) withObject:nil afterDelay:0.0];
-    [self performSelector:@selector(wobbleRight) withObject:nil afterDelay:0.1];
-    [self performSelector:@selector(wobbleMiddle) withObject:nil afterDelay:0.2];
+    [self performSelector:@selector(wobbleRight) withObject:nil afterDelay:starWobbleTime];
+    [self performSelector:@selector(wobbleMiddle) withObject:nil afterDelay:2*starWobbleTime];
 }
 
-//================function--state: waiting ==end====================//
+- (void) makeStarWobble:(BOOL)wobble{
+    if (wobble){
+        _starWobbleTimer = [NSTimer scheduledTimerWithTimeInterval:starWobbleFrequency target:self selector:@selector(starWobble) userInfo:nil repeats:YES];
+    }
+    else {
+        [_starWobbleTimer invalidate];
+    }
+}
+
+//================image view: wobble star ==end====================//
+
+
+//================image view: shining star ==begin====================//
+
+- (void) brighten{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:starBlinkTime];
+    _starViewShining.alpha = 1.0;
+    [UIView commitAnimations];
+}
+
+- (void) darken{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:starBlinkTime];
+    _starViewShining.alpha = 0.0;
+    [UIView commitAnimations];
+}
+
+- (void) starBlink{
+    [self performSelector:@selector(brighten) withObject:nil afterDelay:0.0];
+    [self performSelector:@selector(darken) withObject:nil afterDelay:starBlinkTime];
+}
+
+- (void) makeStarBlink:(BOOL)blink{
+    if (blink){
+        _starBlinkTimer = [NSTimer scheduledTimerWithTimeInterval:starBlinkFrequency target:self selector:@selector(starBlink) userInfo:nil repeats:YES];
+    }
+    else {
+        [_starBlinkTimer invalidate];
+    }
+}
+
+//================image view: shining star ==end====================//
+
+
+//================image view: double star ==end====================//
+
+- (void)starRotate {
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    CGFloat rotation = (180.0 * M_PI) / 180.0;
+    CGAffineTransform rotate = CGAffineTransformMakeRotation(rotation);
+    _starViewNormal.transform = rotate;
+    [UIView commitAnimations];
+}
+
+- (void)makeStarRotate:(BOOL)rotate{
+    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(starRotate) userInfo:nil repeats:YES];
+}
+
+
+
+
+//================image view: double star ==end====================//
+
+
+//================button: all bottom button ==begin====================//
+
+- (void) makeShakeButtonShow:(BOOL)show{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    if (show){
+        _shakeButton.alpha = 1.0;
+    }
+    else {
+        _shakeButton.alpha = 0.0;
+    }
+    [UIView commitAnimations];
+}
+
+- (void) makeShowButtonShow:(BOOL)show{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    if (show){
+        _showButton.alpha = 1.0;
+    }
+    else {
+        _showButton.alpha = 0.0;
+    }
+    [UIView commitAnimations];
+}
+
+//================button: all bottom button ==end====================//
 
 
 //================function--state: shake ==begin====================//
-
-- (void) moveImageCover{
-    
-}
 
 - (void) shakePhone{
     //play sound
     AudioServicesPlaySystemSound (_soundID);
     
-    //close image cover
-    isOpen = NO;
-    [self performSelector:@selector(moveImageCover)];
+    //stop star wobble
+    [self makeStarWobble:NO];
+    
+    //star blink
+    [self makeStarBlink:YES];
+    
+    //bottom button
+    [self makeShakeButtonShow:NO];
     
     //get current location
     [_locationManager startUpdatingLocation];
@@ -86,17 +191,11 @@ BOOL isOpen = NO;
 //================function--state: shake ==end====================//
 
 
-
-
-
 //================function--state: loading ==begin====================//
-- (void) loadPersonViewWith:(NSDictionary *)data{
-    _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil friendData:data];
-    
-    
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)] autorelease];
-    [self.navigationItem.rightBarButtonItem setTitle:@"关注"];
-    [self.navigationItem.rightBarButtonItem setAction:@selector(follow)];
+
+- (void) netErrorAlert{
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"网络错误" message:@"少年，网络出错了！！" delegate:nil cancelButtonTitle:@"囧" otherButtonTitles:nil] autorelease];
+    [alert show];
 }
 
 - (void) lookForNearbyWithLatitude:(CGFloat)latitude andLongitude:(CGFloat)longitude{
@@ -141,15 +240,20 @@ BOOL isOpen = NO;
         }
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {        
+        //make star wobble
+        [self makeStarBlink:NO];
+        [self makeStarWobble:YES];
+        //make shake button show
+        [self makeShakeButtonShow:YES];
+        //show error alert
+        [self netErrorAlert];
+        
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];
     [operation start];
     
-    //open image cover
-    isOpen = YES;
-    [self performSelector:@selector(moveImageCover) withObject:nil afterDelay:0.6];
 }
 
 - (void) stopFinding{
@@ -158,7 +262,18 @@ BOOL isOpen = NO;
 //================function--state: loading ==end====================//
 
 
+
 //================function--state: show friend ==begin====================//
+//gen a person view
+- (void) loadPersonViewWith:(NSDictionary *)data{
+    _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil friendData:data];
+    
+    
+    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)] autorelease];
+    [self.navigationItem.rightBarButtonItem setTitle:@"关注"];
+    [self.navigationItem.rightBarButtonItem setAction:@selector(follow)];
+}
+
 //nav bar button function
 - (void)cancel {
     NSLog(@"cancel clicked!");
@@ -218,6 +333,32 @@ BOOL isOpen = NO;
 //================function--state: show friend ==begin====================//
 
 
+//================function--init config ==begin====================//
+- (void) configView{
+    //init image view
+    _starViewNormal.alpha = 1.0;
+    _starViewShining.alpha = 0.0;
+    
+    //init button
+    _shakeButton.alpha = 1.0;
+    [_shakeButton addTarget:self action:@selector(shakePhone) forControlEvents:UIControlEventTouchUpInside];
+    _showButton.alpha = 0.0;
+    
+    //init navigation button
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
+    
+    UIView *view = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
+    CGRect frame = view.frame;
+    NSLog(@"========%f   %f", frame.size.height, frame.size.width);
+    
+    //[self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"barbuttonItem_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    //star wobble timer
+    [self makeStarWobble:YES];
+}
+
+//================function--init config ==end====================//
+
 
 
 
@@ -255,15 +396,7 @@ BOOL isOpen = NO;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
-    
-    UIView *view = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
-    CGRect frame = view.frame;
-    NSLog(@"========%f   %f", frame.size.height, frame.size.width);
-    
-    //[self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"barbuttonItem_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(starWobble) userInfo:nil repeats:YES];
+    [self configView];
     
     // The "shake" nofification is posted by the PaintingWindow object when user shakes the device
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shakePhone) name:@"shake" object:nil];
@@ -277,7 +410,10 @@ BOOL isOpen = NO;
 
 - (void)viewDidUnload
 {
-    [self setStarView:nil];
+    [self setStarViewNormal:nil];
+    [self setStarViewShining:nil];
+    [self setShakeButton:nil];
+    [self setShowButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -290,7 +426,10 @@ BOOL isOpen = NO;
 }
 
 - (void)dealloc {
-    [_starView release];
+    [_starViewNormal release];
+    [_starViewShining release];
+    [_shakeButton release];
+    [_showButton release];
     [super dealloc];
 }
 
