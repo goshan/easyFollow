@@ -15,6 +15,8 @@
 
 @property (retain, nonatomic) IBOutlet UIImageView *starViewNormal;
 @property (retain, nonatomic) IBOutlet UIImageView *starViewShining;
+@property (retain, nonatomic) IBOutlet UIImageView *starViewStatic;
+@property (retain, nonatomic) IBOutlet UIImageView *starViewDynamic;
 @property (retain, nonatomic) IBOutlet UIButton *shakeButton;
 @property (retain, nonatomic) IBOutlet UIButton *showButton;
 
@@ -27,5 +29,7 @@
 @property(retain, nonatomic) NSTimer *starWobbleTimer;
 
 @property(retain, nonatomic) NSTimer *starBlinkTimer;
+
+@property(retain, nonatomic) NSTimer *starRotateTimer;
 
 @end

@@ -11,21 +11,25 @@
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 #import "Renren.h"
+#import "gAnimation.h"
 
 
 
-
+// TODO: add into Utils
 #define starWobbleAngle 5.0
-#define starWobbleTime 0.1
-#define starWobbleFrequency 1.0
+#define starWobbleTime 0.3
+#define starWobbleFrequency 1.5
 #define starBlinkTime 0.5
 #define starBlinkFrequency 1.5
+#define starRotateCycle 0.6
 
 
 @implementation mainViewController
 
 @synthesize starViewNormal = _starViewNormal;
 @synthesize starViewShining = _starViewShining;
+@synthesize starViewStatic = _starViewStatic;
+@synthesize starViewDynamic = _starViewDynamic;
 @synthesize shakeButton = _shakeButton;
 @synthesize showButton = _showButton;
 @synthesize soundID = _soundID;
@@ -33,44 +37,39 @@
 @synthesize personViewController = _personViewController;
 @synthesize starWobbleTimer = _starWobbleTimer;
 @synthesize starBlinkTimer = _starBlinkTimer;
+@synthesize starRotateTimer = _starRotateTimer;
 
 
 
 
+
+
+
+//================button: all bottom button ==begin====================//
+
+- (void) makeShakeButtonShow:(NSString *)msg{
+    BOOL show = YES;
+    if ([msg isEqualToString:@"hidden"]){
+        show = NO;
+    }
+    [gAnimation makeView:_shakeButton toShow:show withDuration:0.5];
+}
+
+- (void) makeShowButtonShow:(NSString *)msg{
+    BOOL show = YES;
+    if ([msg isEqualToString:@"hidden"]){
+        show = NO;
+    }
+    [gAnimation makeView:_showButton toShow:show withDuration:0.5];
+}
+
+//================button: all bottom button ==end====================//
 
 
 //================image view: wobble star ==begin====================//
-- (void)wobbleLeft {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:starWobbleTime];
-    CGFloat rotation = (starWobbleAngle * M_PI) / 180.0;
-    CGAffineTransform wobbleLeft = CGAffineTransformMakeRotation(rotation);
-    _starViewNormal.transform = wobbleLeft;
-    [UIView commitAnimations];
-}
-
-- (void)wobbleRight {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:starWobbleTime];
-    CGFloat rotation = (-starWobbleAngle * M_PI) / 180.0;
-    CGAffineTransform wobbleRight = CGAffineTransformMakeRotation(rotation);
-    _starViewNormal.transform = wobbleRight;
-    [UIView commitAnimations];
-}
-
-- (void)wobbleMiddle {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:starWobbleTime];
-    CGFloat rotation = 0.0;
-    CGAffineTransform wobbleMiddle = CGAffineTransformMakeRotation(rotation);
-    _starViewNormal.transform = wobbleMiddle;
-    [UIView commitAnimations];
-}
 
 - (void) starWobble{
-    [self performSelector:@selector(wobbleLeft) withObject:nil afterDelay:0.0];
-    [self performSelector:@selector(wobbleRight) withObject:nil afterDelay:starWobbleTime];
-    [self performSelector:@selector(wobbleMiddle) withObject:nil afterDelay:2*starWobbleTime];
+    [gAnimation makeView:_starViewNormal wobbleWithAngle:starWobbleAngle andDuration:starWobbleTime];
 }
 
 - (void) makeStarWobble:(BOOL)wobble{
@@ -87,27 +86,13 @@
 
 //================image view: shining star ==begin====================//
 
-- (void) brighten{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:starBlinkTime];
-    _starViewShining.alpha = 1.0;
-    [UIView commitAnimations];
-}
-
-- (void) darken{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:starBlinkTime];
-    _starViewShining.alpha = 0.0;
-    [UIView commitAnimations];
-}
-
 - (void) starBlink{
-    [self performSelector:@selector(brighten) withObject:nil afterDelay:0.0];
-    [self performSelector:@selector(darken) withObject:nil afterDelay:starBlinkTime];
+    [gAnimation makeView:_starViewShining blinkWithDuration:starBlinkTime];
 }
 
 - (void) makeStarBlink:(BOOL)blink{
     if (blink){
+        [self starBlink];
         _starBlinkTimer = [NSTimer scheduledTimerWithTimeInterval:starBlinkFrequency target:self selector:@selector(starBlink) userInfo:nil repeats:YES];
     }
     else {
@@ -121,51 +106,40 @@
 //================image view: double star ==end====================//
 
 - (void)starRotate {
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.0];
-    CGFloat rotation = (180.0 * M_PI) / 180.0;
-    CGAffineTransform rotate = CGAffineTransformMakeRotation(rotation);
-    _starViewNormal.transform = rotate;
-    [UIView commitAnimations];
+    [gAnimation makeView:_starViewDynamic rotateAroundWithCycle:starRotateCycle];
 }
 
 - (void)makeStarRotate:(BOOL)rotate{
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(starRotate) userInfo:nil repeats:YES];
+    if (rotate){
+        [self starRotate];
+        _starRotateTimer = [NSTimer scheduledTimerWithTimeInterval:starRotateCycle target:self selector:@selector(starRotate) userInfo:nil repeats:YES];
+    }
+    else {
+        [_starRotateTimer invalidate];
+    }
 }
 
+- (void)makeStaticStarShow{
+    [gAnimation makeView:_starViewStatic toShow:YES withDuration:0.3];
+}
 
-
+- (void)makeDoubleStarAppear{
+    [self makeStarBlink:NO];
+    CGRect frame = _starViewNormal.frame;
+    frame.origin.x = 16;
+    [gAnimation moveView:_starViewNormal toFinalFrame:frame withDuration:2*starRotateCycle];
+    
+    _starViewDynamic.alpha = 1.0;
+    [self makeStarRotate:YES];
+    [gAnimation moveView:_starViewDynamic toFinalFrame:CGRectMake(103, 63, 221, 216) withDuration:3*starRotateCycle];
+    [self performSelector:@selector(makeStarRotate:) withObject:NO afterDelay:2*starRotateCycle];
+    
+    [self performSelector:@selector(makeStaticStarShow) withObject:nil afterDelay:3*starRotateCycle];
+    //[self makeShowButtonShow:YES];
+    [self performSelector:@selector(makeShowButtonShow:) withObject:@"show" afterDelay:3*starRotateCycle];
+}
 
 //================image view: double star ==end====================//
-
-
-//================button: all bottom button ==begin====================//
-
-- (void) makeShakeButtonShow:(BOOL)show{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    if (show){
-        _shakeButton.alpha = 1.0;
-    }
-    else {
-        _shakeButton.alpha = 0.0;
-    }
-    [UIView commitAnimations];
-}
-
-- (void) makeShowButtonShow:(BOOL)show{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    if (show){
-        _showButton.alpha = 1.0;
-    }
-    else {
-        _showButton.alpha = 0.0;
-    }
-    [UIView commitAnimations];
-}
-
-//================button: all bottom button ==end====================//
 
 
 //================function--state: shake ==begin====================//
@@ -181,7 +155,7 @@
     [self makeStarBlink:YES];
     
     //bottom button
-    [self makeShakeButtonShow:NO];
+    [self makeShakeButtonShow:@"hidden"];
     
     //get current location
     [_locationManager startUpdatingLocation];
@@ -229,8 +203,9 @@
         NSString *result = [feedback objectForKey:@"result"];
         if ([result isEqualToString:@"sucess"]){
             //show person view with feedback data
-            [self performSelector:@selector(loadPersonViewWith:) withObject:[feedback objectForKey:@"nearby"] afterDelay:0.5];
+            //[self performSelector:@selector(loadPersonViewWith:) withObject:[feedback objectForKey:@"nearby"] afterDelay:0.5];
             //[self loadPersonViewWith:feedback];
+            [self makeDoubleStarAppear];
         }
         else if ([result isEqualToString:@"nearby_not_found"]){
             NSLog(@"nearby not found!!");
@@ -245,7 +220,7 @@
         [self makeStarBlink:NO];
         [self makeStarWobble:YES];
         //make shake button show
-        [self makeShakeButtonShow:YES];
+        [self makeShakeButtonShow:@"show"];
         //show error alert
         [self netErrorAlert];
         
@@ -335,9 +310,20 @@
 
 //================function--init config ==begin====================//
 - (void) configView{
+    // TODO: add frame size into Utils
     //init image view
+    CGRect starNormalFrame = CGRectMake(70, 81, 180, 180);
+    [_starViewNormal setFrame:starNormalFrame];
     _starViewNormal.alpha = 1.0;
+    CGRect starShiningFrame = CGRectMake(70, 81, 180, 180);
+    [_starViewShining setFrame:starShiningFrame];
     _starViewShining.alpha = 0.0;
+    CGRect starStaticFrame = CGRectMake(0, 63, 221, 216);
+    [_starViewStatic setFrame:starStaticFrame];
+    _starViewStatic.alpha = 0.0;
+    CGRect starDynamicFrame = CGRectMake(0, 0, 0, 0);
+    [_starViewDynamic setFrame:starDynamicFrame];
+    _starViewDynamic.alpha = 0.0;
     
     //init button
     _shakeButton.alpha = 1.0;
@@ -414,6 +400,8 @@
     [self setStarViewShining:nil];
     [self setShakeButton:nil];
     [self setShowButton:nil];
+    [self setStarViewStatic:nil];
+    [self setStarViewDynamic:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -430,6 +418,8 @@
     [_starViewShining release];
     [_shakeButton release];
     [_showButton release];
+    [_starViewStatic release];
+    [_starViewDynamic release];
     [super dealloc];
 }
 
