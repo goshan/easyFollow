@@ -19,6 +19,7 @@
 @property (retain, nonatomic) IBOutlet UIImageView *starViewDynamic;
 @property (retain, nonatomic) IBOutlet UIButton *shakeButton;
 @property (retain, nonatomic) IBOutlet UIButton *showButton;
+@property (retain, nonatomic) IBOutlet UILabel *nameLabel;
 
 @property (nonatomic) SystemSoundID soundID;
 

@@ -32,6 +32,7 @@
 @synthesize starViewDynamic = _starViewDynamic;
 @synthesize shakeButton = _shakeButton;
 @synthesize showButton = _showButton;
+@synthesize nameLabel = _nameLabel;
 @synthesize soundID = _soundID;
 @synthesize locationManager = _locationManager;
 @synthesize personViewController = _personViewController;
@@ -43,6 +44,22 @@
 
 
 
+
+
+
+
+
+//================button: all bottom button ==begin====================//
+
+- (void) makeLabelShow:(NSString *)msg{
+    BOOL show = YES;
+    if ([msg isEqualToString:@"hidden"]){
+        show = NO;
+    }
+    [gAnimation makeView:_nameLabel toShow:show withDuration:0.5];
+}
+
+//================button: all bottom button ==end====================//
 
 
 //================button: all bottom button ==begin====================//
@@ -123,7 +140,7 @@
     [gAnimation makeView:_starViewStatic toShow:YES withDuration:0.3];
 }
 
-- (void)makeDoubleStarAppear{
+- (void)makeDoubleStarAppearWithName:(NSString *)name{
     [self makeStarBlink:NO];
     CGRect frame = _starViewNormal.frame;
     frame.origin.x = 16;
@@ -137,9 +154,74 @@
     [self performSelector:@selector(makeStaticStarShow) withObject:nil afterDelay:3*starRotateCycle];
     //[self makeShowButtonShow:YES];
     [self performSelector:@selector(makeShowButtonShow:) withObject:@"show" afterDelay:3*starRotateCycle];
+    _nameLabel.text = name;
+    [self performSelector:@selector(makeLabelShow:) withObject:@"show" afterDelay:3*starRotateCycle];
+    
 }
 
 //================image view: double star ==end====================//
+
+
+//================image view: shining star ==begin====================//
+
+- (void) closeScreen:(UILabel *)label{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    label.alpha = 1.0;
+    [UIView commitAnimations];
+}
+
+- (void) openScreen:(UILabel *)label{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    label.alpha = 0.0;
+    [UIView commitAnimations];
+}
+
+//================image view: shining star ==end====================//
+
+
+//================function--init config ==begin====================//
+- (void) initConfigView{
+    // TODO: add frame size into Utils
+    //init image view
+    CGRect starNormalFrame = CGRectMake(70, 81, 180, 180);
+    [_starViewNormal setFrame:starNormalFrame];
+    _starViewNormal.alpha = 1.0;
+    CGRect starShiningFrame = CGRectMake(70, 81, 180, 180);
+    [_starViewShining setFrame:starShiningFrame];
+    _starViewShining.alpha = 0.0;
+    CGRect starStaticFrame = CGRectMake(0, 63, 221, 216);
+    [_starViewStatic setFrame:starStaticFrame];
+    _starViewStatic.alpha = 0.0;
+    CGRect starDynamicFrame = CGRectMake(0, 0, 0, 0);
+    [_starViewDynamic setFrame:starDynamicFrame];
+    _starViewDynamic.alpha = 0.0;
+    
+    //init button
+    _shakeButton.alpha = 1.0;
+    [_shakeButton addTarget:self action:@selector(shakePhone) forControlEvents:UIControlEventTouchUpInside];
+    _showButton.alpha = 0.0;
+    
+    //init label
+    _nameLabel.alpha = 0.0;
+    _nameLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:71.0 blue:255.0 alpha:1.0];
+    
+    //init navigation button
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
+    
+    UIView *view = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
+    CGRect frame = view.frame;
+    NSLog(@"========%f   %f", frame.size.height, frame.size.width);
+    
+    //[self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"barbuttonItem_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    //star wobble timer
+    [self makeStarWobble:YES];
+    [self makeStarBlink:NO];
+}
+
+//================function--init config ==end====================//
 
 
 //================function--state: shake ==begin====================//
@@ -201,11 +283,11 @@
         //get friend json from server
         NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
         NSString *result = [feedback objectForKey:@"result"];
+        NSString *name = [feedback objectForKey:@"name"];
         if ([result isEqualToString:@"sucess"]){
             //show person view with feedback data
-            //[self performSelector:@selector(loadPersonViewWith:) withObject:[feedback objectForKey:@"nearby"] afterDelay:0.5];
-            //[self loadPersonViewWith:feedback];
-            [self makeDoubleStarAppear];
+            _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil friendData:feedback];
+            [self makeDoubleStarAppearWithName:name];
         }
         else if ([result isEqualToString:@"nearby_not_found"]){
             NSLog(@"nearby not found!!");
@@ -216,13 +298,20 @@
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {        
-        //make star wobble
-        [self makeStarBlink:NO];
-        [self makeStarWobble:YES];
-        //make shake button show
-        [self makeShakeButtonShow:@"show"];
-        //show error alert
-        [self netErrorAlert];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+        label.backgroundColor = [UIColor blackColor];
+        label.alpha = 0.0;
+        [self.view addSubview:label];
+        [self closeScreen:label];
+        [self performSelector:@selector(initConfigView) withObject:nil afterDelay:0.5];
+        [self performSelector:@selector(openScreen:) withObject:label afterDelay:0.6];
+//        //make star wobble
+//        [self makeStarBlink:NO];
+//        [self makeStarWobble:YES];
+//        //make shake button show
+//        [self makeShakeButtonShow:@"show"];
+//        //show error alert
+//        [self netErrorAlert];
         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -241,8 +330,6 @@
 //================function--state: show friend ==begin====================//
 //gen a person view
 - (void) loadPersonViewWith:(NSDictionary *)data{
-    _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil friendData:data];
-    
     
     self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)] autorelease];
     [self.navigationItem.rightBarButtonItem setTitle:@"关注"];
@@ -308,42 +395,6 @@
 //================function--state: show friend ==begin====================//
 
 
-//================function--init config ==begin====================//
-- (void) configView{
-    // TODO: add frame size into Utils
-    //init image view
-    CGRect starNormalFrame = CGRectMake(70, 81, 180, 180);
-    [_starViewNormal setFrame:starNormalFrame];
-    _starViewNormal.alpha = 1.0;
-    CGRect starShiningFrame = CGRectMake(70, 81, 180, 180);
-    [_starViewShining setFrame:starShiningFrame];
-    _starViewShining.alpha = 0.0;
-    CGRect starStaticFrame = CGRectMake(0, 63, 221, 216);
-    [_starViewStatic setFrame:starStaticFrame];
-    _starViewStatic.alpha = 0.0;
-    CGRect starDynamicFrame = CGRectMake(0, 0, 0, 0);
-    [_starViewDynamic setFrame:starDynamicFrame];
-    _starViewDynamic.alpha = 0.0;
-    
-    //init button
-    _shakeButton.alpha = 1.0;
-    [_shakeButton addTarget:self action:@selector(shakePhone) forControlEvents:UIControlEventTouchUpInside];
-    _showButton.alpha = 0.0;
-    
-    //init navigation button
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
-    
-    UIView *view = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
-    CGRect frame = view.frame;
-    NSLog(@"========%f   %f", frame.size.height, frame.size.width);
-    
-    //[self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"barbuttonItem_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    //star wobble timer
-    [self makeStarWobble:YES];
-}
-
-//================function--init config ==end====================//
 
 
 
@@ -382,7 +433,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [self configView];
+    [self initConfigView];
     
     // The "shake" nofification is posted by the PaintingWindow object when user shakes the device
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shakePhone) name:@"shake" object:nil];
@@ -402,6 +453,7 @@
     [self setShowButton:nil];
     [self setStarViewStatic:nil];
     [self setStarViewDynamic:nil];
+    [self setNameLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -420,6 +472,7 @@
     [_showButton release];
     [_starViewStatic release];
     [_starViewDynamic release];
+    [_nameLabel release];
     [super dealloc];
 }
 
