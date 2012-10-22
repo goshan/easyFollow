@@ -63,8 +63,11 @@
     [defaults setObject:server_ip forKey:@"server_ip"];
     
     //push user regist data to server
-    //******** get default info
-    NSNumber *default_info = [NSNumber numberWithInt:1];
+    //******** get public info
+    NSString *default_info = @"1";
+    NSString *using_sns = @"renren,sina,tencent,douban";
+    //**************** get iphone imei
+    NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     //******** get renren data
     //**************** prepair for user data
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
@@ -84,12 +87,11 @@
     //******** get tencent data
     NSString *tencent_token = [defaults objectForKey:@"gsf_tencent_token"];
     NSString *tencent_expire = [defaults objectForKey:@"gsf_tencent_expire"];
+    NSString *tencent_openid = [defaults objectForKey:@"gsf_tencent_openid"];
     //******** get douban data
     NSString *douban_token = [defaults objectForKey:@"gsf_douban_token"];
     NSString *douban_expire = [defaults objectForKey:@"gsf_douban_expire"];
     NSString *douban_id = [defaults objectForKey:@"gsf_douban_id"];
-    //******** get iphone imei
-    NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     
     //make url request
     NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
@@ -97,6 +99,8 @@
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             default_info, @"default_info", 
+                            using_sns, @"using_sns", 
+                            imei, @"iphone_imei", 
                             renren_token, @"renren_token",
                             renren_expire, @"renren_expire",
                             renren_permissions, @"renren_permissions", 
@@ -105,10 +109,10 @@
                             sina_expire, @"sina_expire", 
                             tencent_token, @"tencent_token", 
                             tencent_expire, @"tencent_expire", 
+                            tencent_openid, @"tencent_openid", 
                             douban_id, @"douban_id", 
                             douban_token, @"douban_token", 
                             douban_expire, @"douban_expire", 
-                            imei, @"iphone_imei", 
                             nil];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/users/create_user.json" parameters:params];
     
@@ -292,6 +296,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:tencentApi.tencent.accessToken forKey:@"gsf_tencent_token"];
     [defaults setObject:tencentApi.tencent.expireIn forKey:@"gsf_tencent_expire"];
+    [defaults setObject:tencentApi.tencent.openid forKey:@"gsf_tencent_openid"];
 }
 
 - (void) responseDidFinishLoad:(UIWebView *)webView{

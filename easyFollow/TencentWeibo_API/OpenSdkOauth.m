@@ -143,7 +143,7 @@ static NSString *authPrefix = @"authorize";
     self.openkey = openkey;
     self.expireIn = expireIn;
     
-    [OpenSdkBase showMessageBox:@"登录成功！"];
+    //[OpenSdkBase showMessageBox:@"登录成功！"];
 }
 
 - (void) oauthDidFail:(uint16_t)oauthType success:(BOOL)success netNotWork:(BOOL)netNotWork {
