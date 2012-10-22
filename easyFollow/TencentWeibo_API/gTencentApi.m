@@ -22,10 +22,10 @@
 
 
 
-- (gTencentApi *)initWithAppKey:(NSString *)appKey andAppScret:(NSString *)appScret{
+- (gTencentApi *)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret{
     self = [super init];
     if (self){
-        _tencent = [[OpenSdkOauth alloc] initAppKey:appKey appSecret:appScret];
+        _tencent = [[OpenSdkOauth alloc] initAppKey:appKey appSecret:appSecret];
         _tencent.oauthType = InWebView;
     }
     return self;

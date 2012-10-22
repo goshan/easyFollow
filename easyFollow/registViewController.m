@@ -9,23 +9,30 @@
 #import "registViewController.h"
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
-#import "Renren.h"
 #import "UIDevice+IdentifierAddition.h"
 
 
 
 
 #define SinaAPPKey @"1799175553"
-#define SinaScretKey @"4c2180d2a60b0fa917960e5b7f824a04"
+#define SinaSecretKey @"4c2180d2a60b0fa917960e5b7f824a04"
 
 #define TencentAPPKey @"801255147"
-#define TencentScretKey @"875d58fb566cb9e9183830dde6515fbc"
+#define TencentSecretKey @"875d58fb566cb9e9183830dde6515fbc"
+
+#define DoubanAppKey @"0c342ae9640503b8249c80bc2c0f0b28"
+#define DoubanSecretKey @"f3e0862f5378b28c"
+#define DoubanRedirectURL @"http://www.easyfollow.com"
+
+
+
 
 
 @implementation registViewController
 
 @synthesize sina = _sina;
 @synthesize tencent = _tencent;
+@synthesize douban = _douban;
 @synthesize IPText = _IPText;
 
 
@@ -45,6 +52,10 @@
     [_tencent LoginWith:self.view];
 }
 
+- (IBAction)doubanLogin:(id)sender {
+    [_douban LoginWith:self.view];
+}
+
 - (IBAction)regist:(id)sender {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
@@ -52,12 +63,15 @@
     [defaults setObject:server_ip forKey:@"server_ip"];
     
     //push user regist data to server
-    //**** prepair for user data
+    //******** get default info
+    NSNumber *default_info = [NSNumber numberWithInt:1];
+    //******** get renren data
+    //**************** prepair for user data
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    //******** get renren data
+    
     NSString *renren_token = [defaults objectForKey:@"gsf_renren_token"];
-    NSString *renren_expir = [dateFormatter stringFromDate:[defaults objectForKey:@"gsf_renren_expir"]];
+    NSString *renren_expire = [dateFormatter stringFromDate:[defaults objectForKey:@"gsf_renren_expire"]];
     NSString *renren_permissions = [[[NSString alloc] init] autorelease];
     for (NSString *permission in [defaults objectForKey:@"gsf_renren_permissions"]){
         renren_permissions = [renren_permissions stringByAppendingFormat:@"%@,", permission];
@@ -65,8 +79,15 @@
     renren_permissions = [renren_permissions substringToIndex:renren_permissions.length-1];
     //******** get sina data
     NSString *sina_token = [defaults objectForKey:@"gsf_sina_token"];
-    NSString *sina_expir = [defaults objectForKey:@"gsf_sina_expir"];
+    NSString *sina_expire = [defaults objectForKey:@"gsf_sina_expire"];
     NSString *sina_id = [defaults objectForKey:@"gsf_sina_id"];
+    //******** get tencent data
+    NSString *tencent_token = [defaults objectForKey:@"gsf_tencent_token"];
+    NSString *tencent_expire = [defaults objectForKey:@"gsf_tencent_expire"];
+    //******** get douban data
+    NSString *douban_token = [defaults objectForKey:@"gsf_douban_token"];
+    NSString *douban_expire = [defaults objectForKey:@"gsf_douban_expire"];
+    NSString *douban_id = [defaults objectForKey:@"gsf_douban_id"];
     //******** get iphone imei
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     
@@ -75,12 +96,18 @@
     NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            default_info, @"default_info", 
                             renren_token, @"renren_token",
-                            renren_expir, @"renren_expir",
+                            renren_expire, @"renren_expire",
                             renren_permissions, @"renren_permissions", 
                             sina_id, @"sina_id", 
                             sina_token, @"sina_token", 
-                            sina_expir, @"sina_expir", 
+                            sina_expire, @"sina_expire", 
+                            tencent_token, @"tencent_token", 
+                            tencent_expire, @"tencent_expire", 
+                            douban_id, @"douban_id", 
+                            douban_token, @"douban_token", 
+                            douban_expire, @"douban_expire", 
                             imei, @"iphone_imei", 
                             nil];
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/users/create_user.json" parameters:params];
@@ -119,14 +146,17 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _sina = [[WBEngine alloc] initWithAppKey:SinaAPPKey appSecret:SinaScretKey];
+        _sina = [[WBEngine alloc] initWithAppKey:SinaAPPKey appSecret:SinaSecretKey];
         [_sina setRootViewController:self];
         [_sina setDelegate:self];
         [_sina setRedirectURI:@"http://"];
         [_sina setIsUserExclusive:NO];
         
-        _tencent = [[gTencentApi alloc] initWithAppKey:TencentAPPKey andAppScret:TencentScretKey];
+        _tencent = [[gTencentApi alloc] initWithAppKey:TencentAPPKey andAppSecret:TencentSecretKey];
         _tencent.delegate = self;
+        
+        _douban = [[gDoubanApi alloc] initWithAppKey:DoubanAppKey andAppSecret:DoubanSecretKey andRedirectURL:DoubanRedirectURL];
+        _douban.delegate = self;
     }
     return self;
 }
@@ -142,6 +172,7 @@
 - (void)dealloc {
     [_tencent release];
     [_sina release];
+    [_douban release];
     [_IPText release];
     [super dealloc];
 }
@@ -175,7 +206,7 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:renren.accessToken forKey:@"gsf_renren_token"];
-    [defaults setObject:renren.expirationDate forKey:@"gsf_renren_expir"];
+    [defaults setObject:renren.expirationDate forKey:@"gsf_renren_expire"];
     [defaults setObject:renren.permissions forKey:@"gsf_renren_permissions"];
     
     [[Renren sharedRenren] logout:self];
@@ -223,8 +254,8 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:engine.accessToken forKey:@"gsf_sina_token"];
-    NSString *expireIn = [NSString stringWithFormat:@"%f", engine.expireTime];
-    [defaults setObject:expireIn forKey:@"gsf_sina_expir"];
+    NSString *expireeIn = [NSString stringWithFormat:@"%f", engine.expireTime];
+    [defaults setObject:expireeIn forKey:@"gsf_sina_expire"];
     [defaults setObject:engine.userID forKey:@"gsf_sina_id"];
     
     [engine logOut];
@@ -245,9 +276,9 @@
     NSLog(@"========sina not Authorized=======%@", engine);
 }
 
-- (void)engineAuthorizeExpired:(WBEngine *)engine
+- (void)engineAuthorizeexpireed:(WBEngine *)engine
 {
-    NSLog(@"========sina Authorize Expired=======%@", engine);
+    NSLog(@"========sina Authorize expireed=======%@", engine);
     [engine logOut];
     [engine logIn];
 }
@@ -260,9 +291,7 @@
 - (void) loginSucess:(gTencentApi *)tencentApi{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:tencentApi.tencent.accessToken forKey:@"gsf_tencent_token"];
-    [defaults setObject:tencentApi.tencent.expireIn forKey:@"gsf_tencent_expir"];
-    [defaults setObject:tencentApi.tencent.openid forKey:@"gsf_tencent_openid"];
-    [defaults setObject:tencentApi.tencent.openkey forKey:@"gsf_tencent_openkey"];
+    [defaults setObject:tencentApi.tencent.expireIn forKey:@"gsf_tencent_expire"];
 }
 
 - (void) responseDidFinishLoad:(UIWebView *)webView{
@@ -272,6 +301,24 @@
 - (void) responseWebView:(UIWebView *)webView didFailLoadWithError:(NSError *)error{
     NSLog(@"========tencent load view failed=======");
 }
+
+
+
+#pragma mark gDouban delegate
+
+- (void)gDoubanDidLoginSuccess:(gDoubanApi *)douban{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:douban.accessToken forKey:@"gsf_douban_token"];
+    [defaults setObject:douban.expiresIn forKey:@"gsf_douban_expire"];
+    [defaults setObject:douban.userId forKey:@"gsf_douban_id"];
+}
+
+- (void)gDouban:(gDoubanApi *)douban didLoginFailWithError:(NSError *)error{
+    NSLog(@"========douban login failed=======");
+}
+
+
+
 
 
 

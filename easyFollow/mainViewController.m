@@ -305,13 +305,6 @@
         [self closeScreen:label];
         [self performSelector:@selector(initConfigView) withObject:nil afterDelay:0.5];
         [self performSelector:@selector(openScreen:) withObject:label afterDelay:0.6];
-//        //make star wobble
-//        [self makeStarBlink:NO];
-//        [self makeStarWobble:YES];
-//        //make shake button show
-//        [self makeShakeButtonShow:@"show"];
-//        //show error alert
-//        [self netErrorAlert];
         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -439,10 +432,10 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shakePhone) name:@"shake" object:nil];
     
     //login when need
-//    if (![[Renren sharedRenren] isSessionValid]){
-//        registViewController *regist = [[[registViewController alloc] initWithNibName:@"registViewController" bundle:nil] autorelease];
-//        [self.navigationController presentModalViewController:regist animated:YES];
-//    }
+    if (![[Renren sharedRenren] isSessionValid]){
+        registViewController *regist = [[[registViewController alloc] initWithNibName:@"registViewController" bundle:nil] autorelease];
+        [self.navigationController presentModalViewController:regist animated:YES];
+    }
 }
 
 - (void)viewDidUnload

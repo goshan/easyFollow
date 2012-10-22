@@ -129,6 +129,125 @@
 		D890427F1632734F00162276 /* shake_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D890427E1632734F00162276 /* shake_button@2x.png */; };
 		D8904282163279B000162276 /* show_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8904281163279B000162276 /* show_button@2x.png */; };
 		D8B4CA6B16317E7500917CF5 /* barbuttonItem_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B4CA6A16317E7500917CF5 /* barbuttonItem_bg@2x.png */; };
+		D8CAA28A1635609700394FEB /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1841635609700394FEB /* ASIAuthenticationDialog.m */; };
+		D8CAA28B1635609700394FEB /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1871635609700394FEB /* ASIDataCompressor.m */; };
+		D8CAA28C1635609700394FEB /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1891635609700394FEB /* ASIDataDecompressor.m */; };
+		D8CAA28D1635609700394FEB /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA18B1635609700394FEB /* ASIDownloadCache.m */; };
+		D8CAA28E1635609700394FEB /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA18D1635609700394FEB /* ASIFormDataRequest.m */; };
+		D8CAA28F1635609700394FEB /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA18F1635609700394FEB /* ASIHTTPRequest.m */; };
+		D8CAA2901635609700394FEB /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1931635609700394FEB /* ASIInputStream.m */; };
+		D8CAA2911635609700394FEB /* ASINetworkQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1951635609700394FEB /* ASINetworkQueue.m */; };
+		D8CAA2921635609700394FEB /* ASIWebPageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1991635609700394FEB /* ASIWebPageRequest.m */; };
+		D8CAA2931635609700394FEB /* ASICloudFilesCDNRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA19C1635609700394FEB /* ASICloudFilesCDNRequest.m */; };
+		D8CAA2941635609700394FEB /* ASICloudFilesContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA19E1635609700394FEB /* ASICloudFilesContainer.m */; };
+		D8CAA2951635609700394FEB /* ASICloudFilesContainerRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1A01635609700394FEB /* ASICloudFilesContainerRequest.m */; };
+		D8CAA2961635609700394FEB /* ASICloudFilesContainerXMLParserDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1A21635609700394FEB /* ASICloudFilesContainerXMLParserDelegate.m */; };
+		D8CAA2971635609700394FEB /* ASICloudFilesObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1A41635609700394FEB /* ASICloudFilesObject.m */; };
+		D8CAA2981635609700394FEB /* ASICloudFilesObjectRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1A61635609700394FEB /* ASICloudFilesObjectRequest.m */; };
+		D8CAA2991635609700394FEB /* ASICloudFilesRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1A81635609700394FEB /* ASICloudFilesRequest.m */; };
+		D8CAA29A1635609700394FEB /* ASIS3Bucket.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1AC1635609700394FEB /* ASIS3Bucket.m */; };
+		D8CAA29B1635609700394FEB /* ASIS3BucketObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1AE1635609700394FEB /* ASIS3BucketObject.m */; };
+		D8CAA29C1635609700394FEB /* ASIS3BucketRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1B01635609700394FEB /* ASIS3BucketRequest.m */; };
+		D8CAA29D1635609700394FEB /* ASIS3ObjectRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1B21635609700394FEB /* ASIS3ObjectRequest.m */; };
+		D8CAA29E1635609700394FEB /* ASIS3Request.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1B41635609700394FEB /* ASIS3Request.m */; };
+		D8CAA29F1635609700394FEB /* ASIS3ServiceRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1B61635609700394FEB /* ASIS3ServiceRequest.m */; };
+		D8CAA2A01635609700394FEB /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1B91635609700394FEB /* NSData+Base64.m */; };
+		D8CAA2A11635609700394FEB /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1BC1635609700394FEB /* Reachability.m */; };
+		D8CAA2A21635609700394FEB /* DOUAPIConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1BF1635609700394FEB /* DOUAPIConfig.m */; };
+		D8CAA2A31635609700394FEB /* GDataEntryBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1C51635609700394FEB /* GDataEntryBase.m */; };
+		D8CAA2A41635609700394FEB /* GDataFeedBase.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1C71635609700394FEB /* GDataFeedBase.m */; };
+		D8CAA2A51635609700394FEB /* GDataObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1C91635609700394FEB /* GDataObject.m */; };
+		D8CAA2A61635609700394FEB /* GDataAtomPubControl.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1CC1635609700394FEB /* GDataAtomPubControl.m */; };
+		D8CAA2A71635609700394FEB /* GDataBaseElements.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1CE1635609700394FEB /* GDataBaseElements.m */; };
+		D8CAA2A81635609700394FEB /* GDataBatchID.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1D01635609700394FEB /* GDataBatchID.m */; };
+		D8CAA2A91635609700394FEB /* GDataBatchInterrupted.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1D21635609700394FEB /* GDataBatchInterrupted.m */; };
+		D8CAA2AA1635609700394FEB /* GDataBatchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1D41635609700394FEB /* GDataBatchOperation.m */; };
+		D8CAA2AB1635609700394FEB /* GDataBatchStatus.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1D61635609700394FEB /* GDataBatchStatus.m */; };
+		D8CAA2AC1635609700394FEB /* GDataCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1D81635609700394FEB /* GDataCategory.m */; };
+		D8CAA2AD1635609700394FEB /* GDataComment.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1DA1635609700394FEB /* GDataComment.m */; };
+		D8CAA2AE1635609700394FEB /* GDataCustomProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1DC1635609700394FEB /* GDataCustomProperty.m */; };
+		D8CAA2AF1635609700394FEB /* GDataDateTime.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1DE1635609700394FEB /* GDataDateTime.m */; };
+		D8CAA2B01635609700394FEB /* GDataDeleted.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1E01635609700394FEB /* GDataDeleted.m */; };
+		D8CAA2B11635609700394FEB /* GDataEmail.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1E31635609700394FEB /* GDataEmail.m */; };
+		D8CAA2B21635609700394FEB /* GDataEntryContent.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1E51635609700394FEB /* GDataEntryContent.m */; };
+		D8CAA2B31635609700394FEB /* GDataEntryLink.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1E71635609700394FEB /* GDataEntryLink.m */; };
+		D8CAA2B41635609700394FEB /* GDataExtendedProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1E91635609700394FEB /* GDataExtendedProperty.m */; };
+		D8CAA2B51635609700394FEB /* GDataFeedLink.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1EB1635609700394FEB /* GDataFeedLink.m */; };
+		D8CAA2B61635609700394FEB /* GDataGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1ED1635609700394FEB /* GDataGenerator.m */; };
+		D8CAA2B71635609700394FEB /* GDataGeoPt.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1EF1635609700394FEB /* GDataGeoPt.m */; };
+		D8CAA2B81635609700394FEB /* GDataIM.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1F11635609700394FEB /* GDataIM.m */; };
+		D8CAA2B91635609700394FEB /* GDataLink.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1F31635609700394FEB /* GDataLink.m */; };
+		D8CAA2BA1635609700394FEB /* GDataMoney.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1F51635609700394FEB /* GDataMoney.m */; };
+		D8CAA2BB1635609700394FEB /* GDataName.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1F71635609700394FEB /* GDataName.m */; };
+		D8CAA2BC1635609700394FEB /* GDataOrganization.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1F91635609700394FEB /* GDataOrganization.m */; };
+		D8CAA2BD1635609700394FEB /* GDataOrganizationName.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1FB1635609700394FEB /* GDataOrganizationName.m */; };
+		D8CAA2BE1635609700394FEB /* GDataPerson.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1FD1635609700394FEB /* GDataPerson.m */; };
+		D8CAA2BF1635609700394FEB /* GDataPhoneNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1FF1635609700394FEB /* GDataPhoneNumber.m */; };
+		D8CAA2C01635609700394FEB /* GDataPostalAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2011635609700394FEB /* GDataPostalAddress.m */; };
+		D8CAA2C11635609700394FEB /* GDataRating.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2031635609700394FEB /* GDataRating.m */; };
+		D8CAA2C21635609700394FEB /* GDataStructuredPostalAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2051635609700394FEB /* GDataStructuredPostalAddress.m */; };
+		D8CAA2C31635609700394FEB /* GDataTextConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2071635609700394FEB /* GDataTextConstruct.m */; };
+		D8CAA2C41635609700394FEB /* GDataValueConstruct.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2091635609700394FEB /* GDataValueConstruct.m */; };
+		D8CAA2C51635609700394FEB /* GDataWhen.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA20B1635609700394FEB /* GDataWhen.m */; };
+		D8CAA2C61635609700394FEB /* GDataWhere.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA20D1635609700394FEB /* GDataWhere.m */; };
+		D8CAA2C71635609700394FEB /* GDataWho.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA20F1635609700394FEB /* GDataWho.m */; };
+		D8CAA2C81635609700394FEB /* GDataUtilities.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2121635609700394FEB /* GDataUtilities.m */; };
+		D8CAA2C91635609700394FEB /* GTMGatherInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2151635609700394FEB /* GTMGatherInputStream.m */; };
+		D8CAA2CA1635609700394FEB /* GTMMIMEDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2171635609700394FEB /* GTMMIMEDocument.m */; };
+		D8CAA2CB1635609700394FEB /* GDataXMLNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA21A1635609700394FEB /* GDataXMLNode.m */; };
+		D8CAA2CC1635609700394FEB /* DoubanEntryComment.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA21F1635609700394FEB /* DoubanEntryComment.m */; };
+		D8CAA2CD1635609700394FEB /* DoubanFeedComment.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2211635609700394FEB /* DoubanFeedComment.m */; };
+		D8CAA2CE1635609700394FEB /* DoubanEntryCity.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2241635609700394FEB /* DoubanEntryCity.m */; };
+		D8CAA2CF1635609700394FEB /* DoubanEntryEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2261635609700394FEB /* DoubanEntryEvent.m */; };
+		D8CAA2D01635609700394FEB /* DoubanEntryEventCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2281635609700394FEB /* DoubanEntryEventCategory.m */; };
+		D8CAA2D11635609700394FEB /* DoubanFeedCity.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA22A1635609700394FEB /* DoubanFeedCity.m */; };
+		D8CAA2D21635609700394FEB /* DoubanFeedEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA22C1635609700394FEB /* DoubanFeedEvent.m */; };
+		D8CAA2D31635609700394FEB /* DoubanFeedEventCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA22E1635609700394FEB /* DoubanFeedEventCategory.m */; };
+		D8CAA2D41635609700394FEB /* GDataAtomAuthor+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2301635609700394FEB /* GDataAtomAuthor+Extension.m */; };
+		D8CAA2D51635609700394FEB /* GDataEntryBase+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2321635609700394FEB /* GDataEntryBase+Extension.m */; };
+		D8CAA2D61635609700394FEB /* DoubanEntryMiniblog.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2351635609700394FEB /* DoubanEntryMiniblog.m */; };
+		D8CAA2D71635609700394FEB /* DoubanFeedMiniblog.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2371635609700394FEB /* DoubanFeedMiniblog.m */; };
+		D8CAA2D81635609700394FEB /* DoubanEntryPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA23A1635609700394FEB /* DoubanEntryPeople.m */; };
+		D8CAA2D91635609700394FEB /* DoubanFeedPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA23C1635609700394FEB /* DoubanFeedPeople.m */; };
+		D8CAA2DA1635609700394FEB /* DoubanEntryAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA23F1635609700394FEB /* DoubanEntryAlbum.m */; };
+		D8CAA2DB1635609700394FEB /* DoubanEntryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2411635609700394FEB /* DoubanEntryPhoto.m */; };
+		D8CAA2DC1635609700394FEB /* DoubanFeedAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2431635609700394FEB /* DoubanFeedAlbum.m */; };
+		D8CAA2DD1635609700394FEB /* DoubanFeedPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2451635609700394FEB /* DoubanFeedPhoto.m */; };
+		D8CAA2DE1635609700394FEB /* DoubanEntryRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2481635609700394FEB /* DoubanEntryRecommendation.m */; };
+		D8CAA2DF1635609700394FEB /* DoubanFeedRecommendation.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA24A1635609700394FEB /* DoubanFeedRecommendation.m */; };
+		D8CAA2E01635609700394FEB /* DoubanEntryReview.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA24D1635609700394FEB /* DoubanEntryReview.m */; };
+		D8CAA2E11635609700394FEB /* DoubanFeedReview.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA24F1635609700394FEB /* DoubanFeedReview.m */; };
+		D8CAA2E21635609700394FEB /* DoubanEntrySubject.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2521635609700394FEB /* DoubanEntrySubject.m */; };
+		D8CAA2E31635609700394FEB /* DoubanFeedSubject.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2541635609700394FEB /* DoubanFeedSubject.m */; };
+		D8CAA2E41635609700394FEB /* DoubanDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2561635609700394FEB /* DoubanDefines.m */; };
+		D8CAA2E51635609700394FEB /* DoubanAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2591635609700394FEB /* DoubanAttribute.m */; };
+		D8CAA2E61635609700394FEB /* DoubanLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA25B1635609700394FEB /* DoubanLocation.m */; };
+		D8CAA2E71635609700394FEB /* DoubanSignature.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA25D1635609700394FEB /* DoubanSignature.m */; };
+		D8CAA2E81635609700394FEB /* DoubanTag.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA25F1635609700394FEB /* DoubanTag.m */; };
+		D8CAA2E91635609700394FEB /* DoubanUID.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2611635609700394FEB /* DoubanUID.m */; };
+		D8CAA2EA1635609700394FEB /* GeorssPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2631635609700394FEB /* GeorssPoint.m */; };
+		D8CAA2EB1635609700394FEB /* DOUComment.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2671635609700394FEB /* DOUComment.m */; };
+		D8CAA2EC1635609700394FEB /* DOUCommentArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2691635609700394FEB /* DOUCommentArray.m */; };
+		D8CAA2ED1635609700394FEB /* DOUOnline.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA26B1635609700394FEB /* DOUOnline.m */; };
+		D8CAA2EE1635609700394FEB /* DOUOnlineArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA26D1635609700394FEB /* DOUOnlineArray.m */; };
+		D8CAA2EF1635609700394FEB /* DOUPeople.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA26F1635609700394FEB /* DOUPeople.m */; };
+		D8CAA2F01635609700394FEB /* DOUObject+Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2711635609700394FEB /* DOUObject+Utils.m */; };
+		D8CAA2F11635609700394FEB /* DOUObject.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2731635609700394FEB /* DOUObject.m */; };
+		D8CAA2F21635609700394FEB /* DOUObjectArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2751635609700394FEB /* DOUObjectArray.m */; };
+		D8CAA2F31635609700394FEB /* DOUAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2781635609700394FEB /* DOUAlbum.m */; };
+		D8CAA2F41635609700394FEB /* DOUPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA27A1635609700394FEB /* DOUPhoto.m */; };
+		D8CAA2F51635609700394FEB /* DOUPhotoArray.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA27C1635609700394FEB /* DOUPhotoArray.m */; };
+		D8CAA2F61635609700394FEB /* DOUHttpRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA27F1635609700394FEB /* DOUHttpRequest.m */; };
+		D8CAA2F71635609700394FEB /* DOUQuery.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2811635609700394FEB /* DOUQuery.m */; };
+		D8CAA2F81635609700394FEB /* DOUService.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2831635609700394FEB /* DOUService.m */; };
+		D8CAA2F91635609700394FEB /* DOUOAuthService.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2871635609700394FEB /* DOUOAuthService.m */; };
+		D8CAA2FA1635609700394FEB /* DOUOAuthStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA2891635609700394FEB /* DOUOAuthStore.m */; };
+		D8CAA2FC1635611200394FEB /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CAA2FB1635611200394FEB /* libxml2.dylib */; };
+		D8CAA2FE163562A300394FEB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CAA2FD163562A300394FEB /* libz.dylib */; };
+		D8CAA302163562D000394FEB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CAA301163562D000394FEB /* CFNetwork.framework */; };
+		D8CAA3041635630400394FEB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8CAA3031635630400394FEB /* MobileCoreServices.framework */; };
+		D8CAA3071635709200394FEB /* gDoubanApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA3061635709100394FEB /* gDoubanApi.m */; };
+		D8CAA30A1635737C00394FEB /* NSString+ParseCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA3091635737C00394FEB /* NSString+ParseCategory.m */; };
 		D8ED0177162D9BE900D8EDE5 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED016C162D9BE900D8EDE5 /* NSObject+SBJSON.m */; };
 		D8ED0178162D9BE900D8EDE5 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED016E162D9BE900D8EDE5 /* NSString+SBJSON.m */; };
 		D8ED0179162D9BE900D8EDE5 /* SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED0170162D9BE900D8EDE5 /* SBJSON.m */; };
@@ -355,6 +474,249 @@
 		D890427E1632734F00162276 /* shake_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shake_button@2x.png"; sourceTree = "<group>"; };
 		D8904281163279B000162276 /* show_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "show_button@2x.png"; sourceTree = "<group>"; };
 		D8B4CA6A16317E7500917CF5 /* barbuttonItem_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barbuttonItem_bg@2x.png"; sourceTree = "<group>"; };
+		D8CAA1831635609700394FEB /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
+		D8CAA1841635609700394FEB /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
+		D8CAA1851635609700394FEB /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
+		D8CAA1861635609700394FEB /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		D8CAA1871635609700394FEB /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		D8CAA1881635609700394FEB /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
+		D8CAA1891635609700394FEB /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
+		D8CAA18A1635609700394FEB /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
+		D8CAA18B1635609700394FEB /* ASIDownloadCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDownloadCache.m; sourceTree = "<group>"; };
+		D8CAA18C1635609700394FEB /* ASIFormDataRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIFormDataRequest.h; sourceTree = "<group>"; };
+		D8CAA18D1635609700394FEB /* ASIFormDataRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIFormDataRequest.m; sourceTree = "<group>"; };
+		D8CAA18E1635609700394FEB /* ASIHTTPRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequest.h; sourceTree = "<group>"; };
+		D8CAA18F1635609700394FEB /* ASIHTTPRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIHTTPRequest.m; sourceTree = "<group>"; };
+		D8CAA1901635609700394FEB /* ASIHTTPRequestConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestConfig.h; sourceTree = "<group>"; };
+		D8CAA1911635609700394FEB /* ASIHTTPRequestDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIHTTPRequestDelegate.h; sourceTree = "<group>"; };
+		D8CAA1921635609700394FEB /* ASIInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIInputStream.h; sourceTree = "<group>"; };
+		D8CAA1931635609700394FEB /* ASIInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIInputStream.m; sourceTree = "<group>"; };
+		D8CAA1941635609700394FEB /* ASINetworkQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINetworkQueue.h; sourceTree = "<group>"; };
+		D8CAA1951635609700394FEB /* ASINetworkQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASINetworkQueue.m; sourceTree = "<group>"; };
+		D8CAA1961635609700394FEB /* ASIProgressDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIProgressDelegate.h; sourceTree = "<group>"; };
+		D8CAA1981635609700394FEB /* ASIWebPageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIWebPageRequest.h; sourceTree = "<group>"; };
+		D8CAA1991635609700394FEB /* ASIWebPageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIWebPageRequest.m; sourceTree = "<group>"; };
+		D8CAA19B1635609700394FEB /* ASICloudFilesCDNRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesCDNRequest.h; sourceTree = "<group>"; };
+		D8CAA19C1635609700394FEB /* ASICloudFilesCDNRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesCDNRequest.m; sourceTree = "<group>"; };
+		D8CAA19D1635609700394FEB /* ASICloudFilesContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesContainer.h; sourceTree = "<group>"; };
+		D8CAA19E1635609700394FEB /* ASICloudFilesContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesContainer.m; sourceTree = "<group>"; };
+		D8CAA19F1635609700394FEB /* ASICloudFilesContainerRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesContainerRequest.h; sourceTree = "<group>"; };
+		D8CAA1A01635609700394FEB /* ASICloudFilesContainerRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesContainerRequest.m; sourceTree = "<group>"; };
+		D8CAA1A11635609700394FEB /* ASICloudFilesContainerXMLParserDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesContainerXMLParserDelegate.h; sourceTree = "<group>"; };
+		D8CAA1A21635609700394FEB /* ASICloudFilesContainerXMLParserDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesContainerXMLParserDelegate.m; sourceTree = "<group>"; };
+		D8CAA1A31635609700394FEB /* ASICloudFilesObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesObject.h; sourceTree = "<group>"; };
+		D8CAA1A41635609700394FEB /* ASICloudFilesObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesObject.m; sourceTree = "<group>"; };
+		D8CAA1A51635609700394FEB /* ASICloudFilesObjectRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesObjectRequest.h; sourceTree = "<group>"; };
+		D8CAA1A61635609700394FEB /* ASICloudFilesObjectRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesObjectRequest.m; sourceTree = "<group>"; };
+		D8CAA1A71635609700394FEB /* ASICloudFilesRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICloudFilesRequest.h; sourceTree = "<group>"; };
+		D8CAA1A81635609700394FEB /* ASICloudFilesRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASICloudFilesRequest.m; sourceTree = "<group>"; };
+		D8CAA1AA1635609700394FEB /* ASINSXMLParserCompat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASINSXMLParserCompat.h; sourceTree = "<group>"; };
+		D8CAA1AB1635609700394FEB /* ASIS3Bucket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3Bucket.h; sourceTree = "<group>"; };
+		D8CAA1AC1635609700394FEB /* ASIS3Bucket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3Bucket.m; sourceTree = "<group>"; };
+		D8CAA1AD1635609700394FEB /* ASIS3BucketObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3BucketObject.h; sourceTree = "<group>"; };
+		D8CAA1AE1635609700394FEB /* ASIS3BucketObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3BucketObject.m; sourceTree = "<group>"; };
+		D8CAA1AF1635609700394FEB /* ASIS3BucketRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3BucketRequest.h; sourceTree = "<group>"; };
+		D8CAA1B01635609700394FEB /* ASIS3BucketRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3BucketRequest.m; sourceTree = "<group>"; };
+		D8CAA1B11635609700394FEB /* ASIS3ObjectRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3ObjectRequest.h; sourceTree = "<group>"; };
+		D8CAA1B21635609700394FEB /* ASIS3ObjectRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ObjectRequest.m; sourceTree = "<group>"; };
+		D8CAA1B31635609700394FEB /* ASIS3Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3Request.h; sourceTree = "<group>"; };
+		D8CAA1B41635609700394FEB /* ASIS3Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3Request.m; sourceTree = "<group>"; };
+		D8CAA1B51635609700394FEB /* ASIS3ServiceRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIS3ServiceRequest.h; sourceTree = "<group>"; };
+		D8CAA1B61635609700394FEB /* ASIS3ServiceRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIS3ServiceRequest.m; sourceTree = "<group>"; };
+		D8CAA1B81635609700394FEB /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		D8CAA1B91635609700394FEB /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		D8CAA1BB1635609700394FEB /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		D8CAA1BC1635609700394FEB /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		D8CAA1BE1635609700394FEB /* DOUAPIConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAPIConfig.h; sourceTree = "<group>"; };
+		D8CAA1BF1635609700394FEB /* DOUAPIConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAPIConfig.m; sourceTree = "<group>"; };
+		D8CAA1C01635609700394FEB /* DOUAPIEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAPIEngine.h; sourceTree = "<group>"; };
+		D8CAA1C41635609700394FEB /* GDataEntryBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataEntryBase.h; sourceTree = "<group>"; };
+		D8CAA1C51635609700394FEB /* GDataEntryBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataEntryBase.m; sourceTree = "<group>"; };
+		D8CAA1C61635609700394FEB /* GDataFeedBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataFeedBase.h; sourceTree = "<group>"; };
+		D8CAA1C71635609700394FEB /* GDataFeedBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataFeedBase.m; sourceTree = "<group>"; };
+		D8CAA1C81635609700394FEB /* GDataObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataObject.h; sourceTree = "<group>"; };
+		D8CAA1C91635609700394FEB /* GDataObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataObject.m; sourceTree = "<group>"; };
+		D8CAA1CB1635609700394FEB /* GDataAtomPubControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataAtomPubControl.h; sourceTree = "<group>"; };
+		D8CAA1CC1635609700394FEB /* GDataAtomPubControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataAtomPubControl.m; sourceTree = "<group>"; };
+		D8CAA1CD1635609700394FEB /* GDataBaseElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataBaseElements.h; sourceTree = "<group>"; };
+		D8CAA1CE1635609700394FEB /* GDataBaseElements.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataBaseElements.m; sourceTree = "<group>"; };
+		D8CAA1CF1635609700394FEB /* GDataBatchID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataBatchID.h; sourceTree = "<group>"; };
+		D8CAA1D01635609700394FEB /* GDataBatchID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataBatchID.m; sourceTree = "<group>"; };
+		D8CAA1D11635609700394FEB /* GDataBatchInterrupted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataBatchInterrupted.h; sourceTree = "<group>"; };
+		D8CAA1D21635609700394FEB /* GDataBatchInterrupted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataBatchInterrupted.m; sourceTree = "<group>"; };
+		D8CAA1D31635609700394FEB /* GDataBatchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataBatchOperation.h; sourceTree = "<group>"; };
+		D8CAA1D41635609700394FEB /* GDataBatchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataBatchOperation.m; sourceTree = "<group>"; };
+		D8CAA1D51635609700394FEB /* GDataBatchStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataBatchStatus.h; sourceTree = "<group>"; };
+		D8CAA1D61635609700394FEB /* GDataBatchStatus.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataBatchStatus.m; sourceTree = "<group>"; };
+		D8CAA1D71635609700394FEB /* GDataCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataCategory.h; sourceTree = "<group>"; };
+		D8CAA1D81635609700394FEB /* GDataCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataCategory.m; sourceTree = "<group>"; };
+		D8CAA1D91635609700394FEB /* GDataComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataComment.h; sourceTree = "<group>"; };
+		D8CAA1DA1635609700394FEB /* GDataComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataComment.m; sourceTree = "<group>"; };
+		D8CAA1DB1635609700394FEB /* GDataCustomProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataCustomProperty.h; sourceTree = "<group>"; };
+		D8CAA1DC1635609700394FEB /* GDataCustomProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataCustomProperty.m; sourceTree = "<group>"; };
+		D8CAA1DD1635609700394FEB /* GDataDateTime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataDateTime.h; sourceTree = "<group>"; };
+		D8CAA1DE1635609700394FEB /* GDataDateTime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataDateTime.m; sourceTree = "<group>"; };
+		D8CAA1DF1635609700394FEB /* GDataDeleted.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataDeleted.h; sourceTree = "<group>"; };
+		D8CAA1E01635609700394FEB /* GDataDeleted.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataDeleted.m; sourceTree = "<group>"; };
+		D8CAA1E11635609700394FEB /* GDataElements.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataElements.h; sourceTree = "<group>"; };
+		D8CAA1E21635609700394FEB /* GDataEmail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataEmail.h; sourceTree = "<group>"; };
+		D8CAA1E31635609700394FEB /* GDataEmail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataEmail.m; sourceTree = "<group>"; };
+		D8CAA1E41635609700394FEB /* GDataEntryContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataEntryContent.h; sourceTree = "<group>"; };
+		D8CAA1E51635609700394FEB /* GDataEntryContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataEntryContent.m; sourceTree = "<group>"; };
+		D8CAA1E61635609700394FEB /* GDataEntryLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataEntryLink.h; sourceTree = "<group>"; };
+		D8CAA1E71635609700394FEB /* GDataEntryLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataEntryLink.m; sourceTree = "<group>"; };
+		D8CAA1E81635609700394FEB /* GDataExtendedProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataExtendedProperty.h; sourceTree = "<group>"; };
+		D8CAA1E91635609700394FEB /* GDataExtendedProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataExtendedProperty.m; sourceTree = "<group>"; };
+		D8CAA1EA1635609700394FEB /* GDataFeedLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataFeedLink.h; sourceTree = "<group>"; };
+		D8CAA1EB1635609700394FEB /* GDataFeedLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataFeedLink.m; sourceTree = "<group>"; };
+		D8CAA1EC1635609700394FEB /* GDataGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataGenerator.h; sourceTree = "<group>"; };
+		D8CAA1ED1635609700394FEB /* GDataGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataGenerator.m; sourceTree = "<group>"; };
+		D8CAA1EE1635609700394FEB /* GDataGeoPt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataGeoPt.h; sourceTree = "<group>"; };
+		D8CAA1EF1635609700394FEB /* GDataGeoPt.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataGeoPt.m; sourceTree = "<group>"; };
+		D8CAA1F01635609700394FEB /* GDataIM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataIM.h; sourceTree = "<group>"; };
+		D8CAA1F11635609700394FEB /* GDataIM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataIM.m; sourceTree = "<group>"; };
+		D8CAA1F21635609700394FEB /* GDataLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataLink.h; sourceTree = "<group>"; };
+		D8CAA1F31635609700394FEB /* GDataLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataLink.m; sourceTree = "<group>"; };
+		D8CAA1F41635609700394FEB /* GDataMoney.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataMoney.h; sourceTree = "<group>"; };
+		D8CAA1F51635609700394FEB /* GDataMoney.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataMoney.m; sourceTree = "<group>"; };
+		D8CAA1F61635609700394FEB /* GDataName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataName.h; sourceTree = "<group>"; };
+		D8CAA1F71635609700394FEB /* GDataName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataName.m; sourceTree = "<group>"; };
+		D8CAA1F81635609700394FEB /* GDataOrganization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataOrganization.h; sourceTree = "<group>"; };
+		D8CAA1F91635609700394FEB /* GDataOrganization.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataOrganization.m; sourceTree = "<group>"; };
+		D8CAA1FA1635609700394FEB /* GDataOrganizationName.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataOrganizationName.h; sourceTree = "<group>"; };
+		D8CAA1FB1635609700394FEB /* GDataOrganizationName.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataOrganizationName.m; sourceTree = "<group>"; };
+		D8CAA1FC1635609700394FEB /* GDataPerson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataPerson.h; sourceTree = "<group>"; };
+		D8CAA1FD1635609700394FEB /* GDataPerson.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataPerson.m; sourceTree = "<group>"; };
+		D8CAA1FE1635609700394FEB /* GDataPhoneNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataPhoneNumber.h; sourceTree = "<group>"; };
+		D8CAA1FF1635609700394FEB /* GDataPhoneNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataPhoneNumber.m; sourceTree = "<group>"; };
+		D8CAA2001635609700394FEB /* GDataPostalAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataPostalAddress.h; sourceTree = "<group>"; };
+		D8CAA2011635609700394FEB /* GDataPostalAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataPostalAddress.m; sourceTree = "<group>"; };
+		D8CAA2021635609700394FEB /* GDataRating.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataRating.h; sourceTree = "<group>"; };
+		D8CAA2031635609700394FEB /* GDataRating.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataRating.m; sourceTree = "<group>"; };
+		D8CAA2041635609700394FEB /* GDataStructuredPostalAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataStructuredPostalAddress.h; sourceTree = "<group>"; };
+		D8CAA2051635609700394FEB /* GDataStructuredPostalAddress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataStructuredPostalAddress.m; sourceTree = "<group>"; };
+		D8CAA2061635609700394FEB /* GDataTextConstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataTextConstruct.h; sourceTree = "<group>"; };
+		D8CAA2071635609700394FEB /* GDataTextConstruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataTextConstruct.m; sourceTree = "<group>"; };
+		D8CAA2081635609700394FEB /* GDataValueConstruct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataValueConstruct.h; sourceTree = "<group>"; };
+		D8CAA2091635609700394FEB /* GDataValueConstruct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataValueConstruct.m; sourceTree = "<group>"; };
+		D8CAA20A1635609700394FEB /* GDataWhen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataWhen.h; sourceTree = "<group>"; };
+		D8CAA20B1635609700394FEB /* GDataWhen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataWhen.m; sourceTree = "<group>"; };
+		D8CAA20C1635609700394FEB /* GDataWhere.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataWhere.h; sourceTree = "<group>"; };
+		D8CAA20D1635609700394FEB /* GDataWhere.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataWhere.m; sourceTree = "<group>"; };
+		D8CAA20E1635609700394FEB /* GDataWho.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataWho.h; sourceTree = "<group>"; };
+		D8CAA20F1635609700394FEB /* GDataWho.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataWho.m; sourceTree = "<group>"; };
+		D8CAA2101635609700394FEB /* GDataDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataDefines.h; sourceTree = "<group>"; };
+		D8CAA2111635609700394FEB /* GDataUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataUtilities.h; sourceTree = "<group>"; };
+		D8CAA2121635609700394FEB /* GDataUtilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataUtilities.m; sourceTree = "<group>"; };
+		D8CAA2141635609700394FEB /* GTMGatherInputStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMGatherInputStream.h; sourceTree = "<group>"; };
+		D8CAA2151635609700394FEB /* GTMGatherInputStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMGatherInputStream.m; sourceTree = "<group>"; };
+		D8CAA2161635609700394FEB /* GTMMIMEDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMMIMEDocument.h; sourceTree = "<group>"; };
+		D8CAA2171635609700394FEB /* GTMMIMEDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMMIMEDocument.m; sourceTree = "<group>"; };
+		D8CAA2191635609700394FEB /* GDataXMLNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDataXMLNode.h; sourceTree = "<group>"; };
+		D8CAA21A1635609700394FEB /* GDataXMLNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDataXMLNode.m; sourceTree = "<group>"; };
+		D8CAA21E1635609700394FEB /* DoubanEntryComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryComment.h; sourceTree = "<group>"; };
+		D8CAA21F1635609700394FEB /* DoubanEntryComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryComment.m; sourceTree = "<group>"; };
+		D8CAA2201635609700394FEB /* DoubanFeedComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedComment.h; sourceTree = "<group>"; };
+		D8CAA2211635609700394FEB /* DoubanFeedComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedComment.m; sourceTree = "<group>"; };
+		D8CAA2231635609700394FEB /* DoubanEntryCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryCity.h; sourceTree = "<group>"; };
+		D8CAA2241635609700394FEB /* DoubanEntryCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryCity.m; sourceTree = "<group>"; };
+		D8CAA2251635609700394FEB /* DoubanEntryEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryEvent.h; sourceTree = "<group>"; };
+		D8CAA2261635609700394FEB /* DoubanEntryEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryEvent.m; sourceTree = "<group>"; };
+		D8CAA2271635609700394FEB /* DoubanEntryEventCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryEventCategory.h; sourceTree = "<group>"; };
+		D8CAA2281635609700394FEB /* DoubanEntryEventCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryEventCategory.m; sourceTree = "<group>"; };
+		D8CAA2291635609700394FEB /* DoubanFeedCity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedCity.h; sourceTree = "<group>"; };
+		D8CAA22A1635609700394FEB /* DoubanFeedCity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedCity.m; sourceTree = "<group>"; };
+		D8CAA22B1635609700394FEB /* DoubanFeedEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedEvent.h; sourceTree = "<group>"; };
+		D8CAA22C1635609700394FEB /* DoubanFeedEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedEvent.m; sourceTree = "<group>"; };
+		D8CAA22D1635609700394FEB /* DoubanFeedEventCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedEventCategory.h; sourceTree = "<group>"; };
+		D8CAA22E1635609700394FEB /* DoubanFeedEventCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedEventCategory.m; sourceTree = "<group>"; };
+		D8CAA22F1635609700394FEB /* GDataAtomAuthor+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GDataAtomAuthor+Extension.h"; sourceTree = "<group>"; };
+		D8CAA2301635609700394FEB /* GDataAtomAuthor+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GDataAtomAuthor+Extension.m"; sourceTree = "<group>"; };
+		D8CAA2311635609700394FEB /* GDataEntryBase+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "GDataEntryBase+Extension.h"; sourceTree = "<group>"; };
+		D8CAA2321635609700394FEB /* GDataEntryBase+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "GDataEntryBase+Extension.m"; sourceTree = "<group>"; };
+		D8CAA2341635609700394FEB /* DoubanEntryMiniblog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryMiniblog.h; sourceTree = "<group>"; };
+		D8CAA2351635609700394FEB /* DoubanEntryMiniblog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryMiniblog.m; sourceTree = "<group>"; };
+		D8CAA2361635609700394FEB /* DoubanFeedMiniblog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedMiniblog.h; sourceTree = "<group>"; };
+		D8CAA2371635609700394FEB /* DoubanFeedMiniblog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedMiniblog.m; sourceTree = "<group>"; };
+		D8CAA2391635609700394FEB /* DoubanEntryPeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryPeople.h; sourceTree = "<group>"; };
+		D8CAA23A1635609700394FEB /* DoubanEntryPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryPeople.m; sourceTree = "<group>"; };
+		D8CAA23B1635609700394FEB /* DoubanFeedPeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedPeople.h; sourceTree = "<group>"; };
+		D8CAA23C1635609700394FEB /* DoubanFeedPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedPeople.m; sourceTree = "<group>"; };
+		D8CAA23E1635609700394FEB /* DoubanEntryAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryAlbum.h; sourceTree = "<group>"; };
+		D8CAA23F1635609700394FEB /* DoubanEntryAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryAlbum.m; sourceTree = "<group>"; };
+		D8CAA2401635609700394FEB /* DoubanEntryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryPhoto.h; sourceTree = "<group>"; };
+		D8CAA2411635609700394FEB /* DoubanEntryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryPhoto.m; sourceTree = "<group>"; };
+		D8CAA2421635609700394FEB /* DoubanFeedAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedAlbum.h; sourceTree = "<group>"; };
+		D8CAA2431635609700394FEB /* DoubanFeedAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedAlbum.m; sourceTree = "<group>"; };
+		D8CAA2441635609700394FEB /* DoubanFeedPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedPhoto.h; sourceTree = "<group>"; };
+		D8CAA2451635609700394FEB /* DoubanFeedPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedPhoto.m; sourceTree = "<group>"; };
+		D8CAA2471635609700394FEB /* DoubanEntryRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryRecommendation.h; sourceTree = "<group>"; };
+		D8CAA2481635609700394FEB /* DoubanEntryRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryRecommendation.m; sourceTree = "<group>"; };
+		D8CAA2491635609700394FEB /* DoubanFeedRecommendation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedRecommendation.h; sourceTree = "<group>"; };
+		D8CAA24A1635609700394FEB /* DoubanFeedRecommendation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedRecommendation.m; sourceTree = "<group>"; };
+		D8CAA24C1635609700394FEB /* DoubanEntryReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntryReview.h; sourceTree = "<group>"; };
+		D8CAA24D1635609700394FEB /* DoubanEntryReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntryReview.m; sourceTree = "<group>"; };
+		D8CAA24E1635609700394FEB /* DoubanFeedReview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedReview.h; sourceTree = "<group>"; };
+		D8CAA24F1635609700394FEB /* DoubanFeedReview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedReview.m; sourceTree = "<group>"; };
+		D8CAA2511635609700394FEB /* DoubanEntrySubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanEntrySubject.h; sourceTree = "<group>"; };
+		D8CAA2521635609700394FEB /* DoubanEntrySubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanEntrySubject.m; sourceTree = "<group>"; };
+		D8CAA2531635609700394FEB /* DoubanFeedSubject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanFeedSubject.h; sourceTree = "<group>"; };
+		D8CAA2541635609700394FEB /* DoubanFeedSubject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanFeedSubject.m; sourceTree = "<group>"; };
+		D8CAA2551635609700394FEB /* DoubanDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanDefines.h; sourceTree = "<group>"; };
+		D8CAA2561635609700394FEB /* DoubanDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanDefines.m; sourceTree = "<group>"; };
+		D8CAA2581635609700394FEB /* DoubanAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanAttribute.h; sourceTree = "<group>"; };
+		D8CAA2591635609700394FEB /* DoubanAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanAttribute.m; sourceTree = "<group>"; };
+		D8CAA25A1635609700394FEB /* DoubanLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanLocation.h; sourceTree = "<group>"; };
+		D8CAA25B1635609700394FEB /* DoubanLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanLocation.m; sourceTree = "<group>"; };
+		D8CAA25C1635609700394FEB /* DoubanSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanSignature.h; sourceTree = "<group>"; };
+		D8CAA25D1635609700394FEB /* DoubanSignature.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanSignature.m; sourceTree = "<group>"; };
+		D8CAA25E1635609700394FEB /* DoubanTag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanTag.h; sourceTree = "<group>"; };
+		D8CAA25F1635609700394FEB /* DoubanTag.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanTag.m; sourceTree = "<group>"; };
+		D8CAA2601635609700394FEB /* DoubanUID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoubanUID.h; sourceTree = "<group>"; };
+		D8CAA2611635609700394FEB /* DoubanUID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoubanUID.m; sourceTree = "<group>"; };
+		D8CAA2621635609700394FEB /* GeorssPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeorssPoint.h; sourceTree = "<group>"; };
+		D8CAA2631635609700394FEB /* GeorssPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeorssPoint.m; sourceTree = "<group>"; };
+		D8CAA2661635609700394FEB /* DOUComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUComment.h; sourceTree = "<group>"; };
+		D8CAA2671635609700394FEB /* DOUComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUComment.m; sourceTree = "<group>"; };
+		D8CAA2681635609700394FEB /* DOUCommentArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUCommentArray.h; sourceTree = "<group>"; };
+		D8CAA2691635609700394FEB /* DOUCommentArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUCommentArray.m; sourceTree = "<group>"; };
+		D8CAA26A1635609700394FEB /* DOUOnline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUOnline.h; sourceTree = "<group>"; };
+		D8CAA26B1635609700394FEB /* DOUOnline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUOnline.m; sourceTree = "<group>"; };
+		D8CAA26C1635609700394FEB /* DOUOnlineArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUOnlineArray.h; sourceTree = "<group>"; };
+		D8CAA26D1635609700394FEB /* DOUOnlineArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUOnlineArray.m; sourceTree = "<group>"; };
+		D8CAA26E1635609700394FEB /* DOUPeople.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUPeople.h; sourceTree = "<group>"; };
+		D8CAA26F1635609700394FEB /* DOUPeople.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUPeople.m; sourceTree = "<group>"; };
+		D8CAA2701635609700394FEB /* DOUObject+Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "DOUObject+Utils.h"; sourceTree = "<group>"; };
+		D8CAA2711635609700394FEB /* DOUObject+Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "DOUObject+Utils.m"; sourceTree = "<group>"; };
+		D8CAA2721635609700394FEB /* DOUObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUObject.h; sourceTree = "<group>"; };
+		D8CAA2731635609700394FEB /* DOUObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUObject.m; sourceTree = "<group>"; };
+		D8CAA2741635609700394FEB /* DOUObjectArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUObjectArray.h; sourceTree = "<group>"; };
+		D8CAA2751635609700394FEB /* DOUObjectArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUObjectArray.m; sourceTree = "<group>"; };
+		D8CAA2771635609700394FEB /* DOUAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUAlbum.h; sourceTree = "<group>"; };
+		D8CAA2781635609700394FEB /* DOUAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUAlbum.m; sourceTree = "<group>"; };
+		D8CAA2791635609700394FEB /* DOUPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUPhoto.h; sourceTree = "<group>"; };
+		D8CAA27A1635609700394FEB /* DOUPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUPhoto.m; sourceTree = "<group>"; };
+		D8CAA27B1635609700394FEB /* DOUPhotoArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUPhotoArray.h; sourceTree = "<group>"; };
+		D8CAA27C1635609700394FEB /* DOUPhotoArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUPhotoArray.m; sourceTree = "<group>"; };
+		D8CAA27E1635609700394FEB /* DOUHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUHttpRequest.h; sourceTree = "<group>"; };
+		D8CAA27F1635609700394FEB /* DOUHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUHttpRequest.m; sourceTree = "<group>"; };
+		D8CAA2801635609700394FEB /* DOUQuery.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUQuery.h; sourceTree = "<group>"; };
+		D8CAA2811635609700394FEB /* DOUQuery.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUQuery.m; sourceTree = "<group>"; };
+		D8CAA2821635609700394FEB /* DOUService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUService.h; sourceTree = "<group>"; };
+		D8CAA2831635609700394FEB /* DOUService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUService.m; sourceTree = "<group>"; };
+		D8CAA2851635609700394FEB /* DOUOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUOAuth2.h; sourceTree = "<group>"; };
+		D8CAA2861635609700394FEB /* DOUOAuthService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUOAuthService.h; sourceTree = "<group>"; };
+		D8CAA2871635609700394FEB /* DOUOAuthService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUOAuthService.m; sourceTree = "<group>"; };
+		D8CAA2881635609700394FEB /* DOUOAuthStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DOUOAuthStore.h; sourceTree = "<group>"; };
+		D8CAA2891635609700394FEB /* DOUOAuthStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DOUOAuthStore.m; sourceTree = "<group>"; };
+		D8CAA2FB1635611200394FEB /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
+		D8CAA2FD163562A300394FEB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		D8CAA301163562D000394FEB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		D8CAA3031635630400394FEB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		D8CAA3051635709100394FEB /* gDoubanApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gDoubanApi.h; path = Douban_API/gDoubanApi.h; sourceTree = "<group>"; };
+		D8CAA3061635709100394FEB /* gDoubanApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = gDoubanApi.m; path = Douban_API/gDoubanApi.m; sourceTree = "<group>"; };
+		D8CAA3081635737C00394FEB /* NSString+ParseCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+ParseCategory.h"; path = "Douban_API/NSString+ParseCategory.h"; sourceTree = "<group>"; };
+		D8CAA3091635737C00394FEB /* NSString+ParseCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+ParseCategory.m"; path = "Douban_API/NSString+ParseCategory.m"; sourceTree = "<group>"; };
 		D8ED016A162D9BE900D8EDE5 /* JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JSON.h; path = JSON_for_API/JSON.h; sourceTree = "<group>"; };
 		D8ED016B162D9BE900D8EDE5 /* NSObject+SBJSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSObject+SBJSON.h"; path = "JSON_for_API/NSObject+SBJSON.h"; sourceTree = "<group>"; };
 		D8ED016C162D9BE900D8EDE5 /* NSObject+SBJSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSObject+SBJSON.m"; path = "JSON_for_API/NSObject+SBJSON.m"; sourceTree = "<group>"; };
@@ -398,6 +760,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8CAA3041635630400394FEB /* MobileCoreServices.framework in Frameworks */,
+				D8CAA302163562D000394FEB /* CFNetwork.framework in Frameworks */,
+				D8CAA2FE163562A300394FEB /* libz.dylib in Frameworks */,
+				D8CAA2FC1635611200394FEB /* libxml2.dylib in Frameworks */,
 				D864A3A1163019670006D4E2 /* CoreTelephony.framework in Frameworks */,
 				D864A39E163019550006D4E2 /* SystemConfiguration.framework in Frameworks */,
 				D8649775162D641B00672747 /* Security.framework in Frameworks */,
@@ -433,6 +799,7 @@
 				D8222EA41624014100687623 /* Renren_API */,
 				D8649769162D5AD800672747 /* SinaWeibo_API */,
 				D864A3A21630197E0006D4E2 /* TencentWeibo_API */,
+				D8CAA12116355E6F00394FEB /* Douban_API */,
 			);
 			name = Plugins;
 			sourceTree = "<group>";
@@ -790,6 +1157,10 @@
 		D884C6FA15F9CE5C00E08417 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D8CAA3031635630400394FEB /* MobileCoreServices.framework */,
+				D8CAA301163562D000394FEB /* CFNetwork.framework */,
+				D8CAA2FD163562A300394FEB /* libz.dylib */,
+				D8CAA2FB1635611200394FEB /* libxml2.dylib */,
 				D864A3A0163019670006D4E2 /* CoreTelephony.framework */,
 				D864A39D163019550006D4E2 /* SystemConfiguration.framework */,
 				D8649774162D641B00672747 /* Security.framework */,
@@ -885,6 +1256,494 @@
 				D88E93E716266B4500736FF9 /* UIDevice+IdentifierAddition.m */,
 			);
 			name = UDID;
+			sourceTree = "<group>";
+		};
+		D8CAA12116355E6F00394FEB /* Douban_API */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA3051635709100394FEB /* gDoubanApi.h */,
+				D8CAA3061635709100394FEB /* gDoubanApi.m */,
+				D8CAA3081635737C00394FEB /* NSString+ParseCategory.h */,
+				D8CAA3091635737C00394FEB /* NSString+ParseCategory.m */,
+				D8CAA1811635609700394FEB /* OtherSources */,
+				D8CAA1BD1635609700394FEB /* Sources */,
+			);
+			name = Douban_API;
+			sourceTree = "<group>";
+		};
+		D8CAA1811635609700394FEB /* OtherSources */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1821635609700394FEB /* ASIHTTPRequest */,
+				D8CAA1B71635609700394FEB /* Base64 */,
+				D8CAA1BA1635609700394FEB /* Reachability */,
+			);
+			name = OtherSources;
+			path = Douban_API/OtherSources;
+			sourceTree = "<group>";
+		};
+		D8CAA1821635609700394FEB /* ASIHTTPRequest */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1831635609700394FEB /* ASIAuthenticationDialog.h */,
+				D8CAA1841635609700394FEB /* ASIAuthenticationDialog.m */,
+				D8CAA1851635609700394FEB /* ASICacheDelegate.h */,
+				D8CAA1861635609700394FEB /* ASIDataCompressor.h */,
+				D8CAA1871635609700394FEB /* ASIDataCompressor.m */,
+				D8CAA1881635609700394FEB /* ASIDataDecompressor.h */,
+				D8CAA1891635609700394FEB /* ASIDataDecompressor.m */,
+				D8CAA18A1635609700394FEB /* ASIDownloadCache.h */,
+				D8CAA18B1635609700394FEB /* ASIDownloadCache.m */,
+				D8CAA18C1635609700394FEB /* ASIFormDataRequest.h */,
+				D8CAA18D1635609700394FEB /* ASIFormDataRequest.m */,
+				D8CAA18E1635609700394FEB /* ASIHTTPRequest.h */,
+				D8CAA18F1635609700394FEB /* ASIHTTPRequest.m */,
+				D8CAA1901635609700394FEB /* ASIHTTPRequestConfig.h */,
+				D8CAA1911635609700394FEB /* ASIHTTPRequestDelegate.h */,
+				D8CAA1921635609700394FEB /* ASIInputStream.h */,
+				D8CAA1931635609700394FEB /* ASIInputStream.m */,
+				D8CAA1941635609700394FEB /* ASINetworkQueue.h */,
+				D8CAA1951635609700394FEB /* ASINetworkQueue.m */,
+				D8CAA1961635609700394FEB /* ASIProgressDelegate.h */,
+				D8CAA1971635609700394FEB /* ASIWebPageRequest */,
+				D8CAA19A1635609700394FEB /* CloudFiles */,
+				D8CAA1A91635609700394FEB /* S3 */,
+			);
+			path = ASIHTTPRequest;
+			sourceTree = "<group>";
+		};
+		D8CAA1971635609700394FEB /* ASIWebPageRequest */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1981635609700394FEB /* ASIWebPageRequest.h */,
+				D8CAA1991635609700394FEB /* ASIWebPageRequest.m */,
+			);
+			path = ASIWebPageRequest;
+			sourceTree = "<group>";
+		};
+		D8CAA19A1635609700394FEB /* CloudFiles */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA19B1635609700394FEB /* ASICloudFilesCDNRequest.h */,
+				D8CAA19C1635609700394FEB /* ASICloudFilesCDNRequest.m */,
+				D8CAA19D1635609700394FEB /* ASICloudFilesContainer.h */,
+				D8CAA19E1635609700394FEB /* ASICloudFilesContainer.m */,
+				D8CAA19F1635609700394FEB /* ASICloudFilesContainerRequest.h */,
+				D8CAA1A01635609700394FEB /* ASICloudFilesContainerRequest.m */,
+				D8CAA1A11635609700394FEB /* ASICloudFilesContainerXMLParserDelegate.h */,
+				D8CAA1A21635609700394FEB /* ASICloudFilesContainerXMLParserDelegate.m */,
+				D8CAA1A31635609700394FEB /* ASICloudFilesObject.h */,
+				D8CAA1A41635609700394FEB /* ASICloudFilesObject.m */,
+				D8CAA1A51635609700394FEB /* ASICloudFilesObjectRequest.h */,
+				D8CAA1A61635609700394FEB /* ASICloudFilesObjectRequest.m */,
+				D8CAA1A71635609700394FEB /* ASICloudFilesRequest.h */,
+				D8CAA1A81635609700394FEB /* ASICloudFilesRequest.m */,
+			);
+			path = CloudFiles;
+			sourceTree = "<group>";
+		};
+		D8CAA1A91635609700394FEB /* S3 */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1AA1635609700394FEB /* ASINSXMLParserCompat.h */,
+				D8CAA1AB1635609700394FEB /* ASIS3Bucket.h */,
+				D8CAA1AC1635609700394FEB /* ASIS3Bucket.m */,
+				D8CAA1AD1635609700394FEB /* ASIS3BucketObject.h */,
+				D8CAA1AE1635609700394FEB /* ASIS3BucketObject.m */,
+				D8CAA1AF1635609700394FEB /* ASIS3BucketRequest.h */,
+				D8CAA1B01635609700394FEB /* ASIS3BucketRequest.m */,
+				D8CAA1B11635609700394FEB /* ASIS3ObjectRequest.h */,
+				D8CAA1B21635609700394FEB /* ASIS3ObjectRequest.m */,
+				D8CAA1B31635609700394FEB /* ASIS3Request.h */,
+				D8CAA1B41635609700394FEB /* ASIS3Request.m */,
+				D8CAA1B51635609700394FEB /* ASIS3ServiceRequest.h */,
+				D8CAA1B61635609700394FEB /* ASIS3ServiceRequest.m */,
+			);
+			path = S3;
+			sourceTree = "<group>";
+		};
+		D8CAA1B71635609700394FEB /* Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1B81635609700394FEB /* NSData+Base64.h */,
+				D8CAA1B91635609700394FEB /* NSData+Base64.m */,
+			);
+			path = Base64;
+			sourceTree = "<group>";
+		};
+		D8CAA1BA1635609700394FEB /* Reachability */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1BB1635609700394FEB /* Reachability.h */,
+				D8CAA1BC1635609700394FEB /* Reachability.m */,
+			);
+			path = Reachability;
+			sourceTree = "<group>";
+		};
+		D8CAA1BD1635609700394FEB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1BE1635609700394FEB /* DOUAPIConfig.h */,
+				D8CAA1BF1635609700394FEB /* DOUAPIConfig.m */,
+				D8CAA1C01635609700394FEB /* DOUAPIEngine.h */,
+				D8CAA1C11635609700394FEB /* Model */,
+				D8CAA2641635609700394FEB /* Model2 */,
+				D8CAA27D1635609700394FEB /* Network */,
+				D8CAA2841635609700394FEB /* OAuth2 */,
+			);
+			name = Sources;
+			path = Douban_API/Sources;
+			sourceTree = "<group>";
+		};
+		D8CAA1C11635609700394FEB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1C21635609700394FEB /* GData */,
+				D8CAA21B1635609700394FEB /* GDataDoubanWrapper */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D8CAA1C21635609700394FEB /* GData */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1C31635609700394FEB /* BaseClasses */,
+				D8CAA1CA1635609700394FEB /* Elements */,
+				D8CAA2101635609700394FEB /* GDataDefines.h */,
+				D8CAA2111635609700394FEB /* GDataUtilities.h */,
+				D8CAA2121635609700394FEB /* GDataUtilities.m */,
+				D8CAA2131635609700394FEB /* HTTPFetcher */,
+				D8CAA2181635609700394FEB /* XMLSupport */,
+			);
+			path = GData;
+			sourceTree = "<group>";
+		};
+		D8CAA1C31635609700394FEB /* BaseClasses */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1C41635609700394FEB /* GDataEntryBase.h */,
+				D8CAA1C51635609700394FEB /* GDataEntryBase.m */,
+				D8CAA1C61635609700394FEB /* GDataFeedBase.h */,
+				D8CAA1C71635609700394FEB /* GDataFeedBase.m */,
+				D8CAA1C81635609700394FEB /* GDataObject.h */,
+				D8CAA1C91635609700394FEB /* GDataObject.m */,
+			);
+			path = BaseClasses;
+			sourceTree = "<group>";
+		};
+		D8CAA1CA1635609700394FEB /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA1CB1635609700394FEB /* GDataAtomPubControl.h */,
+				D8CAA1CC1635609700394FEB /* GDataAtomPubControl.m */,
+				D8CAA1CD1635609700394FEB /* GDataBaseElements.h */,
+				D8CAA1CE1635609700394FEB /* GDataBaseElements.m */,
+				D8CAA1CF1635609700394FEB /* GDataBatchID.h */,
+				D8CAA1D01635609700394FEB /* GDataBatchID.m */,
+				D8CAA1D11635609700394FEB /* GDataBatchInterrupted.h */,
+				D8CAA1D21635609700394FEB /* GDataBatchInterrupted.m */,
+				D8CAA1D31635609700394FEB /* GDataBatchOperation.h */,
+				D8CAA1D41635609700394FEB /* GDataBatchOperation.m */,
+				D8CAA1D51635609700394FEB /* GDataBatchStatus.h */,
+				D8CAA1D61635609700394FEB /* GDataBatchStatus.m */,
+				D8CAA1D71635609700394FEB /* GDataCategory.h */,
+				D8CAA1D81635609700394FEB /* GDataCategory.m */,
+				D8CAA1D91635609700394FEB /* GDataComment.h */,
+				D8CAA1DA1635609700394FEB /* GDataComment.m */,
+				D8CAA1DB1635609700394FEB /* GDataCustomProperty.h */,
+				D8CAA1DC1635609700394FEB /* GDataCustomProperty.m */,
+				D8CAA1DD1635609700394FEB /* GDataDateTime.h */,
+				D8CAA1DE1635609700394FEB /* GDataDateTime.m */,
+				D8CAA1DF1635609700394FEB /* GDataDeleted.h */,
+				D8CAA1E01635609700394FEB /* GDataDeleted.m */,
+				D8CAA1E11635609700394FEB /* GDataElements.h */,
+				D8CAA1E21635609700394FEB /* GDataEmail.h */,
+				D8CAA1E31635609700394FEB /* GDataEmail.m */,
+				D8CAA1E41635609700394FEB /* GDataEntryContent.h */,
+				D8CAA1E51635609700394FEB /* GDataEntryContent.m */,
+				D8CAA1E61635609700394FEB /* GDataEntryLink.h */,
+				D8CAA1E71635609700394FEB /* GDataEntryLink.m */,
+				D8CAA1E81635609700394FEB /* GDataExtendedProperty.h */,
+				D8CAA1E91635609700394FEB /* GDataExtendedProperty.m */,
+				D8CAA1EA1635609700394FEB /* GDataFeedLink.h */,
+				D8CAA1EB1635609700394FEB /* GDataFeedLink.m */,
+				D8CAA1EC1635609700394FEB /* GDataGenerator.h */,
+				D8CAA1ED1635609700394FEB /* GDataGenerator.m */,
+				D8CAA1EE1635609700394FEB /* GDataGeoPt.h */,
+				D8CAA1EF1635609700394FEB /* GDataGeoPt.m */,
+				D8CAA1F01635609700394FEB /* GDataIM.h */,
+				D8CAA1F11635609700394FEB /* GDataIM.m */,
+				D8CAA1F21635609700394FEB /* GDataLink.h */,
+				D8CAA1F31635609700394FEB /* GDataLink.m */,
+				D8CAA1F41635609700394FEB /* GDataMoney.h */,
+				D8CAA1F51635609700394FEB /* GDataMoney.m */,
+				D8CAA1F61635609700394FEB /* GDataName.h */,
+				D8CAA1F71635609700394FEB /* GDataName.m */,
+				D8CAA1F81635609700394FEB /* GDataOrganization.h */,
+				D8CAA1F91635609700394FEB /* GDataOrganization.m */,
+				D8CAA1FA1635609700394FEB /* GDataOrganizationName.h */,
+				D8CAA1FB1635609700394FEB /* GDataOrganizationName.m */,
+				D8CAA1FC1635609700394FEB /* GDataPerson.h */,
+				D8CAA1FD1635609700394FEB /* GDataPerson.m */,
+				D8CAA1FE1635609700394FEB /* GDataPhoneNumber.h */,
+				D8CAA1FF1635609700394FEB /* GDataPhoneNumber.m */,
+				D8CAA2001635609700394FEB /* GDataPostalAddress.h */,
+				D8CAA2011635609700394FEB /* GDataPostalAddress.m */,
+				D8CAA2021635609700394FEB /* GDataRating.h */,
+				D8CAA2031635609700394FEB /* GDataRating.m */,
+				D8CAA2041635609700394FEB /* GDataStructuredPostalAddress.h */,
+				D8CAA2051635609700394FEB /* GDataStructuredPostalAddress.m */,
+				D8CAA2061635609700394FEB /* GDataTextConstruct.h */,
+				D8CAA2071635609700394FEB /* GDataTextConstruct.m */,
+				D8CAA2081635609700394FEB /* GDataValueConstruct.h */,
+				D8CAA2091635609700394FEB /* GDataValueConstruct.m */,
+				D8CAA20A1635609700394FEB /* GDataWhen.h */,
+				D8CAA20B1635609700394FEB /* GDataWhen.m */,
+				D8CAA20C1635609700394FEB /* GDataWhere.h */,
+				D8CAA20D1635609700394FEB /* GDataWhere.m */,
+				D8CAA20E1635609700394FEB /* GDataWho.h */,
+				D8CAA20F1635609700394FEB /* GDataWho.m */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		D8CAA2131635609700394FEB /* HTTPFetcher */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2141635609700394FEB /* GTMGatherInputStream.h */,
+				D8CAA2151635609700394FEB /* GTMGatherInputStream.m */,
+				D8CAA2161635609700394FEB /* GTMMIMEDocument.h */,
+				D8CAA2171635609700394FEB /* GTMMIMEDocument.m */,
+			);
+			path = HTTPFetcher;
+			sourceTree = "<group>";
+		};
+		D8CAA2181635609700394FEB /* XMLSupport */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2191635609700394FEB /* GDataXMLNode.h */,
+				D8CAA21A1635609700394FEB /* GDataXMLNode.m */,
+			);
+			path = XMLSupport;
+			sourceTree = "<group>";
+		};
+		D8CAA21B1635609700394FEB /* GDataDoubanWrapper */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA21C1635609700394FEB /* Clients */,
+				D8CAA2551635609700394FEB /* DoubanDefines.h */,
+				D8CAA2561635609700394FEB /* DoubanDefines.m */,
+				D8CAA2571635609700394FEB /* Elements */,
+			);
+			path = GDataDoubanWrapper;
+			sourceTree = "<group>";
+		};
+		D8CAA21C1635609700394FEB /* Clients */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA21D1635609700394FEB /* Comment */,
+				D8CAA2221635609700394FEB /* Event */,
+				D8CAA22F1635609700394FEB /* GDataAtomAuthor+Extension.h */,
+				D8CAA2301635609700394FEB /* GDataAtomAuthor+Extension.m */,
+				D8CAA2311635609700394FEB /* GDataEntryBase+Extension.h */,
+				D8CAA2321635609700394FEB /* GDataEntryBase+Extension.m */,
+				D8CAA2331635609700394FEB /* Miniblog */,
+				D8CAA2381635609700394FEB /* People */,
+				D8CAA23D1635609700394FEB /* Photo */,
+				D8CAA2461635609700394FEB /* Recommendation */,
+				D8CAA24B1635609700394FEB /* Review */,
+				D8CAA2501635609700394FEB /* Subject */,
+			);
+			path = Clients;
+			sourceTree = "<group>";
+		};
+		D8CAA21D1635609700394FEB /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA21E1635609700394FEB /* DoubanEntryComment.h */,
+				D8CAA21F1635609700394FEB /* DoubanEntryComment.m */,
+				D8CAA2201635609700394FEB /* DoubanFeedComment.h */,
+				D8CAA2211635609700394FEB /* DoubanFeedComment.m */,
+			);
+			path = Comment;
+			sourceTree = "<group>";
+		};
+		D8CAA2221635609700394FEB /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2231635609700394FEB /* DoubanEntryCity.h */,
+				D8CAA2241635609700394FEB /* DoubanEntryCity.m */,
+				D8CAA2251635609700394FEB /* DoubanEntryEvent.h */,
+				D8CAA2261635609700394FEB /* DoubanEntryEvent.m */,
+				D8CAA2271635609700394FEB /* DoubanEntryEventCategory.h */,
+				D8CAA2281635609700394FEB /* DoubanEntryEventCategory.m */,
+				D8CAA2291635609700394FEB /* DoubanFeedCity.h */,
+				D8CAA22A1635609700394FEB /* DoubanFeedCity.m */,
+				D8CAA22B1635609700394FEB /* DoubanFeedEvent.h */,
+				D8CAA22C1635609700394FEB /* DoubanFeedEvent.m */,
+				D8CAA22D1635609700394FEB /* DoubanFeedEventCategory.h */,
+				D8CAA22E1635609700394FEB /* DoubanFeedEventCategory.m */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		D8CAA2331635609700394FEB /* Miniblog */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2341635609700394FEB /* DoubanEntryMiniblog.h */,
+				D8CAA2351635609700394FEB /* DoubanEntryMiniblog.m */,
+				D8CAA2361635609700394FEB /* DoubanFeedMiniblog.h */,
+				D8CAA2371635609700394FEB /* DoubanFeedMiniblog.m */,
+			);
+			path = Miniblog;
+			sourceTree = "<group>";
+		};
+		D8CAA2381635609700394FEB /* People */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2391635609700394FEB /* DoubanEntryPeople.h */,
+				D8CAA23A1635609700394FEB /* DoubanEntryPeople.m */,
+				D8CAA23B1635609700394FEB /* DoubanFeedPeople.h */,
+				D8CAA23C1635609700394FEB /* DoubanFeedPeople.m */,
+			);
+			path = People;
+			sourceTree = "<group>";
+		};
+		D8CAA23D1635609700394FEB /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA23E1635609700394FEB /* DoubanEntryAlbum.h */,
+				D8CAA23F1635609700394FEB /* DoubanEntryAlbum.m */,
+				D8CAA2401635609700394FEB /* DoubanEntryPhoto.h */,
+				D8CAA2411635609700394FEB /* DoubanEntryPhoto.m */,
+				D8CAA2421635609700394FEB /* DoubanFeedAlbum.h */,
+				D8CAA2431635609700394FEB /* DoubanFeedAlbum.m */,
+				D8CAA2441635609700394FEB /* DoubanFeedPhoto.h */,
+				D8CAA2451635609700394FEB /* DoubanFeedPhoto.m */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		D8CAA2461635609700394FEB /* Recommendation */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2471635609700394FEB /* DoubanEntryRecommendation.h */,
+				D8CAA2481635609700394FEB /* DoubanEntryRecommendation.m */,
+				D8CAA2491635609700394FEB /* DoubanFeedRecommendation.h */,
+				D8CAA24A1635609700394FEB /* DoubanFeedRecommendation.m */,
+			);
+			path = Recommendation;
+			sourceTree = "<group>";
+		};
+		D8CAA24B1635609700394FEB /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA24C1635609700394FEB /* DoubanEntryReview.h */,
+				D8CAA24D1635609700394FEB /* DoubanEntryReview.m */,
+				D8CAA24E1635609700394FEB /* DoubanFeedReview.h */,
+				D8CAA24F1635609700394FEB /* DoubanFeedReview.m */,
+			);
+			path = Review;
+			sourceTree = "<group>";
+		};
+		D8CAA2501635609700394FEB /* Subject */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2511635609700394FEB /* DoubanEntrySubject.h */,
+				D8CAA2521635609700394FEB /* DoubanEntrySubject.m */,
+				D8CAA2531635609700394FEB /* DoubanFeedSubject.h */,
+				D8CAA2541635609700394FEB /* DoubanFeedSubject.m */,
+			);
+			path = Subject;
+			sourceTree = "<group>";
+		};
+		D8CAA2571635609700394FEB /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2581635609700394FEB /* DoubanAttribute.h */,
+				D8CAA2591635609700394FEB /* DoubanAttribute.m */,
+				D8CAA25A1635609700394FEB /* DoubanLocation.h */,
+				D8CAA25B1635609700394FEB /* DoubanLocation.m */,
+				D8CAA25C1635609700394FEB /* DoubanSignature.h */,
+				D8CAA25D1635609700394FEB /* DoubanSignature.m */,
+				D8CAA25E1635609700394FEB /* DoubanTag.h */,
+				D8CAA25F1635609700394FEB /* DoubanTag.m */,
+				D8CAA2601635609700394FEB /* DoubanUID.h */,
+				D8CAA2611635609700394FEB /* DoubanUID.m */,
+				D8CAA2621635609700394FEB /* GeorssPoint.h */,
+				D8CAA2631635609700394FEB /* GeorssPoint.m */,
+			);
+			path = Elements;
+			sourceTree = "<group>";
+		};
+		D8CAA2641635609700394FEB /* Model2 */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2651635609700394FEB /* Community */,
+				D8CAA2701635609700394FEB /* DOUObject+Utils.h */,
+				D8CAA2711635609700394FEB /* DOUObject+Utils.m */,
+				D8CAA2721635609700394FEB /* DOUObject.h */,
+				D8CAA2731635609700394FEB /* DOUObject.m */,
+				D8CAA2741635609700394FEB /* DOUObjectArray.h */,
+				D8CAA2751635609700394FEB /* DOUObjectArray.m */,
+				D8CAA2761635609700394FEB /* Photo */,
+			);
+			path = Model2;
+			sourceTree = "<group>";
+		};
+		D8CAA2651635609700394FEB /* Community */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2661635609700394FEB /* DOUComment.h */,
+				D8CAA2671635609700394FEB /* DOUComment.m */,
+				D8CAA2681635609700394FEB /* DOUCommentArray.h */,
+				D8CAA2691635609700394FEB /* DOUCommentArray.m */,
+				D8CAA26A1635609700394FEB /* DOUOnline.h */,
+				D8CAA26B1635609700394FEB /* DOUOnline.m */,
+				D8CAA26C1635609700394FEB /* DOUOnlineArray.h */,
+				D8CAA26D1635609700394FEB /* DOUOnlineArray.m */,
+				D8CAA26E1635609700394FEB /* DOUPeople.h */,
+				D8CAA26F1635609700394FEB /* DOUPeople.m */,
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
+		D8CAA2761635609700394FEB /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2771635609700394FEB /* DOUAlbum.h */,
+				D8CAA2781635609700394FEB /* DOUAlbum.m */,
+				D8CAA2791635609700394FEB /* DOUPhoto.h */,
+				D8CAA27A1635609700394FEB /* DOUPhoto.m */,
+				D8CAA27B1635609700394FEB /* DOUPhotoArray.h */,
+				D8CAA27C1635609700394FEB /* DOUPhotoArray.m */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		D8CAA27D1635609700394FEB /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA27E1635609700394FEB /* DOUHttpRequest.h */,
+				D8CAA27F1635609700394FEB /* DOUHttpRequest.m */,
+				D8CAA2801635609700394FEB /* DOUQuery.h */,
+				D8CAA2811635609700394FEB /* DOUQuery.m */,
+				D8CAA2821635609700394FEB /* DOUService.h */,
+				D8CAA2831635609700394FEB /* DOUService.m */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D8CAA2841635609700394FEB /* OAuth2 */ = {
+			isa = PBXGroup;
+			children = (
+				D8CAA2851635609700394FEB /* DOUOAuth2.h */,
+				D8CAA2861635609700394FEB /* DOUOAuthService.h */,
+				D8CAA2871635609700394FEB /* DOUOAuthService.m */,
+				D8CAA2881635609700394FEB /* DOUOAuthStore.h */,
+				D8CAA2891635609700394FEB /* DOUOAuthStore.m */,
+			);
+			path = OAuth2;
 			sourceTree = "<group>";
 		};
 		D8ED0169162D9BC400D8EDE5 /* JSON_for_API */ = {
@@ -1167,6 +2026,121 @@
 				D864A3B41630199E0006D4E2 /* OpenSdkResponse.m in Sources */,
 				D87F23801631301700FD6284 /* gTencentApi.m in Sources */,
 				D8F26AE21632CD7700708B55 /* gAnimation.m in Sources */,
+				D8CAA28A1635609700394FEB /* ASIAuthenticationDialog.m in Sources */,
+				D8CAA28B1635609700394FEB /* ASIDataCompressor.m in Sources */,
+				D8CAA28C1635609700394FEB /* ASIDataDecompressor.m in Sources */,
+				D8CAA28D1635609700394FEB /* ASIDownloadCache.m in Sources */,
+				D8CAA28E1635609700394FEB /* ASIFormDataRequest.m in Sources */,
+				D8CAA28F1635609700394FEB /* ASIHTTPRequest.m in Sources */,
+				D8CAA2901635609700394FEB /* ASIInputStream.m in Sources */,
+				D8CAA2911635609700394FEB /* ASINetworkQueue.m in Sources */,
+				D8CAA2921635609700394FEB /* ASIWebPageRequest.m in Sources */,
+				D8CAA2931635609700394FEB /* ASICloudFilesCDNRequest.m in Sources */,
+				D8CAA2941635609700394FEB /* ASICloudFilesContainer.m in Sources */,
+				D8CAA2951635609700394FEB /* ASICloudFilesContainerRequest.m in Sources */,
+				D8CAA2961635609700394FEB /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
+				D8CAA2971635609700394FEB /* ASICloudFilesObject.m in Sources */,
+				D8CAA2981635609700394FEB /* ASICloudFilesObjectRequest.m in Sources */,
+				D8CAA2991635609700394FEB /* ASICloudFilesRequest.m in Sources */,
+				D8CAA29A1635609700394FEB /* ASIS3Bucket.m in Sources */,
+				D8CAA29B1635609700394FEB /* ASIS3BucketObject.m in Sources */,
+				D8CAA29C1635609700394FEB /* ASIS3BucketRequest.m in Sources */,
+				D8CAA29D1635609700394FEB /* ASIS3ObjectRequest.m in Sources */,
+				D8CAA29E1635609700394FEB /* ASIS3Request.m in Sources */,
+				D8CAA29F1635609700394FEB /* ASIS3ServiceRequest.m in Sources */,
+				D8CAA2A01635609700394FEB /* NSData+Base64.m in Sources */,
+				D8CAA2A11635609700394FEB /* Reachability.m in Sources */,
+				D8CAA2A21635609700394FEB /* DOUAPIConfig.m in Sources */,
+				D8CAA2A31635609700394FEB /* GDataEntryBase.m in Sources */,
+				D8CAA2A41635609700394FEB /* GDataFeedBase.m in Sources */,
+				D8CAA2A51635609700394FEB /* GDataObject.m in Sources */,
+				D8CAA2A61635609700394FEB /* GDataAtomPubControl.m in Sources */,
+				D8CAA2A71635609700394FEB /* GDataBaseElements.m in Sources */,
+				D8CAA2A81635609700394FEB /* GDataBatchID.m in Sources */,
+				D8CAA2A91635609700394FEB /* GDataBatchInterrupted.m in Sources */,
+				D8CAA2AA1635609700394FEB /* GDataBatchOperation.m in Sources */,
+				D8CAA2AB1635609700394FEB /* GDataBatchStatus.m in Sources */,
+				D8CAA2AC1635609700394FEB /* GDataCategory.m in Sources */,
+				D8CAA2AD1635609700394FEB /* GDataComment.m in Sources */,
+				D8CAA2AE1635609700394FEB /* GDataCustomProperty.m in Sources */,
+				D8CAA2AF1635609700394FEB /* GDataDateTime.m in Sources */,
+				D8CAA2B01635609700394FEB /* GDataDeleted.m in Sources */,
+				D8CAA2B11635609700394FEB /* GDataEmail.m in Sources */,
+				D8CAA2B21635609700394FEB /* GDataEntryContent.m in Sources */,
+				D8CAA2B31635609700394FEB /* GDataEntryLink.m in Sources */,
+				D8CAA2B41635609700394FEB /* GDataExtendedProperty.m in Sources */,
+				D8CAA2B51635609700394FEB /* GDataFeedLink.m in Sources */,
+				D8CAA2B61635609700394FEB /* GDataGenerator.m in Sources */,
+				D8CAA2B71635609700394FEB /* GDataGeoPt.m in Sources */,
+				D8CAA2B81635609700394FEB /* GDataIM.m in Sources */,
+				D8CAA2B91635609700394FEB /* GDataLink.m in Sources */,
+				D8CAA2BA1635609700394FEB /* GDataMoney.m in Sources */,
+				D8CAA2BB1635609700394FEB /* GDataName.m in Sources */,
+				D8CAA2BC1635609700394FEB /* GDataOrganization.m in Sources */,
+				D8CAA2BD1635609700394FEB /* GDataOrganizationName.m in Sources */,
+				D8CAA2BE1635609700394FEB /* GDataPerson.m in Sources */,
+				D8CAA2BF1635609700394FEB /* GDataPhoneNumber.m in Sources */,
+				D8CAA2C01635609700394FEB /* GDataPostalAddress.m in Sources */,
+				D8CAA2C11635609700394FEB /* GDataRating.m in Sources */,
+				D8CAA2C21635609700394FEB /* GDataStructuredPostalAddress.m in Sources */,
+				D8CAA2C31635609700394FEB /* GDataTextConstruct.m in Sources */,
+				D8CAA2C41635609700394FEB /* GDataValueConstruct.m in Sources */,
+				D8CAA2C51635609700394FEB /* GDataWhen.m in Sources */,
+				D8CAA2C61635609700394FEB /* GDataWhere.m in Sources */,
+				D8CAA2C71635609700394FEB /* GDataWho.m in Sources */,
+				D8CAA2C81635609700394FEB /* GDataUtilities.m in Sources */,
+				D8CAA2C91635609700394FEB /* GTMGatherInputStream.m in Sources */,
+				D8CAA2CA1635609700394FEB /* GTMMIMEDocument.m in Sources */,
+				D8CAA2CB1635609700394FEB /* GDataXMLNode.m in Sources */,
+				D8CAA2CC1635609700394FEB /* DoubanEntryComment.m in Sources */,
+				D8CAA2CD1635609700394FEB /* DoubanFeedComment.m in Sources */,
+				D8CAA2CE1635609700394FEB /* DoubanEntryCity.m in Sources */,
+				D8CAA2CF1635609700394FEB /* DoubanEntryEvent.m in Sources */,
+				D8CAA2D01635609700394FEB /* DoubanEntryEventCategory.m in Sources */,
+				D8CAA2D11635609700394FEB /* DoubanFeedCity.m in Sources */,
+				D8CAA2D21635609700394FEB /* DoubanFeedEvent.m in Sources */,
+				D8CAA2D31635609700394FEB /* DoubanFeedEventCategory.m in Sources */,
+				D8CAA2D41635609700394FEB /* GDataAtomAuthor+Extension.m in Sources */,
+				D8CAA2D51635609700394FEB /* GDataEntryBase+Extension.m in Sources */,
+				D8CAA2D61635609700394FEB /* DoubanEntryMiniblog.m in Sources */,
+				D8CAA2D71635609700394FEB /* DoubanFeedMiniblog.m in Sources */,
+				D8CAA2D81635609700394FEB /* DoubanEntryPeople.m in Sources */,
+				D8CAA2D91635609700394FEB /* DoubanFeedPeople.m in Sources */,
+				D8CAA2DA1635609700394FEB /* DoubanEntryAlbum.m in Sources */,
+				D8CAA2DB1635609700394FEB /* DoubanEntryPhoto.m in Sources */,
+				D8CAA2DC1635609700394FEB /* DoubanFeedAlbum.m in Sources */,
+				D8CAA2DD1635609700394FEB /* DoubanFeedPhoto.m in Sources */,
+				D8CAA2DE1635609700394FEB /* DoubanEntryRecommendation.m in Sources */,
+				D8CAA2DF1635609700394FEB /* DoubanFeedRecommendation.m in Sources */,
+				D8CAA2E01635609700394FEB /* DoubanEntryReview.m in Sources */,
+				D8CAA2E11635609700394FEB /* DoubanFeedReview.m in Sources */,
+				D8CAA2E21635609700394FEB /* DoubanEntrySubject.m in Sources */,
+				D8CAA2E31635609700394FEB /* DoubanFeedSubject.m in Sources */,
+				D8CAA2E41635609700394FEB /* DoubanDefines.m in Sources */,
+				D8CAA2E51635609700394FEB /* DoubanAttribute.m in Sources */,
+				D8CAA2E61635609700394FEB /* DoubanLocation.m in Sources */,
+				D8CAA2E71635609700394FEB /* DoubanSignature.m in Sources */,
+				D8CAA2E81635609700394FEB /* DoubanTag.m in Sources */,
+				D8CAA2E91635609700394FEB /* DoubanUID.m in Sources */,
+				D8CAA2EA1635609700394FEB /* GeorssPoint.m in Sources */,
+				D8CAA2EB1635609700394FEB /* DOUComment.m in Sources */,
+				D8CAA2EC1635609700394FEB /* DOUCommentArray.m in Sources */,
+				D8CAA2ED1635609700394FEB /* DOUOnline.m in Sources */,
+				D8CAA2EE1635609700394FEB /* DOUOnlineArray.m in Sources */,
+				D8CAA2EF1635609700394FEB /* DOUPeople.m in Sources */,
+				D8CAA2F01635609700394FEB /* DOUObject+Utils.m in Sources */,
+				D8CAA2F11635609700394FEB /* DOUObject.m in Sources */,
+				D8CAA2F21635609700394FEB /* DOUObjectArray.m in Sources */,
+				D8CAA2F31635609700394FEB /* DOUAlbum.m in Sources */,
+				D8CAA2F41635609700394FEB /* DOUPhoto.m in Sources */,
+				D8CAA2F51635609700394FEB /* DOUPhotoArray.m in Sources */,
+				D8CAA2F61635609700394FEB /* DOUHttpRequest.m in Sources */,
+				D8CAA2F71635609700394FEB /* DOUQuery.m in Sources */,
+				D8CAA2F81635609700394FEB /* DOUService.m in Sources */,
+				D8CAA2F91635609700394FEB /* DOUOAuthService.m in Sources */,
+				D8CAA2FA1635609700394FEB /* DOUOAuthStore.m in Sources */,
+				D8CAA3071635709200394FEB /* gDoubanApi.m in Sources */,
+				D8CAA30A1635737C00394FEB /* NSString+ParseCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1268,6 +2242,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "easyFollow/easyFollow-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "easyFollow/easyFollow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1280,6 +2255,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "easyFollow/easyFollow-Prefix.pch";
+				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "easyFollow/easyFollow-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = 1;
