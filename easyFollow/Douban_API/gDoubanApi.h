@@ -33,7 +33,7 @@
 
 
 - (gDoubanApi *)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andRedirectURL:(NSString *)url;
-- (void)LoginWith:(UIView *)view;
+- (void)LoginWithView:(UIView *)view andPermission:(NSString *)permission;
 
 @end
 

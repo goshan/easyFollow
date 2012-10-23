@@ -35,13 +35,13 @@
 
 
 
-- (void)LoginWith:(UIView *)view{
+- (void)LoginWithView:(UIView *)view andPermission:(NSString *)permission{
     _doubanLoginView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 320, 436)];
     _doubanLoginView.scalesPageToFit = YES;
     _doubanLoginView.userInteractionEnabled = YES;
     _doubanLoginView.delegate = self;
     _doubanLoginView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    NSString *str = [NSString stringWithFormat:@"https://www.douban.com/service/auth2/auth?client_id=%@&redirect_uri=%@&response_type=code", _appKey, _redirectURL];
+    NSString *str = [NSString stringWithFormat:@"https://www.douban.com/service/auth2/auth?client_id=%@&redirect_uri=%@&response_type=code&scope=%@", _appKey, _redirectURL, permission];
     
     NSString *urlStr = [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     NSURL *url = [NSURL URLWithString:urlStr];

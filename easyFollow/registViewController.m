@@ -53,7 +53,8 @@
 }
 
 - (IBAction)doubanLogin:(id)sender {
-    [_douban LoginWith:self.view];
+    NSString *permission = @"shuo_basic_r,shuo_basic_w,community_advanced_doumail_r,community_advanced_doumail_w,douban_basic_common";
+    [_douban LoginWithView:self.view andPermission:permission];
 }
 
 - (IBAction)regist:(id)sender {
