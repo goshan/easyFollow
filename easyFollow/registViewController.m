@@ -115,7 +115,7 @@
                             douban_token, @"douban_token", 
                             douban_expire, @"douban_expire", 
                             nil];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/users/create_user.json" parameters:params];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/create_user.json" parameters:params];
     
     //put request
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
