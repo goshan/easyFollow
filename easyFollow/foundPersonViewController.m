@@ -7,6 +7,10 @@
 //
 
 #import "foundPersonViewController.h"
+#import "AFHTTPClient.h"
+#import "AFJSONRequestOperation.h"
+
+
 
 @implementation foundPersonViewController
 
@@ -14,16 +18,98 @@
 @synthesize avatar = _avatar;
 @synthesize name = _name;
 @synthesize infoTable = _infoTable;
+@synthesize user_id = _user_id;
+@synthesize user_name = _user_name;
+@synthesize avatar_url = _avatar_url;
 @synthesize friendData = _friendData;
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil friendData:(NSDictionary *)data
+
+
+
+//nav bar button function
+- (void)cancel {
+    NSLog(@"cancel clicked!");
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.5];
+    
+    
+    [self.view removeFromSuperview];
+    [self release];
+    
+}
+
+- (void)follow {
+    NSLog(@"follow clicked!");
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *server_ip = [defaults objectForKey:@"server_ip"];
+    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
+    NSURL *url = [NSURL URLWithString:url_str];
+    AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
+    
+    NSString *token = [defaults objectForKey:@"gsf_token"];
+    NSString *followed_id = _user_id;
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            token, @"token", 
+                            followed_id, @"followed_id",
+                            nil];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/follow.json" parameters:params];
+    
+    //put request
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        //get respond json from server
+        NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
+        NSString *result = [feedback objectForKey:@"result"];
+        
+        if ([result isEqualToString:@"sucess"]){
+            NSLog(@"follow sucess!!");
+            [self cancel];
+            
+        }
+        else {
+            NSLog(@"follow failed");
+        }
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    }];
+    [operation start];
+}
+
+
+
+
+
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withData:(NSDictionary *)data
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _friendData = data;
+        NSMutableArray *dict = [[NSMutableArray alloc] init];
+        for (id key in data){
+            if ([key isEqualToString:@"id"]){
+                _user_id = [data objectForKey:key];
+            }
+            else if ([key isEqualToString:@"name"]){
+                _user_name = [data objectForKey:key];
+            }
+            else if ([key isEqualToString:@"avatar"]){
+                _avatar_url = [data objectForKey:key];
+            }
+            else {
+                NSDictionary *sns = [NSDictionary dictionaryWithObjectsAndKeys:key, @"sns_name", [data objectForKey:key], @"sns_user_name", nil];
+                [dict addObject:sns];
+            }
+        }
+        _friendData = dict;
+        [dict release];
     }
     return self;
 }
@@ -43,11 +129,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     _infoTable.allowsSelection = NO;
-    NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
-    NSData *data = [NSData dataWithContentsOfURL:url];
-    UIImage *image = [UIImage imageWithData:data];
-    _avatar.image = image;
-    _name.text = [_friendData objectForKey:@"name"];
+//    NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
+//    NSData *data = [NSData dataWithContentsOfURL:url];
+//    UIImage *image = [UIImage imageWithData:data];
+//    _avatar.image = image;
+//    _name.text = [_friendData objectForKey:@"name"];
 }
 
 - (void)viewDidUnload
@@ -79,7 +165,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 1;
+    return _friendData.count;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -111,20 +197,20 @@
     }
     
     // Set up the cell...
-    UIImageView *snsAvatar = (UIImageView *)[cell viewWithTag:1];
-    UILabel *snsName = (UILabel *)[cell viewWithTag:2];
-    
-    if (indexPath.section == 0){
-        NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        UIImage *image = [UIImage imageWithData:data];
-        snsAvatar.image = image;
-        snsName.text = [_friendData objectForKey:@"renren_name"];
-    }
-    else {
-        snsAvatar.image = [UIImage imageNamed:[_friendData objectForKey:@"sina_avatar"]];
-        snsName.text = [_friendData objectForKey:@"sina_name"];
-    }
+//    UIImageView *snsAvatar = (UIImageView *)[cell viewWithTag:1];
+//    UILabel *snsName = (UILabel *)[cell viewWithTag:2];
+//    
+//    if (indexPath.section == 0){
+//        NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
+//        NSData *data = [NSData dataWithContentsOfURL:url];
+//        UIImage *image = [UIImage imageWithData:data];
+//        snsAvatar.image = image;
+//        snsName.text = [_friendData objectForKey:@"renren_name"];
+//    }
+//    else {
+//        snsAvatar.image = [UIImage imageNamed:[_friendData objectForKey:@"sina_avatar"]];
+//        snsName.text = [_friendData objectForKey:@"sina_name"];
+//    }
     
     return cell;
 }

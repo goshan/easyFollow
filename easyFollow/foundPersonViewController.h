@@ -16,10 +16,16 @@
 
 @property (retain, nonatomic) IBOutlet UITableView *infoTable;
 
-@property(retain, nonatomic) NSDictionary *friendData;
+@property(retain, nonatomic) NSString *user_id;
+
+@property(retain, nonatomic) NSString *user_name;
+
+@property(retain, nonatomic) NSString *avatar_url;
+
+@property(retain, nonatomic) NSArray *friendData;
 
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil friendData:(NSDictionary *)data;
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil withData:(NSDictionary *)data;
 
 @end

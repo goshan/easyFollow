@@ -66,7 +66,7 @@
     //push user regist data to server
     //******** get public info
     NSString *default_info = @"1";
-    NSString *using_sns = @"renren,sina,tencent,douban";
+    NSString *using_sns = @"1,2,3,4";
     //**************** get iphone imei
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     //******** get renren data

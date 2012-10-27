@@ -286,7 +286,7 @@
         NSString *name = [feedback objectForKey:@"name"];
         if ([result isEqualToString:@"sucess"]){
             //show person view with feedback data
-            _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil friendData:feedback];
+            _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil withData:feedback];
             [self makeDoubleStarAppearWithName:name];
         }
         else if ([result isEqualToString:@"nearby_not_found"]){
@@ -329,62 +329,7 @@
     [self.navigationItem.rightBarButtonItem setAction:@selector(follow)];
 }
 
-//nav bar button function
-- (void)cancel {
-    NSLog(@"cancel clicked!");
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    
-    
-    [_personViewController.view removeFromSuperview];
-    [_personViewController release];
-    
-    self.navigationItem.leftBarButtonItem = nil;
-    [self.navigationItem.rightBarButtonItem setTitle:@"摇一摇"];
-    [self.navigationItem.rightBarButtonItem setAction:@selector(shakePhone)];
-}
 
-- (void)follow {
-    NSLog(@"follow clicked!");
-    
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *server_ip = [defaults objectForKey:@"server_ip"];
-    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
-    NSURL *url = [NSURL URLWithString:url_str];
-    AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
-    
-    NSString *token = [defaults objectForKey:@"gsf_token"];
-    NSString *followed_id = [_personViewController.friendData objectForKey:@"id"];
-    
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            token, @"token", 
-                            followed_id, @"followed_id",
-                            nil];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/follow.json" parameters:params];
-    
-    //put request
-    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
-        //get respond json from server
-        NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
-        NSString *result = [feedback objectForKey:@"result"];
-        
-        if ([result isEqualToString:@"sucess"]){
-            NSLog(@"follow sucess!!");
-            [self cancel];
-            
-        }
-        else {
-            NSLog(@"follow failed");
-        }
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        
-    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    }];
-    [operation start];
-}
 //================function--state: show friend ==begin====================//
 
 
