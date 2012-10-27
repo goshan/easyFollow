@@ -27,7 +27,6 @@
 		D820FAB0161C15B90085757E /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = D820FAAF161C15B90085757E /* glass.wav */; };
 		D820FABD161C1E390085757E /* shakingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D820FABC161C1E390085757E /* shakingWindow.m */; };
 		D8222EAE162401E600687623 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8222EAD162401E600687623 /* libsqlite3.0.dylib */; };
-		D8222EB2162403D800687623 /* renren_login.png in Resources */ = {isa = PBXBuildFile; fileRef = D8222EB0162403D800687623 /* renren_login.png */; };
 		D82230BE1625218500687623 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230361625218500687623 /* FMDatabase.m */; };
 		D82230BF1625218500687623 /* FMDatabaseAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230381625218500687623 /* FMDatabaseAdditions.m */; };
 		D82230C01625218500687623 /* FMResultSet.m in Sources */ = {isa = PBXBuildFile; fileRef = D822303A1625218500687623 /* FMResultSet.m */; };
@@ -96,7 +95,6 @@
 		D8633C7F161D633000998982 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8633C7E161D633000998982 /* AudioToolbox.framework */; };
 		D8633C82161D651C00998982 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8633C81161D651C00998982 /* CoreLocation.framework */; };
 		D8633C88161D7DD600998982 /* personCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8633C87161D7DD600998982 /* personCell.xib */; };
-		D864976B162D5DD100672747 /* logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D864976A162D5DD100672747 /* logo@2x.png */; };
 		D8649775162D641B00672747 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8649774162D641B00672747 /* Security.framework */; };
 		D864A39E163019550006D4E2 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D864A39D163019550006D4E2 /* SystemConfiguration.framework */; };
 		D864A3A1163019670006D4E2 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D864A3A0163019670006D4E2 /* CoreTelephony.framework */; };
@@ -106,7 +104,6 @@
 		D864A3B21630199E0006D4E2 /* OpenSdkOauth.m in Sources */ = {isa = PBXBuildFile; fileRef = D864A3AA1630199D0006D4E2 /* OpenSdkOauth.m */; };
 		D864A3B31630199E0006D4E2 /* OpenSdkRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = D864A3AC1630199D0006D4E2 /* OpenSdkRequest.m */; };
 		D864A3B41630199E0006D4E2 /* OpenSdkResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D864A3AE1630199D0006D4E2 /* OpenSdkResponse.m */; };
-		D864A3C416301E3F0006D4E2 /* tencent_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D864A3C316301E3F0006D4E2 /* tencent_logo.png */; };
 		D87F23801631301700FD6284 /* gTencentApi.m in Sources */ = {isa = PBXBuildFile; fileRef = D87F237F1631301700FD6284 /* gTencentApi.m */; };
 		D87F238B16314E1900FD6284 /* background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F238616314E1800FD6284 /* background@2x.png */; };
 		D87F238C16314E1900FD6284 /* navigation_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D87F238716314E1800FD6284 /* navigation_bg@2x.png */; };
@@ -128,7 +125,10 @@
 		D88E93E916266B4500736FF9 /* UIDevice+IdentifierAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = D88E93E716266B4500736FF9 /* UIDevice+IdentifierAddition.m */; };
 		D890427F1632734F00162276 /* shake_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D890427E1632734F00162276 /* shake_button@2x.png */; };
 		D8904282163279B000162276 /* show_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8904281163279B000162276 /* show_button@2x.png */; };
-		D8B4CA6B16317E7500917CF5 /* barbuttonItem_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B4CA6A16317E7500917CF5 /* barbuttonItem_bg@2x.png */; };
+		D8A3F056163C07DB00F07BE9 /* sns_login_list@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A3F055163C07DB00F07BE9 /* sns_login_list@2x.png */; };
+		D8A3F058163C0E0600F07BE9 /* navigation_item_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A3F057163C0E0600F07BE9 /* navigation_item_bg@2x.png */; };
+		D8A3F060163C221800F07BE9 /* icon_57.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A3F05E163C221800F07BE9 /* icon_57.png */; };
+		D8A3F061163C221800F07BE9 /* icon_114.png in Resources */ = {isa = PBXBuildFile; fileRef = D8A3F05F163C221800F07BE9 /* icon_114.png */; };
 		D8CAA28A1635609700394FEB /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1841635609700394FEB /* ASIAuthenticationDialog.m */; };
 		D8CAA28B1635609700394FEB /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1871635609700394FEB /* ASIDataCompressor.m */; };
 		D8CAA28C1635609700394FEB /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = D8CAA1891635609700394FEB /* ASIDataDecompressor.m */; };
@@ -313,7 +313,6 @@
 		D820FABB161C1E390085757E /* shakingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shakingWindow.h; sourceTree = "<group>"; };
 		D820FABC161C1E390085757E /* shakingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shakingWindow.m; sourceTree = "<group>"; };
 		D8222EAD162401E600687623 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
-		D8222EB0162403D800687623 /* renren_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = renren_login.png; sourceTree = "<group>"; };
 		D82230351625218500687623 /* FMDatabase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabase.h; sourceTree = "<group>"; };
 		D82230361625218500687623 /* FMDatabase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDatabase.m; sourceTree = "<group>"; };
 		D82230371625218500687623 /* FMDatabaseAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDatabaseAdditions.h; sourceTree = "<group>"; };
@@ -427,7 +426,6 @@
 		D8633C7E161D633000998982 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		D8633C81161D651C00998982 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D8633C87161D7DD600998982 /* personCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = personCell.xib; sourceTree = "<group>"; };
-		D864976A162D5DD100672747 /* logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@2x.png"; sourceTree = "<group>"; };
 		D8649774162D641B00672747 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		D864A39D163019550006D4E2 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		D864A3A0163019670006D4E2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -443,7 +441,6 @@
 		D864A3AC1630199D0006D4E2 /* OpenSdkRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenSdkRequest.m; path = TencentWeibo_API/OpenSdkRequest.m; sourceTree = "<group>"; };
 		D864A3AD1630199D0006D4E2 /* OpenSdkResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = OpenSdkResponse.h; path = TencentWeibo_API/OpenSdkResponse.h; sourceTree = "<group>"; };
 		D864A3AE1630199D0006D4E2 /* OpenSdkResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OpenSdkResponse.m; path = TencentWeibo_API/OpenSdkResponse.m; sourceTree = "<group>"; };
-		D864A3C316301E3F0006D4E2 /* tencent_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tencent_logo.png; sourceTree = "<group>"; };
 		D87F237E1631301600FD6284 /* gTencentApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gTencentApi.h; path = TencentWeibo_API/gTencentApi.h; sourceTree = "<group>"; };
 		D87F237F1631301700FD6284 /* gTencentApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = gTencentApi.m; path = TencentWeibo_API/gTencentApi.m; sourceTree = "<group>"; };
 		D87F238616314E1800FD6284 /* background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background@2x.png"; sourceTree = "<group>"; };
@@ -473,7 +470,10 @@
 		D88E93E716266B4500736FF9 /* UIDevice+IdentifierAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIDevice+IdentifierAddition.m"; path = "UDID/UIDevice+IdentifierAddition.m"; sourceTree = "<group>"; };
 		D890427E1632734F00162276 /* shake_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shake_button@2x.png"; sourceTree = "<group>"; };
 		D8904281163279B000162276 /* show_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "show_button@2x.png"; sourceTree = "<group>"; };
-		D8B4CA6A16317E7500917CF5 /* barbuttonItem_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barbuttonItem_bg@2x.png"; sourceTree = "<group>"; };
+		D8A3F055163C07DB00F07BE9 /* sns_login_list@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sns_login_list@2x.png"; sourceTree = "<group>"; };
+		D8A3F057163C0E0600F07BE9 /* navigation_item_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navigation_item_bg@2x.png"; sourceTree = "<group>"; };
+		D8A3F05E163C221800F07BE9 /* icon_57.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_57.png; sourceTree = "<group>"; };
+		D8A3F05F163C221800F07BE9 /* icon_114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_114.png; sourceTree = "<group>"; };
 		D8CAA1831635609700394FEB /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		D8CAA1841635609700394FEB /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		D8CAA1851635609700394FEB /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
@@ -835,17 +835,15 @@
 		D820FAAA161C15940085757E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D8A3F057163C0E0600F07BE9 /* navigation_item_bg@2x.png */,
+				D8A3F055163C07DB00F07BE9 /* sns_login_list@2x.png */,
 				D8F26ADC1632BEFB00708B55 /* star-mostshining@2x.png */,
 				D8904281163279B000162276 /* show_button@2x.png */,
 				D890427E1632734F00162276 /* shake_button@2x.png */,
-				D8B4CA6A16317E7500917CF5 /* barbuttonItem_bg@2x.png */,
 				D87F238616314E1800FD6284 /* background@2x.png */,
 				D87F238716314E1800FD6284 /* navigation_bg@2x.png */,
 				D87F238916314E1800FD6284 /* star_normal@2x.png */,
 				D87F238A16314E1800FD6284 /* star_shining@2x.png */,
-				D864A3C316301E3F0006D4E2 /* tencent_logo.png */,
-				D864976A162D5DD100672747 /* logo@2x.png */,
-				D8222EB0162403D800687623 /* renren_login.png */,
 				D820FAAF161C15B90085757E /* glass.wav */,
 			);
 			name = Resources;
@@ -1137,6 +1135,8 @@
 		D884C6EC15F9CE5C00E08417 = {
 			isa = PBXGroup;
 			children = (
+				D8A3F05E163C221800F07BE9 /* icon_57.png */,
+				D8A3F05F163C221800F07BE9 /* icon_114.png */,
 				16911F2016280DA70000FCF9 /* Default-568h@2x.png */,
 				D884C70115F9CE5C00E08417 /* easyFollow */,
 				D884C72215F9CE5C00E08417 /* easyFollowTests */,
@@ -1875,7 +1875,6 @@
 				D820FAA5161C13180085757E /* foundPersonViewController.xib in Resources */,
 				D820FAB0161C15B90085757E /* glass.wav in Resources */,
 				D8633C88161D7DD600998982 /* personCell.xib in Resources */,
-				D8222EB2162403D800687623 /* renren_login.png in Resources */,
 				D82230CF1625218500687623 /* bottom-bar.png in Resources */,
 				D82230D01625218500687623 /* bottom-bar@2x.png in Resources */,
 				D82230D11625218500687623 /* close.png in Resources */,
@@ -1898,16 +1897,17 @@
 				D82230E21625218500687623 /* small-button-normal@2x.png in Resources */,
 				D82230FC1625218500687623 /* ROCheckOrderCell.xib in Resources */,
 				16911F2116280DA70000FCF9 /* Default-568h@2x.png in Resources */,
-				D864976B162D5DD100672747 /* logo@2x.png in Resources */,
-				D864A3C416301E3F0006D4E2 /* tencent_logo.png in Resources */,
 				D87F238B16314E1900FD6284 /* background@2x.png in Resources */,
 				D87F238C16314E1900FD6284 /* navigation_bg@2x.png in Resources */,
 				D87F238E16314E1900FD6284 /* star_normal@2x.png in Resources */,
 				D87F238F16314E1900FD6284 /* star_shining@2x.png in Resources */,
-				D8B4CA6B16317E7500917CF5 /* barbuttonItem_bg@2x.png in Resources */,
 				D890427F1632734F00162276 /* shake_button@2x.png in Resources */,
 				D8904282163279B000162276 /* show_button@2x.png in Resources */,
 				D8F26ADD1632BEFB00708B55 /* star-mostshining@2x.png in Resources */,
+				D8A3F056163C07DB00F07BE9 /* sns_login_list@2x.png in Resources */,
+				D8A3F058163C0E0600F07BE9 /* navigation_item_bg@2x.png in Resources */,
+				D8A3F060163C221800F07BE9 /* icon_57.png in Resources */,
+				D8A3F061163C221800F07BE9 /* icon_114.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

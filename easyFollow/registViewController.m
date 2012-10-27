@@ -30,31 +30,68 @@
 
 @implementation registViewController
 
+@synthesize navigationBar = _navigationBar;
+@synthesize navigationTitle = _navigationTitle;
+@synthesize registButton = _registButton;
+@synthesize renrenSwitch = _renrenSwitch;
+@synthesize sinaSwitch = _sinaSwitch;
+@synthesize tencentSwitch = _tencentSwitch;
+@synthesize doubanSwitch = _doubanSwitch;
 @synthesize sina = _sina;
 @synthesize tencent = _tencent;
 @synthesize douban = _douban;
+@synthesize loginStatus = _loginStatus;
 @synthesize IPText = _IPText;
 
 
 
 
-
 - (IBAction)renrenLogin:(id)sender {
-    NSArray *permission = [NSArray arrayWithObjects:@"send_message", @"send_notification", @"publish_feed", @"read_user_status", @"publish_comment", @"status_update", nil];
-    [[Renren sharedRenren] authorizationWithPermisson:permission andDelegate:self];
+    UISwitch *button = sender;
+    if (button.on){
+        NSArray *permission = [NSArray arrayWithObjects:@"send_message", @"send_notification", @"publish_feed", @"read_user_status", @"publish_comment", @"status_update", nil];
+        [[Renren sharedRenren] authorizationWithPermisson:permission andDelegate:self];
+        [_loginStatus setObject:@"1" forKey:@"renren_status"];
+    }
+    else {
+        [[Renren sharedRenren] logout:self];
+        [_loginStatus setObject:@"0" forKey:@"renren_status"];
+    }
 }
 
 - (IBAction)sinaLogin:(id)sender {
-    [_sina logIn];
+    UISwitch *button = sender;
+    if (button.on){
+        [_sina logIn];
+        [_loginStatus setObject:@"1" forKey:@"sina_status"];
+    }
+    else {
+        [_sina logOut];
+        [_loginStatus setObject:@"0" forKey:@"sina_status"];
+    }
 }
 
 - (IBAction)tencentLogin:(id)sender {
-    [_tencent LoginWith:self.view];
+    UISwitch *button = sender;
+    if (button.on){
+        [_tencent LoginWith:self.view];
+        [_loginStatus setObject:@"1" forKey:@"tencent_status"];
+    }
+    else {
+        [_loginStatus setObject:@"0" forKey:@"tencent_status"];
+    }
 }
 
 - (IBAction)doubanLogin:(id)sender {
-    NSString *permission = @"shuo_basic_r,shuo_basic_w,community_advanced_doumail_r,community_advanced_doumail_w,douban_basic_common";
-    [_douban LoginWithView:self.view andPermission:permission];
+    UISwitch *button = sender;
+    if (button.on){
+        NSString *permission = @"shuo_basic_r,shuo_basic_w,community_advanced_doumail_r,community_advanced_doumail_w,douban_basic_common";
+        [_douban LoginWithView:self.view andPermission:permission];
+        [_loginStatus setObject:@"1" forKey:@"douban_status"];
+    }
+    else {
+        [_loginStatus setObject:@"0" forKey:@"douban_status"];
+    }
 }
 
 - (IBAction)regist:(id)sender {
@@ -66,7 +103,8 @@
     //push user regist data to server
     //******** get public info
     NSString *default_info = @"1";
-    NSString *using_sns = @"1,2,3,4";
+    NSString *using_sns = [NSString stringWithFormat:@"%@,%@,%@,%@", [_loginStatus objectForKey:@"renren_status"], [_loginStatus objectForKey:@"sina_status"], [_loginStatus objectForKey:@"tencent_status"], [_loginStatus objectForKey:@"douban_status"]];
+    [defaults setObject:using_sns forKey:@"gsf_using_sns"];
     //**************** get iphone imei
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     //******** get renren data
@@ -162,6 +200,8 @@
         
         _douban = [[gDoubanApi alloc] initWithAppKey:DoubanAppKey andAppSecret:DoubanSecretKey andRedirectURL:DoubanRedirectURL];
         _douban.delegate = self;
+        
+        _loginStatus = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"0", @"renren_status", @"0", @"sina_status", @"0", @"tencent_status", @"0", @"douban_status", nil];
     }
     return self;
 }
@@ -179,6 +219,13 @@
     [_sina release];
     [_douban release];
     [_IPText release];
+    [_navigationBar release];
+    [_registButton release];
+    [_navigationTitle release];
+    [_renrenSwitch release];
+    [_sinaSwitch release];
+    [_tencentSwitch release];
+    [_doubanSwitch release];
     [super dealloc];
 }
 
@@ -190,11 +237,47 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [_navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg"] forBarMetrics:UIBarMetricsDefault];
+    _navigationTitle.title = @"绑定信息";
+    _registButton.title = @"注册";
+    [_registButton setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    if ([[_loginStatus objectForKey:@"renren_status"] isEqualToString:@"1"]){
+        _renrenSwitch.on = YES;
+    }
+    else {
+        _renrenSwitch.on = NO;
+    }
+    if ([[_loginStatus objectForKey:@"sina_status"] isEqualToString:@"1"]){
+        _sinaSwitch.on = YES;
+    }
+    else {
+        _sinaSwitch.on = NO;
+    }
+    if ([[_loginStatus objectForKey:@"tencent_status"] isEqualToString:@"1"]){
+        _tencentSwitch.on = YES;
+    }
+    else {
+        _tencentSwitch.on = NO;
+    }
+    if ([[_loginStatus objectForKey:@"douban_status"] isEqualToString:@"1"]){
+        _doubanSwitch.on = YES;
+    }
+    else {
+        _doubanSwitch.on = NO;
+    }
 }
 
 - (void)viewDidUnload
 {
     [self setIPText:nil];
+    [self setNavigationBar:nil];
+    [self setRegistButton:nil];
+    [self setNavigationTitle:nil];
+    [self setRenrenSwitch:nil];
+    [self setSinaSwitch:nil];
+    [self setTencentSwitch:nil];
+    [self setDoubanSwitch:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -213,8 +296,6 @@
     [defaults setObject:renren.accessToken forKey:@"gsf_renren_token"];
     [defaults setObject:renren.expirationDate forKey:@"gsf_renren_expire"];
     [defaults setObject:renren.permissions forKey:@"gsf_renren_permissions"];
-    
-    [[Renren sharedRenren] logout:self];
 }
 
 /**
@@ -262,8 +343,6 @@
     NSString *expireeIn = [NSString stringWithFormat:@"%f", engine.expireTime];
     [defaults setObject:expireeIn forKey:@"gsf_sina_expire"];
     [defaults setObject:engine.userID forKey:@"gsf_sina_id"];
-    
-    [engine logOut];
 }
 
 - (void)engine:(WBEngine *)engine didFailToLogInWithError:(NSError *)error

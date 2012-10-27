@@ -209,10 +209,7 @@
     
     //init navigation button
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
-    
-    UIView *view = [self.navigationItem.rightBarButtonItem valueForKey:@"view"];
-    CGRect frame = view.frame;
-    NSLog(@"========%f   %f", frame.size.height, frame.size.width);
+    [self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     //[self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"barbuttonItem_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
@@ -377,10 +374,12 @@
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shakePhone) name:@"shake" object:nil];
     
     //login when need
-    if (![[Renren sharedRenren] isSessionValid]){
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //if ([[defaults objectForKey:@"gsf_using_sns"] isEqualToString:@"0,0,0,0"]){
         registViewController *regist = [[[registViewController alloc] initWithNibName:@"registViewController" bundle:nil] autorelease];
         [self.navigationController presentModalViewController:regist animated:YES];
-    }
+    //}
 }
 
 - (void)viewDidUnload

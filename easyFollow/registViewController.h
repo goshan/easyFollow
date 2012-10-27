@@ -15,12 +15,18 @@
 
 @interface registViewController : UIViewController <RenrenDelegate, WBEngineDelegate, gTencentDelegate, gDoubanDelegate>
 
+@property (retain, nonatomic) IBOutlet UINavigationBar *navigationBar;
+@property (retain, nonatomic) IBOutlet UINavigationItem *navigationTitle;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *registButton;
+@property (retain, nonatomic) IBOutlet UISwitch *renrenSwitch;
+@property (retain, nonatomic) IBOutlet UISwitch *sinaSwitch;
+@property (retain, nonatomic) IBOutlet UISwitch *tencentSwitch;
+@property (retain, nonatomic) IBOutlet UISwitch *doubanSwitch;
 
 @property(retain, nonatomic) WBEngine *sina;
-
 @property(retain, nonatomic) gTencentApi *tencent;
-
 @property(retain, nonatomic) gDoubanApi *douban;
+@property(retain, nonatomic) NSMutableDictionary *loginStatus;
 
 @property (retain, nonatomic) IBOutlet UITextField *IPText;
 
