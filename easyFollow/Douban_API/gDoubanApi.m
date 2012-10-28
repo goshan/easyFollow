@@ -9,6 +9,14 @@
 #import "gDoubanApi.h"
 #import "NSString+ParseCategory.h"
 
+
+#define doubanUserId @"douban_userid"
+#define doubanAccessToken @"tencent_accessToken"
+#define doubanRefreshToken @"tencent_refreshToken"
+#define doubanExpireIn @"tencent_expireIn"
+#define doubanExpireAt @"tencent_expireAt"
+
+
 @implementation gDoubanApi
 
 @synthesize appKey = _appKey;
@@ -19,7 +27,31 @@
 @synthesize userId = _userId;
 @synthesize refreshToken  =_refreshToken;
 @synthesize doubanLoginView = _doubanLoginView;
+@synthesize expireAt = _expireAt;
 @synthesize delegate = _delegate;
+
+
+
+
+
+
+- (void) readUserInfo{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _userId = [defaults objectForKey:doubanUserId];
+    _accessToken = [defaults objectForKey:doubanAccessToken];
+    _expiresIn = [defaults objectForKey:doubanExpireIn];
+    _refreshToken = [defaults objectForKey:doubanRefreshToken];
+    _expireAt = [defaults objectForKey:doubanExpireAt];
+}
+
+- (void) writeUserInfo{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:_userId forKey:doubanUserId];
+    [defaults setObject:_accessToken forKey:doubanAccessToken];
+    [defaults setObject:_expiresIn forKey:doubanExpireIn];
+    [defaults setObject:_refreshToken forKey:doubanRefreshToken];
+    [defaults setObject:_expireAt forKey:doubanExpireAt];
+}
 
 
 
@@ -29,6 +61,7 @@
         _appKey = appKey;
         _secretKey = appSecret;
         _redirectURL = url;
+        [self readUserInfo];
     }
     return self;
 }
@@ -48,6 +81,28 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_doubanLoginView loadRequest:request];
     [view addSubview:_doubanLoginView];
+}
+
+- (void)Logout{
+    _accessToken = nil;
+    _expiresIn = nil;
+    _userId = nil;
+    _refreshToken = nil;
+    _expireAt = nil;
+    [self writeUserInfo];
+}
+
+- (BOOL)isLogin{
+    return _accessToken && _expiresIn && _userId && _refreshToken;
+}
+
+- (BOOL)isExpired{
+    if ([_expireAt compare:[NSDate date]] == NSOrderedAscending){
+        //force log out
+        [self Logout];
+        return YES;
+    }
+    return NO;
 }
 
 
@@ -95,8 +150,10 @@
     _expiresIn = [dic objectForKey:@"expires_in"];
     _userId = [dic objectForKey:@"douban_user_id"];
     _refreshToken = [dic objectForKey:@"refresh_token"];
+    _expireAt = [NSDate dateWithTimeIntervalSinceNow:[_expiresIn doubleValue]];
     [_doubanLoginView removeFromSuperview];
     
+    [self writeUserInfo];
     [self.delegate gDoubanDidLoginSuccess:self];
 }
 

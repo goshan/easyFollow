@@ -37,10 +37,10 @@
 @synthesize sinaSwitch = _sinaSwitch;
 @synthesize tencentSwitch = _tencentSwitch;
 @synthesize doubanSwitch = _doubanSwitch;
+@synthesize update = _update;
 @synthesize sina = _sina;
 @synthesize tencent = _tencent;
 @synthesize douban = _douban;
-@synthesize loginStatus = _loginStatus;
 @synthesize IPText = _IPText;
 
 
@@ -51,11 +51,9 @@
     if (button.on){
         NSArray *permission = [NSArray arrayWithObjects:@"send_message", @"send_notification", @"publish_feed", @"read_user_status", @"publish_comment", @"status_update", nil];
         [[Renren sharedRenren] authorizationWithPermisson:permission andDelegate:self];
-        [_loginStatus setObject:@"1" forKey:@"renren_status"];
     }
     else {
         [[Renren sharedRenren] logout:self];
-        [_loginStatus setObject:@"0" forKey:@"renren_status"];
     }
 }
 
@@ -63,11 +61,9 @@
     UISwitch *button = sender;
     if (button.on){
         [_sina logIn];
-        [_loginStatus setObject:@"1" forKey:@"sina_status"];
     }
     else {
         [_sina logOut];
-        [_loginStatus setObject:@"0" forKey:@"sina_status"];
     }
 }
 
@@ -75,10 +71,9 @@
     UISwitch *button = sender;
     if (button.on){
         [_tencent LoginWith:self.view];
-        [_loginStatus setObject:@"1" forKey:@"tencent_status"];
     }
     else {
-        [_loginStatus setObject:@"0" forKey:@"tencent_status"];
+        [_tencent LogOut];
     }
 }
 
@@ -87,10 +82,9 @@
     if (button.on){
         NSString *permission = @"shuo_basic_r,shuo_basic_w,community_advanced_doumail_r,community_advanced_doumail_w,douban_basic_common";
         [_douban LoginWithView:self.view andPermission:permission];
-        [_loginStatus setObject:@"1" forKey:@"douban_status"];
     }
     else {
-        [_loginStatus setObject:@"0" forKey:@"douban_status"];
+        [_douban Logout];
     }
 }
 
@@ -101,58 +95,63 @@
     [defaults setObject:server_ip forKey:@"server_ip"];
     
     //push user regist data to server
-    //******** get public info
-    NSString *default_info = @"1";
-    NSString *using_sns = [NSString stringWithFormat:@"%@,%@,%@,%@", [_loginStatus objectForKey:@"renren_status"], [_loginStatus objectForKey:@"sina_status"], [_loginStatus objectForKey:@"tencent_status"], [_loginStatus objectForKey:@"douban_status"]];
-    [defaults setObject:using_sns forKey:@"gsf_using_sns"];
-    //**************** get iphone imei
-    NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
-    //******** get renren data
-    //**************** prepair for user data
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString *renren_token = [defaults objectForKey:@"gsf_renren_token"];
-    NSString *renren_expire = [dateFormatter stringFromDate:[defaults objectForKey:@"gsf_renren_expire"]];
-    NSString *renren_permissions = [[[NSString alloc] init] autorelease];
-    for (NSString *permission in [defaults objectForKey:@"gsf_renren_permissions"]){
-        renren_permissions = [renren_permissions stringByAppendingFormat:@"%@,", permission];
-    }
-    renren_permissions = [renren_permissions substringToIndex:renren_permissions.length-1];
-    //******** get sina data
-    NSString *sina_token = [defaults objectForKey:@"gsf_sina_token"];
-    NSString *sina_expire = [defaults objectForKey:@"gsf_sina_expire"];
-    NSString *sina_id = [defaults objectForKey:@"gsf_sina_id"];
-    //******** get tencent data
-    NSString *tencent_token = [defaults objectForKey:@"gsf_tencent_token"];
-    NSString *tencent_expire = [defaults objectForKey:@"gsf_tencent_expire"];
-    NSString *tencent_openid = [defaults objectForKey:@"gsf_tencent_openid"];
-    //******** get douban data
-    NSString *douban_token = [defaults objectForKey:@"gsf_douban_token"];
-    NSString *douban_expire = [defaults objectForKey:@"gsf_douban_expire"];
-    NSString *douban_id = [defaults objectForKey:@"gsf_douban_id"];
-    
     //make url request
     NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
     NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
-    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
-                            default_info, @"default_info", 
-                            using_sns, @"using_sns", 
-                            imei, @"iphone_imei", 
-                            renren_token, @"renren_token",
-                            renren_expire, @"renren_expire",
-                            renren_permissions, @"renren_permissions", 
-                            sina_id, @"sina_id", 
-                            sina_token, @"sina_token", 
-                            sina_expire, @"sina_expire", 
-                            tencent_token, @"tencent_token", 
-                            tencent_expire, @"tencent_expire", 
-                            tencent_openid, @"tencent_openid", 
-                            douban_id, @"douban_id", 
-                            douban_token, @"douban_token", 
-                            douban_expire, @"douban_expire", 
-                            nil];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    NSString *default_info = @"1";
+    NSString *using_sns = [NSString stringWithFormat:@"%d,%d,%d,%d", _renrenSwitch.on, _sinaSwitch.on, _tencentSwitch.on, _doubanSwitch.on];
+    [defaults setObject:using_sns forKey:@"gsf_using_sns"];
+    NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
+    
+    [params setObject:default_info forKey:@"default_info"];
+    [params setObject:using_sns forKey:@"using_sns"];
+    [params setObject:imei forKey:@"iphone_imei"];
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *renren_token = [defaults objectForKey:@"gsf_renren_token"];
+    NSString *renren_expire = [dateFormatter stringFromDate:[defaults objectForKey:@"gsf_renren_expire"]];
+    NSString *renren_permissions = [[defaults objectForKey:@"gsf_renren_permissions"] componentsJoinedByString:@","];
+    if (renren_token && renren_expire && renren_permissions){
+        [params setObject:renren_token forKey:@"renren_token"];
+        [params setObject:renren_expire forKey:@"renren_expire"];
+        [params setObject:renren_permissions forKey:@"renren_permissions"];
+    }
+    
+    NSString *sina_token = [defaults objectForKey:@"gsf_sina_token"];
+    NSString *sina_expire = [defaults objectForKey:@"gsf_sina_expire"];
+    NSString *sina_id = [defaults objectForKey:@"gsf_sina_id"];
+    if (sina_id && sina_token && sina_expire){
+        [params setObject:sina_id forKey:@"sina_id"];
+        [params setObject:sina_token forKey:@"sina_token"];
+        [params setObject:sina_expire forKey:@"sina_expire"];
+    }
+    //******** get tencent data
+    NSString *tencent_token = [defaults objectForKey:@"gsf_tencent_token"];
+    NSString *tencent_expire = [defaults objectForKey:@"gsf_tencent_expire"];
+    NSString *tencent_openid = [defaults objectForKey:@"gsf_tencent_openid"];
+    if (tencent_token && tencent_expire && tencent_openid){
+        [params setObject:tencent_token forKey:@"tencent_token"];
+        [params setObject:tencent_expire forKey:@"tencent_expire"];
+        [params setObject:tencent_openid forKey:@"tencent_openid"];
+    }
+    //******** get douban data
+    NSString *douban_token = [defaults objectForKey:@"gsf_douban_token"];
+    NSString *douban_expire = [defaults objectForKey:@"gsf_douban_expire"];
+    NSString *douban_id = [defaults objectForKey:@"gsf_douban_id"];
+    if (douban_id && douban_token && douban_expire){
+        [params setObject:douban_id forKey:@"douban_id"];
+        [params setObject:douban_token forKey:@"douban_token"];
+        [params setObject:douban_expire forKey:@"douban_expire"];
+    }
+    //params for update
+    if ([_update intValue]){
+        [params setObject:[defaults objectForKey:@"gsf_token"] forKey:@"token"];
+        [params setObject:@"true" forKey:@"update"];
+    }
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/create_user.json" parameters:params];
     
     //put request
@@ -166,7 +165,7 @@
             
         }
         else {
-            NSLog(@"this iphone has registed!!");
+            NSLog(@"some error!!");
         }
         [defaults setObject:[feedback objectForKey:@"user_id"] forKey:@"gsf_user_id"];
         [defaults setObject:[feedback objectForKey:@"token"] forKey:@"gsf_token"];
@@ -184,7 +183,7 @@
 }
 
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isUpdate:(BOOL)update
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -201,7 +200,7 @@
         _douban = [[gDoubanApi alloc] initWithAppKey:DoubanAppKey andAppSecret:DoubanSecretKey andRedirectURL:DoubanRedirectURL];
         _douban.delegate = self;
         
-        _loginStatus = [[NSMutableDictionary alloc] initWithObjectsAndKeys:@"0", @"renren_status", @"0", @"sina_status", @"0", @"tencent_status", @"0", @"douban_status", nil];
+        _update = [NSNumber numberWithInt:update];
     }
     return self;
 }
@@ -239,32 +238,21 @@
     // Do any additional setup after loading the view from its nib.
     [_navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg"] forBarMetrics:UIBarMetricsDefault];
     _navigationTitle.title = @"绑定信息";
-    _registButton.title = @"注册";
+    _registButton.title = @"完成";
     [_registButton setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
-    if ([[_loginStatus objectForKey:@"renren_status"] isEqualToString:@"1"]){
-        _renrenSwitch.on = YES;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *using_sns = [defaults objectForKey:@"gsf_using_sns"];
+    if (!using_sns){
+        using_sns = @"0,0,0,0";
     }
-    else {
-        _renrenSwitch.on = NO;
-    }
-    if ([[_loginStatus objectForKey:@"sina_status"] isEqualToString:@"1"]){
-        _sinaSwitch.on = YES;
-    }
-    else {
-        _sinaSwitch.on = NO;
-    }
-    if ([[_loginStatus objectForKey:@"tencent_status"] isEqualToString:@"1"]){
-        _tencentSwitch.on = YES;
-    }
-    else {
-        _tencentSwitch.on = NO;
-    }
-    if ([[_loginStatus objectForKey:@"douban_status"] isEqualToString:@"1"]){
-        _doubanSwitch.on = YES;
-    }
-    else {
-        _doubanSwitch.on = NO;
+    NSArray *status = [using_sns componentsSeparatedByString:@","];
+    NSArray *expired = [NSArray arrayWithObjects:[NSNumber numberWithInt:[[Renren sharedRenren] isSessionValid]], [NSNumber numberWithInt:[_sina isLoggedIn] && ![_sina isAuthorizeExpired]], [NSNumber numberWithInt:[_tencent isLogin] && ![_tencent isExpired]], [NSNumber numberWithInt:[_douban isLogin] && ![_douban isExpired]], nil];
+    NSArray *switchArray = [NSArray arrayWithObjects:_renrenSwitch, _sinaSwitch, _tencentSwitch, _doubanSwitch, nil];
+    for (int i=0; i<status.count; i++){
+        int num = [[status objectAtIndex:i] intValue]*[[expired objectAtIndex:i] intValue];
+        UISwitch *temp_switch = [switchArray objectAtIndex:i];
+        temp_switch.on = num;
     }
 }
 

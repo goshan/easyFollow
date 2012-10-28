@@ -1114,6 +1114,8 @@
 		D864A3A21630197E0006D4E2 /* TencentWeibo_API */ = {
 			isa = PBXGroup;
 			children = (
+				D87F237E1631301600FD6284 /* gTencentApi.h */,
+				D87F237F1631301700FD6284 /* gTencentApi.m */,
 				D864A3A31630199D0006D4E2 /* JSONKit.h */,
 				D864A3A41630199D0006D4E2 /* JSONKit.m */,
 				D864A3A51630199D0006D4E2 /* OpenApi.h */,
@@ -1126,8 +1128,6 @@
 				D864A3AC1630199D0006D4E2 /* OpenSdkRequest.m */,
 				D864A3AD1630199D0006D4E2 /* OpenSdkResponse.h */,
 				D864A3AE1630199D0006D4E2 /* OpenSdkResponse.m */,
-				D87F237E1631301600FD6284 /* gTencentApi.h */,
-				D87F237F1631301700FD6284 /* gTencentApi.m */,
 			);
 			name = TencentWeibo_API;
 			sourceTree = "<group>";

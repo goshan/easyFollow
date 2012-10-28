@@ -12,14 +12,40 @@
 
 #import "gTencentApi.h"
 
+
+#define tencentAccessToken @"tencent_accessToken"
+#define tencentOpenID @"tencent_openid"
+#define tencentExpireIn @"tencent_expireIn"
+#define tencentExpireAt @"tencent_expireAt"
+
+
+
 @implementation gTencentApi
 
 @synthesize tencentLoginView = _tencentLoginView;
 @synthesize tencent = _tencent;
+@synthesize expireAt = _expireAt;
 @synthesize delegate = _delegate;
 
 
 
+
+
+- (void) readUserInfo{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    _tencent.accessToken = [defaults objectForKey:tencentAccessToken];
+    _tencent.expireIn = [defaults objectForKey:tencentExpireIn];
+    _tencent.openid = [defaults objectForKey:tencentOpenID];
+    _expireAt = [defaults objectForKey:tencentExpireAt];
+}
+
+- (void) writeUserInfo{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:_tencent.accessToken forKey:tencentAccessToken];
+    [defaults setObject:_tencent.expireIn forKey:tencentExpireIn];
+    [defaults setObject:_tencent.openid forKey:tencentOpenID];
+    [defaults setObject:_expireAt forKey:tencentExpireAt];
+}
 
 
 - (gTencentApi *)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret{
@@ -27,6 +53,7 @@
     if (self){
         _tencent = [[OpenSdkOauth alloc] initAppKey:appKey appSecret:appSecret];
         _tencent.oauthType = InWebView;
+        [self readUserInfo];
     }
     return self;
 }
@@ -41,6 +68,27 @@
     
     [view addSubview:_tencentLoginView];
     [_tencent doWebViewAuthorize:_tencentLoginView];
+}
+
+- (void)LogOut{
+    _tencent.accessToken = nil;
+    _tencent.expireIn = nil;
+    _tencent.openid = nil;
+    _expireAt = nil;
+    [self writeUserInfo];
+}
+
+- (BOOL)isLogin{
+    return _tencent.accessToken && _tencent.expireIn && _tencent.openid;
+}
+
+- (BOOL)isExpired{
+    if ([_expireAt compare:[NSDate date]] == NSOrderedAscending){
+        //force log out
+        [self LogOut];
+        return YES;
+    }
+    return NO;
 }
 
 
@@ -74,6 +122,8 @@
         _tencentLoginView.delegate = nil;
         [_tencentLoginView setHidden:YES];
         
+        _expireAt = [NSDate dateWithTimeIntervalSinceNow:[expireIn doubleValue]];
+        [self writeUserInfo];
         [self.delegate loginSucess:self];
         
 		return NO;

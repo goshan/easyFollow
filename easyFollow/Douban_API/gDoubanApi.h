@@ -21,9 +21,11 @@
 @property(retain, nonatomic) NSString *redirectURL;
 
 @property(retain, nonatomic) NSString *accessToken;
-@property(retain, nonatomic) NSString *expiresIn;
+@property(retain, nonatomic) NSNumber *expiresIn;
 @property(retain, nonatomic) NSString *userId;
 @property(retain, nonatomic) NSString *refreshToken;
+
+@property(retain, nonatomic) NSDate *expireAt;
 
 @property(retain, nonatomic) UIWebView *doubanLoginView;
 
@@ -34,6 +36,9 @@
 
 - (gDoubanApi *)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andRedirectURL:(NSString *)url;
 - (void)LoginWithView:(UIView *)view andPermission:(NSString *)permission;
+- (void)Logout;
+- (BOOL)isLogin;
+- (BOOL)isExpired;
 
 @end
 

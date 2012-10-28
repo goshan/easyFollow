@@ -23,12 +23,15 @@
 @property (retain, nonatomic) IBOutlet UISwitch *tencentSwitch;
 @property (retain, nonatomic) IBOutlet UISwitch *doubanSwitch;
 
+@property(retain, nonatomic) NSNumber *update;
+
 @property(retain, nonatomic) WBEngine *sina;
 @property(retain, nonatomic) gTencentApi *tencent;
 @property(retain, nonatomic) gDoubanApi *douban;
-@property(retain, nonatomic) NSMutableDictionary *loginStatus;
 
 @property (retain, nonatomic) IBOutlet UITextField *IPText;
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isUpdate:(BOOL)update;
 
 
 - (IBAction)renrenLogin:(id)sender;

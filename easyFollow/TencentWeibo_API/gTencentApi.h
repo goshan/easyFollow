@@ -23,12 +23,16 @@
 
 @property(retain, nonatomic) UIWebView *tencentLoginView;
 @property(retain, nonatomic) OpenSdkOauth *tencent;
+@property(retain, nonatomic) NSDate *expireAt;
 
 @property(retain, nonatomic) id <gTencentDelegate> delegate;
 
 
 - (gTencentApi *)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret;
 - (void)LoginWith:(UIView *)view;
+- (void)LogOut;
+- (BOOL)isLogin;
+- (BOOL)isExpired;
 
 
 @end

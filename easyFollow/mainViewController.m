@@ -182,6 +182,12 @@
 
 
 //================function--init config ==begin====================//
+- (void) showRegistPage{
+    registViewController *regist = [[[registViewController alloc] initWithNibName:@"registViewController" bundle:nil isUpdate:YES] autorelease];
+    [self.navigationController presentModalViewController:regist animated:YES];
+}
+
+
 - (void) initConfigView{
     // TODO: add frame size into Utils
     //init image view
@@ -210,8 +216,7 @@
     //init navigation button
     self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
     [self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    //[self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"barbuttonItem_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [self.navigationItem.rightBarButtonItem setAction:@selector(showRegistPage)];
     
     //star wobble timer
     [self makeStarWobble:YES];
@@ -334,8 +339,6 @@
 
 
 
-
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -375,11 +378,10 @@
     
     //login when need
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    
-    //if ([[defaults objectForKey:@"gsf_using_sns"] isEqualToString:@"0,0,0,0"]){
-        registViewController *regist = [[[registViewController alloc] initWithNibName:@"registViewController" bundle:nil] autorelease];
+    if (![defaults objectForKey:@"gsf_using_sns"] || [[defaults objectForKey:@"gsf_using_sns"] isEqualToString:@"0,0,0,0"]){
+        registViewController *regist = [[[registViewController alloc] initWithNibName:@"registViewController" bundle:nil isUpdate:NO] autorelease];
         [self.navigationController presentModalViewController:regist animated:YES];
-    //}
+    }
 }
 
 - (void)viewDidUnload

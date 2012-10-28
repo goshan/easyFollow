@@ -120,6 +120,13 @@
 
 - (void)startAuthorize
 {
+    //goshan add: remove all cookies about AuthorizeURL to make change user
+    NSHTTPCookieStorage* cookies = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+	NSArray* allCookies = [cookies cookiesForURL:[NSURL URLWithString:kWBAuthorizeURL]];
+	for (NSHTTPCookie* cookie in allCookies) {
+		[cookies deleteCookie:cookie];
+	}
+    
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:appKey, @"client_id",
                                                                       @"code", @"response_type",
                                                                       redirectURI, @"redirect_uri", 
