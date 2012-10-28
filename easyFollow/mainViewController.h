@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "tipsAlert.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <CoreLocation/CoreLocation.h>
 #import "foundPersonViewController.h"
@@ -20,6 +21,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *shakeButton;
 @property (retain, nonatomic) IBOutlet UIButton *showButton;
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
+@property(retain, nonatomic) tipsAlert *tips;
 
 @property (nonatomic) SystemSoundID soundID;
 

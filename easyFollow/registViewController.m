@@ -38,6 +38,7 @@
 @synthesize tencentSwitch = _tencentSwitch;
 @synthesize doubanSwitch = _doubanSwitch;
 @synthesize update = _update;
+@synthesize tips = _tips;
 @synthesize sina = _sina;
 @synthesize tencent = _tencent;
 @synthesize douban = _douban;
@@ -88,7 +89,13 @@
     }
 }
 
+- (void)hiddenRegistView{
+    [self dismissModalViewControllerAnimated:YES];
+}
+
 - (IBAction)regist:(id)sender {
+    [_tips showRegistLoadingWith:self.view];
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSString *server_ip = _IPText.text;
@@ -96,12 +103,12 @@
     
     //push user regist data to server
     //make url request
-    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
+    NSString *url_str = [NSString stringWithFormat:@"http://%@", @"localhost:3000"];
     NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
-    NSString *default_info = @"1";
+    NSString *default_info = @"0";
     NSString *using_sns = [NSString stringWithFormat:@"%d,%d,%d,%d", _renrenSwitch.on, _sinaSwitch.on, _tencentSwitch.on, _doubanSwitch.on];
     [defaults setObject:using_sns forKey:@"gsf_using_sns"];
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
@@ -115,7 +122,7 @@
     NSString *renren_token = [defaults objectForKey:@"gsf_renren_token"];
     NSString *renren_expire = [dateFormatter stringFromDate:[defaults objectForKey:@"gsf_renren_expire"]];
     NSString *renren_permissions = [[defaults objectForKey:@"gsf_renren_permissions"] componentsJoinedByString:@","];
-    if (renren_token && renren_expire && renren_permissions){
+    if (_renrenSwitch.on && renren_token && renren_expire && renren_permissions){
         [params setObject:renren_token forKey:@"renren_token"];
         [params setObject:renren_expire forKey:@"renren_expire"];
         [params setObject:renren_permissions forKey:@"renren_permissions"];
@@ -124,7 +131,7 @@
     NSString *sina_token = [defaults objectForKey:@"gsf_sina_token"];
     NSString *sina_expire = [defaults objectForKey:@"gsf_sina_expire"];
     NSString *sina_id = [defaults objectForKey:@"gsf_sina_id"];
-    if (sina_id && sina_token && sina_expire){
+    if (_sinaSwitch.on && sina_id && sina_token && sina_expire){
         [params setObject:sina_id forKey:@"sina_id"];
         [params setObject:sina_token forKey:@"sina_token"];
         [params setObject:sina_expire forKey:@"sina_expire"];
@@ -133,7 +140,7 @@
     NSString *tencent_token = [defaults objectForKey:@"gsf_tencent_token"];
     NSString *tencent_expire = [defaults objectForKey:@"gsf_tencent_expire"];
     NSString *tencent_openid = [defaults objectForKey:@"gsf_tencent_openid"];
-    if (tencent_token && tencent_expire && tencent_openid){
+    if (_tencentSwitch.on && tencent_token && tencent_expire && tencent_openid){
         [params setObject:tencent_token forKey:@"tencent_token"];
         [params setObject:tencent_expire forKey:@"tencent_expire"];
         [params setObject:tencent_openid forKey:@"tencent_openid"];
@@ -142,7 +149,7 @@
     NSString *douban_token = [defaults objectForKey:@"gsf_douban_token"];
     NSString *douban_expire = [defaults objectForKey:@"gsf_douban_expire"];
     NSString *douban_id = [defaults objectForKey:@"gsf_douban_id"];
-    if (douban_id && douban_token && douban_expire){
+    if (_doubanSwitch.on && douban_id && douban_token && douban_expire){
         [params setObject:douban_id forKey:@"douban_id"];
         [params setObject:douban_token forKey:@"douban_token"];
         [params setObject:douban_expire forKey:@"douban_expire"];
@@ -150,9 +157,9 @@
     //params for update
     if ([_update intValue]){
         [params setObject:[defaults objectForKey:@"gsf_token"] forKey:@"token"];
-        [params setObject:@"true" forKey:@"update"];
     }
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/create_user.json" parameters:params];
+    NSString *path = [_update intValue] ? @"/update_user.json" : @"/create_user.json";
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:path parameters:params];
     
     //put request
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
@@ -161,25 +168,29 @@
         NSString *result = [feedback objectForKey:@"result"];
         
         if ([result isEqualToString:@"sucess"]){
-            NSLog(@"regist sucess!!");
-            
+            NSArray *list = [feedback objectForKey:@"list"];
+            [_tips showRegistFinishedWith:self.view andList:list];
         }
         else {
-            NSLog(@"some error!!");
+            NSLog(@"user error!!");
         }
         [defaults setObject:[feedback objectForKey:@"user_id"] forKey:@"gsf_user_id"];
         [defaults setObject:[feedback objectForKey:@"token"] forKey:@"gsf_token"];
         
+        //dismiss regist view
+        [self performSelector:@selector(hiddenRegistView) withObject:nil afterDelay:3.0];
+        [_tips hiddenRegistLoading];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
-        //dismiss regist view
-        [self dismissModalViewControllerAnimated:YES];
-        
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [_tips hiddenRegistLoading];
+        [_tips netErrorAlert];
+        
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];
     [operation start];
+    
 }
 
 
@@ -201,6 +212,7 @@
         _douban.delegate = self;
         
         _update = [NSNumber numberWithInt:update];
+        _tips = [[tipsAlert alloc] initWith:self.view];
     }
     return self;
 }

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "tipsAlert.h"
 #import "Renren.h"
 #import "WBEngine.h"
 #import "gTencentApi.h"
@@ -24,7 +25,7 @@
 @property (retain, nonatomic) IBOutlet UISwitch *doubanSwitch;
 
 @property(retain, nonatomic) NSNumber *update;
-
+@property(retain, nonatomic) tipsAlert *tips;
 @property(retain, nonatomic) WBEngine *sina;
 @property(retain, nonatomic) gTencentApi *tencent;
 @property(retain, nonatomic) gDoubanApi *douban;

@@ -39,6 +39,7 @@
 @synthesize starWobbleTimer = _starWobbleTimer;
 @synthesize starBlinkTimer = _starBlinkTimer;
 @synthesize starRotateTimer = _starRotateTimer;
+@synthesize tips = _tips;
 
 
 
@@ -49,7 +50,7 @@
 
 
 
-//================button: all bottom button ==begin====================//
+//================button: name label button ==begin====================//
 
 - (void) makeLabelShow:(NSString *)msg{
     BOOL show = YES;
@@ -59,7 +60,7 @@
     [gAnimation makeView:_nameLabel toShow:show withDuration:0.5];
 }
 
-//================button: all bottom button ==end====================//
+//================button: name label button ==end====================//
 
 
 //================button: all bottom button ==begin====================//
@@ -112,7 +113,7 @@
         [self starBlink];
         _starBlinkTimer = [NSTimer scheduledTimerWithTimeInterval:starBlinkFrequency target:self selector:@selector(starBlink) userInfo:nil repeats:YES];
     }
-    else {
+    else if ([_starBlinkTimer isValid]){
         [_starBlinkTimer invalidate];
     }
 }
@@ -131,7 +132,7 @@
         [self starRotate];
         _starRotateTimer = [NSTimer scheduledTimerWithTimeInterval:starRotateCycle target:self selector:@selector(starRotate) userInfo:nil repeats:YES];
     }
-    else {
+    else if ([_starRotateTimer isValid]){
         [_starRotateTimer invalidate];
     }
 }
@@ -178,6 +179,19 @@
     [UIView commitAnimations];
 }
 
+- (void) flashToInit{
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
+    label.backgroundColor = [UIColor whiteColor];
+    label.alpha = 0.0;
+    [self.view addSubview:label];
+    [self closeScreen:label];
+    [self performSelector:@selector(initConfigView) withObject:nil afterDelay:0.5];
+    //star wobble timer
+    [self makeStarBlink:NO];
+    [self makeStarWobble:YES];
+    [self performSelector:@selector(openScreen:) withObject:label afterDelay:0.6];
+}
+
 //================image view: shining star ==end====================//
 
 
@@ -208,19 +222,16 @@
     _shakeButton.alpha = 1.0;
     [_shakeButton addTarget:self action:@selector(shakePhone) forControlEvents:UIControlEventTouchUpInside];
     _showButton.alpha = 0.0;
+    [_showButton addTarget:self action:@selector(loadPersonView) forControlEvents:UIControlEventTouchUpInside];
     
     //init label
     _nameLabel.alpha = 0.0;
-    _nameLabel.textColor = [UIColor colorWithRed:153.0/255.0 green:71.0 blue:255.0 alpha:1.0];
+    _nameLabel.font = [UIFont fontWithName:nil size:28];
+    _nameLabel.textColor = [UIColor colorWithRed:242.0/255.0 green:255.0/255.0 blue:103.0/255.0 alpha:1.0];
     
     //init navigation button
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(shakePhone)] autorelease];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(showRegistPage)] autorelease];
     [self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    [self.navigationItem.rightBarButtonItem setAction:@selector(showRegistPage)];
-    
-    //star wobble timer
-    [self makeStarWobble:YES];
-    [self makeStarBlink:NO];
 }
 
 //================function--init config ==end====================//
@@ -249,12 +260,19 @@
 //================function--state: shake ==end====================//
 
 
-//================function--state: loading ==begin====================//
-
-- (void) netErrorAlert{
-    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"网络错误" message:@"少年，网络出错了！！" delegate:nil cancelButtonTitle:@"囧" otherButtonTitles:nil] autorelease];
-    [alert show];
+//================function--state: show friend ==begin====================//
+//gen a person view
+- (void) loadPersonView{
+    [self.navigationController pushViewController:_personViewController animated:YES];
+    [self initConfigView];
+    [self makeStarWobble:YES];
 }
+
+
+//================function--state: show friend ==begin====================//
+
+
+//================function--state: loading ==begin====================//
 
 - (void) lookForNearbyWithLatitude:(CGFloat)latitude andLongitude:(CGFloat)longitude{
     NSLog(@"Our current Longitude is %f",longitude);
@@ -271,7 +289,7 @@
     
     //***** make url request
     NSString *server_ip = [defaults objectForKey:@"server_ip"];
-    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
+    NSString *url_str = [NSString stringWithFormat:@"http://%@", @"localhost:3000"];
     NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -279,34 +297,33 @@
                             longitude_str, @"longitude",
                             latitude_str, @"latitude", 
                             nil];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/users/lookfor.json" parameters:params];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/lookfor.json" parameters:params];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         //get friend json from server
         NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
         NSString *result = [feedback objectForKey:@"result"];
-        NSString *name = [feedback objectForKey:@"name"];
+        NSString *name = [[feedback objectForKey:@"nearby"] objectForKey:@"name"];
         if ([result isEqualToString:@"sucess"]){
             //show person view with feedback data
-            _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil withData:feedback];
+            _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil withData:[feedback objectForKey:@"nearby"]];
             [self makeDoubleStarAppearWithName:name];
         }
         else if ([result isEqualToString:@"nearby_not_found"]){
             NSLog(@"nearby not found!!");
+            [_tips nearByNotFoundAlert];
+            [self flashToInit];
         }
         else if ([result isEqualToString:@"not_regist"]){
             NSLog(@"you have not regist!!");
+            [_tips notRegistAlert];
+            [self flashToInit];
         }
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 320, 480)];
-        label.backgroundColor = [UIColor blackColor];
-        label.alpha = 0.0;
-        [self.view addSubview:label];
-        [self closeScreen:label];
-        [self performSelector:@selector(initConfigView) withObject:nil afterDelay:0.5];
-        [self performSelector:@selector(openScreen:) withObject:label afterDelay:0.6];
+        [_tips netErrorAlert];
+        [self flashToInit];
         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -315,24 +332,8 @@
     
 }
 
-- (void) stopFinding{
-    
-}
 //================function--state: loading ==end====================//
 
-
-
-//================function--state: show friend ==begin====================//
-//gen a person view
-- (void) loadPersonViewWith:(NSDictionary *)data{
-    
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)] autorelease];
-    [self.navigationItem.rightBarButtonItem setTitle:@"关注"];
-    [self.navigationItem.rightBarButtonItem setAction:@selector(follow)];
-}
-
-
-//================function--state: show friend ==begin====================//
 
 
 
@@ -346,6 +347,7 @@
         // Custom initialization
         NSString *path = [[NSBundle mainBundle] pathForResource:@"glass" ofType:@"wav"];
         AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &_soundID);
+        _tips = [[tipsAlert alloc] initWith:self.view];
         
         _locationManager = [[CLLocationManager alloc] init];
         _locationManager.delegate = self;

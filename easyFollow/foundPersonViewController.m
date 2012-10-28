@@ -7,6 +7,7 @@
 //
 
 #import "foundPersonViewController.h"
+#import "gAnimation.h"
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 
@@ -15,9 +16,11 @@
 @implementation foundPersonViewController
 
 
-@synthesize avatar = _avatar;
-@synthesize name = _name;
-@synthesize infoTable = _infoTable;
+@synthesize renrenLabel = _renrenLabel;
+@synthesize sinaLabel = _sinaLabel;
+@synthesize tencentLabel = _tencentLabel;
+@synthesize doubanLabel = _doubanLabel;
+@synthesize avatarView = _avatarView;
 @synthesize user_id = _user_id;
 @synthesize user_name = _user_name;
 @synthesize avatar_url = _avatar_url;
@@ -26,20 +29,6 @@
 
 
 
-
-
-//nav bar button function
-- (void)cancel {
-    NSLog(@"cancel clicked!");
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.5];
-    
-    
-    [self.view removeFromSuperview];
-    [self release];
-    
-}
 
 - (void)follow {
     NSLog(@"follow clicked!");
@@ -92,24 +81,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        NSMutableArray *dict = [[NSMutableArray alloc] init];
-        for (id key in data){
-            if ([key isEqualToString:@"id"]){
-                _user_id = [data objectForKey:key];
-            }
-            else if ([key isEqualToString:@"name"]){
-                _user_name = [data objectForKey:key];
-            }
-            else if ([key isEqualToString:@"avatar"]){
-                _avatar_url = [data objectForKey:key];
-            }
-            else {
-                NSDictionary *sns = [NSDictionary dictionaryWithObjectsAndKeys:key, @"sns_name", [data objectForKey:key], @"sns_user_name", nil];
-                [dict addObject:sns];
-            }
-        }
-        _friendData = dict;
-        [dict release];
+        _user_id = [data objectForKey:@"id"];
+        _user_name = [data objectForKey:@"name"];
+        _avatar_url = [data objectForKey:@"avatar"];
+        _friendData = data;
+        
+        CGFloat rotation = (45.0 * M_PI) / 180.0;
+        CGAffineTransform transform = CGAffineTransformMakeRotation(rotation);
+        _avatarView.transform = transform;
+        _avatarView.alpha = 1.0;
     }
     return self;
 }
@@ -128,98 +108,66 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    _infoTable.allowsSelection = NO;
-//    NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
-//    NSData *data = [NSData dataWithContentsOfURL:url];
-//    UIImage *image = [UIImage imageWithData:data];
-//    _avatar.image = image;
-//    _name.text = [_friendData objectForKey:@"name"];
+    self.title = _user_name;
+    NSLog(@"======%@", _avatar_url);
+    NSURL *url = [NSURL URLWithString:_avatar_url];
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    UIImage *image = [UIImage imageWithData:data];
+    _avatarView.image = image;
+    
+    
+    if ([_friendData objectForKey:@"renren"]){
+        _renrenLabel.text = [_friendData objectForKey:@"renren"];
+    }
+    else {
+        _renrenLabel.text = @"";
+    }
+    if ([_friendData objectForKey:@"sina"]){
+        _sinaLabel.text = [_friendData objectForKey:@"sina"];
+    }
+    else {
+        _sinaLabel.text = @"";
+    }
+    if ([_friendData objectForKey:@"tencent"]){
+        _tencentLabel.text = [_friendData objectForKey:@"tencent"];
+    }
+    else {
+        _tencentLabel.text = @"";
+    }
+    if ([_friendData objectForKey:@"douban"]){
+        _doubanLabel.text = [_friendData objectForKey:@"douban"];
+    }
+    else {
+        _doubanLabel.text = @"";
+    }
+    _renrenLabel.textColor = [UIColor colorWithRed:248.0/255.0 green:255.0/255.0 blue:175.0/255.0 alpha:1.0];
+    _sinaLabel.textColor = [UIColor colorWithRed:248.0/255.0 green:255.0/255.0 blue:175.0/255.0 alpha:1.0];
+    _tencentLabel.textColor = [UIColor colorWithRed:248.0/255.0 green:255.0/255.0 blue:175.0/255.0 alpha:1.0];
+    _doubanLabel.textColor = [UIColor colorWithRed:248.0/255.0 green:255.0/255.0 blue:175.0/255.0 alpha:1.0];
+    
 }
 
 - (void)viewDidUnload
 {
-    [self setAvatar:nil];
-    [self setName:nil];
-    [self setInfoTable:nil];
+    [self setRenrenLabel:nil];
+    [self setSinaLabel:nil];
+    [self setTencentLabel:nil];
+    [self setDoubanLabel:nil];
+    [self setAvatarView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
 
 - (void)dealloc {
-    [_avatar release];
-    [_name release];
-    [_infoTable release];
     [_friendData release];
+    [_renrenLabel release];
+    [_sinaLabel release];
+    [_tencentLabel release];
+    [_doubanLabel release];
+    [_avatarView release];
     [super dealloc];
 }
-
-#pragma mark - Table View data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    // Return the number of rows in the section.
-    return _friendData.count;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
-    return 50.0;
-}
-
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    switch (section) {
-        case 0:
-            return @"人人";
-            break;
-        case 1:
-            return @"新浪";
-            break;
-        default:
-            return @"";
-            break;
-    }
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"personCell_id";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        NSArray* objects =  [[NSBundle  mainBundle] loadNibNamed:@"personCell" owner:nil options:nil];
-        cell = [objects objectAtIndex:0];
-    }
-    
-    // Set up the cell...
-//    UIImageView *snsAvatar = (UIImageView *)[cell viewWithTag:1];
-//    UILabel *snsName = (UILabel *)[cell viewWithTag:2];
-//    
-//    if (indexPath.section == 0){
-//        NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
-//        NSData *data = [NSData dataWithContentsOfURL:url];
-//        UIImage *image = [UIImage imageWithData:data];
-//        snsAvatar.image = image;
-//        snsName.text = [_friendData objectForKey:@"renren_name"];
-//    }
-//    else {
-//        snsAvatar.image = [UIImage imageNamed:[_friendData objectForKey:@"sina_avatar"]];
-//        snsName.text = [_friendData objectForKey:@"sina_name"];
-//    }
-    
-    return cell;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 50.0;
-}
-
 
 
 @end

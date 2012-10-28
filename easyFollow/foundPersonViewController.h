@@ -8,13 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface foundPersonViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface foundPersonViewController : UIViewController
 
-@property (retain, nonatomic) IBOutlet UIImageView *avatar;
+@property (retain, nonatomic) IBOutlet UILabel *renrenLabel;
+@property (retain, nonatomic) IBOutlet UILabel *sinaLabel;
+@property (retain, nonatomic) IBOutlet UILabel *tencentLabel;
+@property (retain, nonatomic) IBOutlet UILabel *doubanLabel;
+@property (retain, nonatomic) IBOutlet UIImageView *avatarView;
 
-@property (retain, nonatomic) IBOutlet UILabel *name;
 
-@property (retain, nonatomic) IBOutlet UITableView *infoTable;
 
 @property(retain, nonatomic) NSString *user_id;
 
@@ -22,7 +24,7 @@
 
 @property(retain, nonatomic) NSString *avatar_url;
 
-@property(retain, nonatomic) NSArray *friendData;
+@property(retain, nonatomic) NSDictionary *friendData;
 
 
 
