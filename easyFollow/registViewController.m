@@ -103,7 +103,7 @@
     
     //push user regist data to server
     //make url request
-    NSString *url_str = [NSString stringWithFormat:@"http://%@", @"localhost:3000"];
+    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
     NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
