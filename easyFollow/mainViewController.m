@@ -347,6 +347,8 @@
         // Custom initialization
         NSString *path = [[NSBundle mainBundle] pathForResource:@"glass" ofType:@"wav"];
         AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &_soundID);
+        
+        //!!!Warning: here can not use [initWithView:] function, or can not present modal view for regist page.
         _tips = [[tipsAlert alloc] init];
         
         _locationManager = [[CLLocationManager alloc] init];
