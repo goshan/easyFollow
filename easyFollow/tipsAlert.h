@@ -23,8 +23,12 @@
 - (void)netErrorAlert;
 - (void)notRegistAlert;
 - (void)nearByNotFoundAlert;
+- (void)alreadyFriendAlert;
 - (void)showRegistLoadingWith:(UIView *)view;
+- (void)showFollowLoadingWith:(UIView *)view;
 - (void)hiddenRegistLoading;
+- (void)hiddenFollowLoading;
 - (void)showRegistFinishedWith:(UIView *)view andList:(NSArray *)list;
+- (void)showFollowFinishedWith:(UIView *)view andList:(NSArray *)list;
 
 @end

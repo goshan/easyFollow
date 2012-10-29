@@ -20,22 +20,29 @@
 @synthesize sinaLabel = _sinaLabel;
 @synthesize tencentLabel = _tencentLabel;
 @synthesize doubanLabel = _doubanLabel;
-@synthesize avatarView = _avatarView;
+@synthesize avatarFrameShining = _avatarFrameShining;
 @synthesize user_id = _user_id;
-@synthesize user_name = _user_name;
-@synthesize avatar_url = _avatar_url;
 @synthesize friendData = _friendData;
+@synthesize tips = _tips;
 
 
 
 
+
+- (void) avatarFrameBlink{
+    [gAnimation makeView:_avatarFrameShining blinkWithDuration:0.5];
+}
+
+- (void)cancel{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void)follow {
-    NSLog(@"follow clicked!");
+    [_tips showFollowLoadingWith:self.view];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *server_ip = [defaults objectForKey:@"server_ip"];
-    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
+    NSString *url_str = [NSString stringWithFormat:@"http://%@", @"localhost:3000"];
     NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     
@@ -55,16 +62,19 @@
         NSString *result = [feedback objectForKey:@"result"];
         
         if ([result isEqualToString:@"sucess"]){
-            NSLog(@"follow sucess!!");
-            [self cancel];
-            
+            NSArray *list = [feedback objectForKey:@"list"];
+            [_tips showFollowFinishedWith:self.view andList:list];
+            [self performSelector:@selector(cancel) withObject:nil afterDelay:3.0];
         }
         else {
-            NSLog(@"follow failed");
+            [_tips alreadyFriendAlert];
         }
+        [_tips hiddenFollowLoading];
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        [_tips netErrorAlert];
+        
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];
@@ -82,14 +92,8 @@
     if (self) {
         // Custom initialization
         _user_id = [data objectForKey:@"id"];
-        _user_name = [data objectForKey:@"name"];
-        _avatar_url = [data objectForKey:@"avatar"];
         _friendData = data;
-        
-        CGFloat rotation = (45.0 * M_PI) / 180.0;
-        CGAffineTransform transform = CGAffineTransformMakeRotation(rotation);
-        _avatarView.transform = transform;
-        _avatarView.alpha = 1.0;
+        _tips = [[tipsAlert alloc] initWith:self.view];
     }
     return self;
 }
@@ -108,12 +112,41 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = _user_name;
-    NSLog(@"======%@", _avatar_url);
-    NSURL *url = [NSURL URLWithString:_avatar_url];
+    self.title = [_friendData objectForKey:@"name"];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)];
+    [self.navigationItem.leftBarButtonItem setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
+    
+    UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(237, 242, 56, 56)];
+    NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
     NSData *data = [NSData dataWithContentsOfURL:url];
     UIImage *image = [UIImage imageWithData:data];
-    _avatarView.image = image;
+    avatar.image = image;
+    CGFloat rotation = (-45.0 * M_PI) / 180.0;
+    CGAffineTransform transform = CGAffineTransformMakeRotation(rotation);
+    avatar.transform = transform;
+    CALayer *layer = avatar.layer;
+    layer.masksToBounds = YES;
+    layer.cornerRadius = 13.0;
+    [self.view addSubview:avatar];
+    [avatar release];
+    
+    UIImageView *chain = [[UIImageView alloc] initWithFrame:CGRectMake(261, 74, 9, 167)];
+    chain.image = [UIImage imageNamed:@"chain"];
+    [self.view addSubview:chain];
+    [chain release];
+    
+    UIImageView *avatarFrame = [[UIImageView alloc] initWithFrame:CGRectMake(194, 202, 126, 140)];
+    avatarFrame.image = [UIImage imageNamed:@"avatar_frame"];
+    [self.view addSubview:avatarFrame];
+    [avatarFrame release];
+    
+    _avatarFrameShining = [[UIImageView alloc] initWithFrame:CGRectMake(194, 202, 126, 140)];
+    _avatarFrameShining.image = [UIImage imageNamed:@"avatar_frame_shining"];
+    _avatarFrameShining.alpha = 0.0;
+    [self.view addSubview:_avatarFrameShining];
+    [_avatarFrameShining release];
+    [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(avatarFrameBlink) userInfo:nil repeats:YES];
     
     
     if ([_friendData objectForKey:@"renren"]){
@@ -145,6 +178,10 @@
     _tencentLabel.textColor = [UIColor colorWithRed:248.0/255.0 green:255.0/255.0 blue:175.0/255.0 alpha:1.0];
     _doubanLabel.textColor = [UIColor colorWithRed:248.0/255.0 green:255.0/255.0 blue:175.0/255.0 alpha:1.0];
     
+    UIButton *followButton = [[UIButton alloc] initWithFrame:CGRectMake(228, 223, 72, 128)];
+    [followButton addTarget:self action:@selector(follow) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:followButton];
+    
 }
 
 - (void)viewDidUnload
@@ -153,7 +190,8 @@
     [self setSinaLabel:nil];
     [self setTencentLabel:nil];
     [self setDoubanLabel:nil];
-    [self setAvatarView:nil];
+    [self setAvatarFrameShining:nil];
+    [self setUser_id:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -165,7 +203,8 @@
     [_sinaLabel release];
     [_tencentLabel release];
     [_doubanLabel release];
-    [_avatarView release];
+    [_avatarFrameShining release];
+    [_user_id release];
     [super dealloc];
 }
 

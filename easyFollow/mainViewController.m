@@ -347,7 +347,7 @@
         // Custom initialization
         NSString *path = [[NSBundle mainBundle] pathForResource:@"glass" ofType:@"wav"];
         AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &_soundID);
-        _tips = [[tipsAlert alloc] initWith:self.view];
+        _tips = [[tipsAlert alloc] init];
         
         _locationManager = [[CLLocationManager alloc] init];
         _locationManager.delegate = self;
@@ -374,6 +374,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self initConfigView];
+    [self makeStarWobble:YES];
     
     // The "shake" nofification is posted by the PaintingWindow object when user shakes the device
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(shakePhone) name:@"shake" object:nil];

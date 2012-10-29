@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "tipsAlert.h"
 
 @interface foundPersonViewController : UIViewController
 
@@ -14,17 +15,14 @@
 @property (retain, nonatomic) IBOutlet UILabel *sinaLabel;
 @property (retain, nonatomic) IBOutlet UILabel *tencentLabel;
 @property (retain, nonatomic) IBOutlet UILabel *doubanLabel;
-@property (retain, nonatomic) IBOutlet UIImageView *avatarView;
 
-
+@property(retain, nonatomic) UIImageView *avatarFrameShining;
 
 @property(retain, nonatomic) NSString *user_id;
 
-@property(retain, nonatomic) NSString *user_name;
-
-@property(retain, nonatomic) NSString *avatar_url;
-
 @property(retain, nonatomic) NSDictionary *friendData;
+
+@property(retain, nonatomic) tipsAlert *tips;
 
 
 
