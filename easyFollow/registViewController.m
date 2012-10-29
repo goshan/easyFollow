@@ -266,6 +266,8 @@
         UISwitch *temp_switch = [switchArray objectAtIndex:i];
         temp_switch.on = num;
     }
+    
+    _IPText.text = [defaults objectForKey:@"server_ip"];
 }
 
 - (void)viewDidUnload

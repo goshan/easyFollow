@@ -42,7 +42,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *server_ip = [defaults objectForKey:@"server_ip"];
-    NSString *url_str = [NSString stringWithFormat:@"http://%@", @"localhost:3000"];
+    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
     NSURL *url = [NSURL URLWithString:url_str];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     
