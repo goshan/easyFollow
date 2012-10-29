@@ -151,9 +151,7 @@
     [self makeStarRotate:YES];
     [gAnimation moveView:_starViewDynamic toFinalFrame:CGRectMake(103, 63, 221, 216) withDuration:3*starRotateCycle];
     [self performSelector:@selector(makeStarRotate:) withObject:NO afterDelay:2*starRotateCycle];
-    
     [self performSelector:@selector(makeStaticStarShow) withObject:nil afterDelay:3*starRotateCycle];
-    //[self makeShowButtonShow:YES];
     [self performSelector:@selector(makeShowButtonShow:) withObject:@"show" afterDelay:3*starRotateCycle];
     _nameLabel.text = name;
     [self performSelector:@selector(makeLabelShow:) withObject:@"show" afterDelay:3*starRotateCycle];
@@ -428,7 +426,10 @@
 	CLLocation *location = newLocation;
     
     //call lookfor function to make server find friend nearby
-    [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
+    //!!!Warning:sometimes may locate twice, this may cause crash, so you should check whether newlocation and oldlocation are occur recently
+    if (![oldLocation timestamp] || [[newLocation timestamp] timeIntervalSinceDate:[oldLocation timestamp]] > 1){
+        [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
+    }
     
     //stop location
 	[_locationManager stopUpdatingLocation];
