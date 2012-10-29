@@ -426,19 +426,34 @@
 	CLLocation *location = newLocation;
     
     //call lookfor function to make server find friend nearby
-    //!!!Warning:in ios6 sometimes may locate twice, this may cause crash, so you should check whether newlocation and oldlocation are occur recently
-    NSArray *versionCompatibility = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
-    if ( 6 == [[versionCompatibility objectAtIndex:0] intValue] ) {
-        // iOS6 is installed
-        if (![oldLocation timestamp] || [[newLocation timestamp] timeIntervalSinceDate:[oldLocation timestamp]] > 1){
-            NSLog(@"=========111");
-            [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
-        }
-        
-    } else {
-        // iOS5 is installed
+    //!!!Warning:sometimes or some iphone may locate twice, this may cause crash, so you should check whether newlocation and oldlocation are occur recently
+    NSLog(@"========%@, %@", [newLocation timestamp], [oldLocation timestamp]);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSDate *preStamp = [defaults objectForKey:@"gsf_location_timestamp"];
+    NSLog(@"1111====%@, %@", [newLocation timestamp], preStamp);
+    if (!preStamp || [[newLocation timestamp] timeIntervalSinceDate:preStamp] > 5.0){
+        NSLog(@"11111111");
+        [defaults setObject:[newLocation timestamp] forKey:@"gsf_location_timestamp"];
         [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
-    }    
+    }
+    else {
+        NSLog(@"2222222");
+    }
+    
+    
+//    NSArray *versionCompatibility = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+//    if ( 6 == [[versionCompatibility objectAtIndex:0] intValue] ) {
+//        // iOS6 is installed
+//        NSLog(@"666666");
+//        if (![oldLocation timestamp] || [[newLocation timestamp] timeIntervalSinceDate:[oldLocation timestamp]] > 1){
+//            [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
+//        }
+//        
+//    } else {
+//        // iOS5 is installed
+//        NSLog(@"555555");
+//        [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
+//    }    
     //stop location
 	[_locationManager stopUpdatingLocation];
 }
