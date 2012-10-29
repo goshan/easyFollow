@@ -426,15 +426,19 @@
 	CLLocation *location = newLocation;
     
     //call lookfor function to make server find friend nearby
-    //!!!Warning:sometimes may locate twice, this may cause crash, so you should check whether newlocation and oldlocation are occur recently
-    if (![oldLocation timestamp] || [[newLocation timestamp] timeIntervalSinceDate:[oldLocation timestamp]] > 1){
+    //!!!Warning:in ios6 sometimes may locate twice, this may cause crash, so you should check whether newlocation and oldlocation are occur recently
+    NSArray *versionCompatibility = [[UIDevice currentDevice].systemVersion componentsSeparatedByString:@"."];
+    if ( 6 == [[versionCompatibility objectAtIndex:0] intValue] ) {
+        // iOS6 is installed
+        if (![oldLocation timestamp] || [[newLocation timestamp] timeIntervalSinceDate:[oldLocation timestamp]] > 1){
+            NSLog(@"=========111");
+            [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
+        }
+        
+    } else {
+        // iOS5 is installed
         [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
-    }
-    else {
-        [_tips locateFrequentAlert];
-        [self flashToInit];
-    }
-    
+    }    
     //stop location
 	[_locationManager stopUpdatingLocation];
 }
