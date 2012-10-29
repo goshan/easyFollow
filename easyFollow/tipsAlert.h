@@ -24,6 +24,7 @@
 - (void)notRegistAlert;
 - (void)nearByNotFoundAlert;
 - (void)alreadyFriendAlert;
+- (void)locateFrequentAlert;
 - (void)showRegistLoadingWith:(UIView *)view;
 - (void)showFollowLoadingWith:(UIView *)view;
 - (void)hiddenRegistLoading;

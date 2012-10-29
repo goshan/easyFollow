@@ -430,6 +430,10 @@
     if (![oldLocation timestamp] || [[newLocation timestamp] timeIntervalSinceDate:[oldLocation timestamp]] > 1){
         [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
     }
+    else {
+        [_tips locateFrequentAlert];
+        [self flashToInit];
+    }
     
     //stop location
 	[_locationManager stopUpdatingLocation];

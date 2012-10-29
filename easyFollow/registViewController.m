@@ -109,6 +109,13 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSString *default_info = @"0";
+    NSArray *switchArray = [NSArray arrayWithObjects:_renrenSwitch, _sinaSwitch, _tencentSwitch, _doubanSwitch, nil];
+    for (int i=0; i<switchArray.count; i++){
+        UISwitch *s = [switchArray objectAtIndex:i];
+        if (s.on){
+            default_info = [NSString stringWithFormat:@"%d", i];
+        }
+    }
     NSString *using_sns = [NSString stringWithFormat:@"%d,%d,%d,%d", _renrenSwitch.on, _sinaSwitch.on, _tencentSwitch.on, _doubanSwitch.on];
     [defaults setObject:using_sns forKey:@"gsf_using_sns"];
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];

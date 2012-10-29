@@ -35,6 +35,11 @@
     [alert show];
 }
 
+- (void)locateFrequentAlert{
+    UIAlertView *alert = [[[UIAlertView alloc] initWithTitle:@"查找失败" message:@"晃动太频繁容易扯着蛋哦~" delegate:nil cancelButtonTitle:@"不要啊，魂淡！" otherButtonTitles:nil] autorelease];
+    [alert show];
+}
+
 - (void)showRegistLoadingWith:(UIView *)view{
     _loadingSpinner.labelText = NSLocalizedString(@"绑定中...", @"Loading Spinner");
     [view addSubview:_loadingSpinner];
