@@ -109,6 +109,7 @@
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSString *default_info = @"0";
+    NSString *signup_from = @"1";
     NSArray *switchArray = [NSArray arrayWithObjects:_renrenSwitch, _sinaSwitch, _tencentSwitch, _doubanSwitch, nil];
     for (int i=0; i<switchArray.count; i++){
         UISwitch *s = [switchArray objectAtIndex:i];
@@ -120,6 +121,7 @@
     [defaults setObject:using_sns forKey:@"gsf_using_sns"];
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     
+    [params setObject:signup_from forKey:@"signup_from"];
     [params setObject:default_info forKey:@"default_info"];
     [params setObject:using_sns forKey:@"using_sns"];
     [params setObject:imei forKey:@"iphone_imei"];
