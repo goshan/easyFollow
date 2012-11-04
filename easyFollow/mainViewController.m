@@ -427,13 +427,12 @@
     
     //call lookfor function to make server find friend nearby
     //!!!Warning:sometimes or some iphone may locate twice, this may cause crash, so you should check whether newlocation and oldlocation are occur recently
-    NSLog(@"========%@, %@", [newLocation timestamp], [oldLocation timestamp]);
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDate *preStamp = [defaults objectForKey:@"gsf_location_timestamp"];
-    NSLog(@"1111====%@, %@", [newLocation timestamp], preStamp);
-    if (!preStamp || [[newLocation timestamp] timeIntervalSinceDate:preStamp] > 5.0){
+    NSLog(@"1111====%@, %@", [NSDate date], preStamp);
+    if (!preStamp || [[NSDate date] timeIntervalSinceDate:preStamp] > 5.0){
         NSLog(@"11111111");
-        [defaults setObject:[newLocation timestamp] forKey:@"gsf_location_timestamp"];
+        [defaults setObject:[NSDate date] forKey:@"gsf_location_timestamp"];
         [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
     }
     else {
