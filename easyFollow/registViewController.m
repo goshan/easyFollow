@@ -16,6 +16,7 @@
 
 #define SinaAPPKey @"1799175553"
 #define SinaSecretKey @"4c2180d2a60b0fa917960e5b7f824a04"
+#define SinaRedirectURI @"http://easyfollow.me/sina_login_success"
 
 #define TencentAPPKey @"801255147"
 #define TencentSecretKey @"875d58fb566cb9e9183830dde6515fbc"
@@ -211,7 +212,7 @@
         _sina = [[WBEngine alloc] initWithAppKey:SinaAPPKey appSecret:SinaSecretKey];
         [_sina setRootViewController:self];
         [_sina setDelegate:self];
-        [_sina setRedirectURI:@"http://"];
+        [_sina setRedirectURI:SinaRedirectURI];
         [_sina setIsUserExclusive:NO];
         
         _tencent = [[gTencentApi alloc] initWithAppKey:TencentAPPKey andAppSecret:TencentSecretKey];
