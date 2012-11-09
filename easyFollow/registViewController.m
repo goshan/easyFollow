@@ -94,8 +94,15 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 
+- (void) stopRegist{
+    [_tips hiddenRegistLoading];
+    [_tips netErrorAlert];
+}
+
 - (IBAction)regist:(id)sender {
     [_tips showRegistLoadingWith:self.view];
+    
+    [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(stopRegist) userInfo:nil repeats:NO];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     

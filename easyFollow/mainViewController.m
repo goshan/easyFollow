@@ -272,9 +272,17 @@
 
 //================function--state: loading ==begin====================//
 
+- (void) stopLookFor{
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [_tips netErrorAlert];
+    [self flashToInit];
+}
+
 - (void) lookForNearbyWithLatitude:(CGFloat)latitude andLongitude:(CGFloat)longitude{
     NSLog(@"Our current Longitude is %f",longitude);
     NSLog(@"Our current Latitude is %f",latitude);
+    
+    [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(stopLookFor) userInfo:nil repeats:NO];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
