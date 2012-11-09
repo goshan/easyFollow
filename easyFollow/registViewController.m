@@ -14,6 +14,7 @@
 
 
 
+BOOL sucess = NO;
 
 @implementation registViewController
 
@@ -80,11 +81,15 @@
 }
 
 - (void) stopRegist{
-    [_tips hiddenRegistLoading];
-    [_tips netErrorAlert];
+    if (!sucess){
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [_tips hiddenRegistLoading];
+        [_tips netErrorAlert];
+    }
 }
 
 - (IBAction)regist:(id)sender {
+    sucess = NO;
     [_tips showRegistLoadingWith:self.view];
     
     [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(stopRegist) userInfo:nil repeats:NO];
@@ -178,11 +183,13 @@
         //dismiss regist view
         [self performSelector:@selector(hiddenRegistView) withObject:nil afterDelay:3.0];
         [_tips hiddenRegistLoading];
+        sucess = YES;
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [_tips hiddenRegistLoading];
         [_tips netErrorAlert];
+        sucess = YES;
         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];

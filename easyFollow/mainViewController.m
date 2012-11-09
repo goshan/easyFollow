@@ -15,7 +15,9 @@
 #import "Util.h"
 
 
-
+BOOL found = NO;
+BOOL isWobble = NO;
+BOOL isBlink = NO;
 
 @implementation mainViewController
 
@@ -82,9 +84,11 @@
 - (void) makeStarWobble:(BOOL)wobble{
     if (wobble){
         _starWobbleTimer = [NSTimer scheduledTimerWithTimeInterval:starWobbleFrequency target:self selector:@selector(starWobble) userInfo:nil repeats:YES];
+        isWobble = YES;
     }
-    else {
+    else if (isWobble){
         [_starWobbleTimer invalidate];
+        isWobble = NO;
     }
 }
 
@@ -101,9 +105,11 @@
     if (blink){
         [self starBlink];
         _starBlinkTimer = [NSTimer scheduledTimerWithTimeInterval:starBlinkFrequency target:self selector:@selector(starBlink) userInfo:nil repeats:YES];
+        isBlink = YES;
     }
-    else if ([_starBlinkTimer isValid]){
+    else if (isBlink){
         [_starBlinkTimer invalidate];
+        isBlink = NO;
     }
 }
 
@@ -262,14 +268,18 @@
 //================function--state: loading ==begin====================//
 
 - (void) stopLookFor{
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [_tips netErrorAlert];
-    [self flashToInit];
+    if (!found){
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [_tips netErrorAlert];
+        [self flashToInit];
+    }
 }
 
 - (void) lookForNearbyWithLatitude:(CGFloat)latitude andLongitude:(CGFloat)longitude{
     NSLog(@"Our current Longitude is %f",longitude);
     NSLog(@"Our current Latitude is %f",latitude);
+    
+    found = NO;
     
     [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(stopLookFor) userInfo:nil repeats:NO];
     
@@ -314,9 +324,11 @@
         }
         
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        found = YES;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {        
         [_tips netErrorAlert];
         [self flashToInit];
+        found = YES;
         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
@@ -425,9 +437,9 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSDate *preStamp = [defaults objectForKey:LOCATION_TIMESTAMP];
     NSLog(@"1111====%@, %@", [NSDate date], preStamp);
+    [defaults setObject:[NSDate date] forKey:LOCATION_TIMESTAMP];
     if (!preStamp || [[NSDate date] timeIntervalSinceDate:preStamp] > 5.0){
         NSLog(@"11111111");
-        [defaults setObject:[NSDate date] forKey:LOCATION_TIMESTAMP];
         [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
     }
     else {
