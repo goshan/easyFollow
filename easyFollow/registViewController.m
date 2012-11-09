@@ -336,6 +336,11 @@
     NSLog(@"========%@", error);
 }
 
+- (void)renrenCloseWeb{
+    NSLog(@"========renren login closed=======");
+    _renrenSwitch.on = NO;
+}
+
 
 
 
@@ -386,6 +391,11 @@
     [engine logIn];
 }
 
+- (void)engineCloseWeb{
+    NSLog(@"========sina login closed=======");
+    _sinaSwitch.on = NO;
+}
+
 
 
 
@@ -406,6 +416,11 @@
     NSLog(@"========tencent load view failed=======");
 }
 
+- (void)tencentCloseWeb{
+    NSLog(@"========tencent login closed=======");
+    _tencentSwitch.on = NO;
+}
+
 
 
 #pragma mark gDouban delegate
@@ -421,7 +436,10 @@
     NSLog(@"========douban login failed=======");
 }
 
-
+- (void)gDoubanCloseWeb{
+    NSLog(@"========douban login closed=======");
+    _doubanSwitch.on = NO;
+}
 
 
 

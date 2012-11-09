@@ -33,7 +33,10 @@
 
 
 
-
+- (void)closeWebView{
+    [_doubanLoginView removeFromSuperview];
+    [_delegate gDoubanCloseWeb];
+}
 
 - (void) readUserInfo{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -81,6 +84,11 @@
     NSURLRequest *request = [NSURLRequest requestWithURL:url];
     [_doubanLoginView loadRequest:request];
     [view addSubview:_doubanLoginView];
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(300, 5, 15, 15)];
+    [button setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(closeWebView) forControlEvents:UIControlEventTouchUpInside];
+    [_doubanLoginView addSubview:button];
 }
 
 - (void)Logout{
@@ -103,6 +111,19 @@
         return YES;
     }
     return NO;
+}
+
+- (void)dealloc{
+    [_appKey release];
+    [_secretKey release];
+    [_redirectURL release];
+    [_accessToken release];
+    [_expiresIn release];
+    [_userId release];
+    [_refreshToken release];
+    [_doubanLoginView release];
+    [_expireAt release];
+    [super dealloc];
 }
 
 

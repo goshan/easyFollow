@@ -43,5 +43,6 @@
 - (void)loginSucess:(gTencentApi *)tencentApi;
 - (void)responseDidFinishLoad:(UIWebView *)webView;
 - (void)responseWebView:(UIWebView *)webView didFailLoadWithError:(NSError *)error;
+- (void)tencentCloseWeb;
 
 @end

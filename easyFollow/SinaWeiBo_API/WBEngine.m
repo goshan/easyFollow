@@ -318,6 +318,11 @@
     }
 }
 
+//**********added by goshan
+- (void)closeWeb{
+    [self.delegate engineCloseWeb];
+}
+
 #pragma mark - WBRequestDelegate Methods
 
 - (void)request:(WBRequest *)request didFinishLoadingWithResult:(id)result

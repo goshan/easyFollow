@@ -30,6 +30,9 @@
 
 - (void)authorize:(WBAuthorize *)authorize didFailWithError:(NSError *)error;
 
+//*******added by goshan
+- (void)closeWeb;
+
 @end
 
 @interface WBAuthorize : NSObject <WBAuthorizeWebViewDelegate, WBRequestDelegate> 

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1661A558164CA652007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A557164CA652007160EA /* close@2x.png */; };
+		1661A55B164CB74F007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A55A164CB74F007160EA /* close@2x.png */; };
+		1661A55D164CBABE007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A55C164CBABE007160EA /* close@2x.png */; };
 		16911F2116280DA70000FCF9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16911F2016280DA70000FCF9 /* Default-568h@2x.png */; };
 		D80F1FA0161E9EB100F59755 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D80F1F8C161E9EB100F59755 /* AFHTTPClient.m */; };
 		D80F1FA1161E9EB100F59755 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D80F1F8E161E9EB100F59755 /* AFHTTPRequestOperation.m */; };
@@ -288,6 +291,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1661A557164CA652007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "SinaWeiBo_API/close@2x.png"; sourceTree = "<group>"; };
+		1661A55A164CB74F007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "TencentWeibo_API/close@2x.png"; sourceTree = "<group>"; };
+		1661A55C164CBABE007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "Douban_API/close@2x.png"; sourceTree = "<group>"; };
 		16911F2016280DA70000FCF9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		D80F1F8B161E9EB100F59755 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
 		D80F1F8C161E9EB100F59755 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
@@ -1123,6 +1129,7 @@
 		D8649769162D5AD800672747 /* SinaWeibo_API */ = {
 			isa = PBXGroup;
 			children = (
+				1661A557164CA652007160EA /* close@2x.png */,
 				D8ED019C162D9C6000D8EDE5 /* CTMBase64 */,
 				D8ED01A0162D9C6000D8EDE5 /* SFHFKeychainUtils */,
 				D8ED01A3162D9C6000D8EDE5 /* WBAuthorize.h */,
@@ -1147,6 +1154,7 @@
 		D864A3A21630197E0006D4E2 /* TencentWeibo_API */ = {
 			isa = PBXGroup;
 			children = (
+				1661A55A164CB74F007160EA /* close@2x.png */,
 				D87F237E1631301600FD6284 /* gTencentApi.h */,
 				D87F237F1631301700FD6284 /* gTencentApi.m */,
 				D864A3A31630199D0006D4E2 /* JSONKit.h */,
@@ -1313,6 +1321,7 @@
 		D8CAA12116355E6F00394FEB /* Douban_API */ = {
 			isa = PBXGroup;
 			children = (
+				1661A55C164CBABE007160EA /* close@2x.png */,
 				D8CAA3051635709100394FEB /* gDoubanApi.h */,
 				D8CAA3061635709100394FEB /* gDoubanApi.m */,
 				D8CAA3081635737C00394FEB /* NSString+ParseCategory.h */,
@@ -1967,6 +1976,9 @@
 				D8AD7BD9163D7FE400527D62 /* sina_info_frame@2x.png in Resources */,
 				D8AD7BDA163D7FE400527D62 /* tencent_info_frame@2x.png in Resources */,
 				D850FD86163E3DDF00EEA745 /* follow_word@2x.png in Resources */,
+				1661A558164CA652007160EA /* close@2x.png in Resources */,
+				1661A55B164CB74F007160EA /* close@2x.png in Resources */,
+				1661A55D164CBABE007160EA /* close@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -53,6 +53,9 @@
 - (void)engine:(WBEngine *)engine requestDidFailWithError:(NSError *)error;
 - (void)engine:(WBEngine *)engine requestDidSucceedWithResult:(id)result;
 
+//*********added by goshan for close web view delagate
+- (void)engineCloseWeb;
+
 @end
 
 @interface WBEngine : NSObject <WBAuthorizeDelegate, WBRequestDelegate>

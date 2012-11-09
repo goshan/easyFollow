@@ -736,4 +736,9 @@ static Renren *sharedRenren = nil;
     
 }
 
+//*******added by goshan for ROBaseDialogDelegate
+- (void)closeWeb{
+    [self.renrenDelegate renrenCloseWeb];
+}
+
 @end

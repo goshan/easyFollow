@@ -25,6 +25,7 @@
 @implementation ROBaseDialogViewController
 @synthesize backgroundView = _backgroundView;
 @synthesize cancelButton = _cancelButton;
+@synthesize delegate;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -273,6 +274,7 @@
 
 - (void)cancel {
     [self close];
+    [self.delegate closeWeb];
 }
 
 - (CGRect)fitOrientationFrame

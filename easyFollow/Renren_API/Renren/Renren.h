@@ -33,7 +33,7 @@
 @class ROPasswordFlowRequestParam;
 @class RenrenPay;
 
-@interface Renren: NSObject <RODialogDelegate, RORequestDelegate> {
+@interface Renren: NSObject <RODialogDelegate, RORequestDelegate, ROBaseDialogViewDelegate> {
 	NSString *_accessToken;
 	NSString *_secret;
 	NSString *_sessionKey;
@@ -262,5 +262,8 @@
  * @param renren 传回代理授权登录接口请求的Renren类型对象。
  */
 - (void)renren:(Renren *)renren loginFailWithError:(ROError*)error;
+
+//********added by goshan for close web view
+- (void)renrenCloseWeb;
 
 @end

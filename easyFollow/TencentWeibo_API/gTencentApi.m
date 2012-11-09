@@ -29,7 +29,10 @@
 
 
 
-
+- (void) closeWebView{
+    [_tencentLoginView removeFromSuperview];
+    [_delegate tencentCloseWeb];
+}
 
 - (void) readUserInfo{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -68,6 +71,11 @@
     
     [view addSubview:_tencentLoginView];
     [_tencent doWebViewAuthorize:_tencentLoginView];
+    
+    UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(300, 5, 15, 15)];
+    [button setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+    [button addTarget:self action:@selector(closeWebView) forControlEvents:UIControlEventTouchUpInside];
+    [_tencentLoginView addSubview:button];
 }
 
 - (void)LogOut{
@@ -90,6 +98,14 @@
     }
     return NO;
 }
+
+- (void)dealloc{
+    [_tencentLoginView release];
+    [_tencent release];
+    [_expireAt release];
+    [super dealloc];
+}
+
 
 
 

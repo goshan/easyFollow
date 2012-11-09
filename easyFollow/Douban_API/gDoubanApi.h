@@ -48,5 +48,6 @@
 
 - (void)gDoubanDidLoginSuccess:(gDoubanApi *)douban;
 - (void)gDouban:(gDoubanApi *)douban didLoginFailWithError:(NSError *)error;
+- (void)gDoubanCloseWeb;
 
 @end

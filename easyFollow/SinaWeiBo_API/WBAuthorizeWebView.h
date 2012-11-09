@@ -23,6 +23,9 @@
 
 - (void)authorizeWebView:(WBAuthorizeWebView *)webView didReceiveAuthorizeCode:(NSString *)code;
 
+//*******added by goshan for super delegate
+- (void)closeWeb;
+
 @end
 
 @interface WBAuthorizeWebView : UIView <UIWebViewDelegate> 

@@ -41,6 +41,15 @@
 
 #pragma mark - WBAuthorizeWebView Life Circle
 
+
+//========added by goshan============//
+- (void) closeWebView{
+    [webView removeFromSuperview];
+    [self removeFromSuperview];
+    [self.delegate closeWeb];
+}
+//==================================//
+
 - (id)init
 {
     if (self = [super initWithFrame:CGRectMake(0, 0, 320, 480)])
@@ -67,6 +76,12 @@
 		[webView setDelegate:self];
 		[containerView addSubview:webView];
         
+        //========add by goshan==========//
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(285, -3, 15, 15)];
+        [button setImage:[UIImage imageNamed:@"close"] forState:UIControlStateNormal];
+        [button addTarget:self action:@selector(closeWebView) forControlEvents:UIControlEventTouchUpInside];
+        [panelView addSubview:button];
+        //===============================//
         [panelView addSubview:containerView];
         
         indicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
