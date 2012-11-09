@@ -12,16 +12,9 @@
 #import "AFJSONRequestOperation.h"
 #import "Renren.h"
 #import "gAnimation.h"
+#import "Util.h"
 
 
-
-// TODO: add into Utils
-#define starWobbleAngle 5.0
-#define starWobbleTime 0.3
-#define starWobbleFrequency 1.5
-#define starBlinkTime 0.5
-#define starBlinkFrequency 1.5
-#define starRotateCycle 0.6
 
 
 @implementation mainViewController
@@ -40,10 +33,6 @@
 @synthesize starBlinkTimer = _starBlinkTimer;
 @synthesize starRotateTimer = _starRotateTimer;
 @synthesize tips = _tips;
-
-
-
-
 
 
 
@@ -138,7 +127,7 @@
 }
 
 - (void)makeStaticStarShow{
-    [gAnimation makeView:_starViewStatic toShow:YES withDuration:0.3];
+    [gAnimation makeView:_starViewStatic toShow:YES withDuration:staticStarShowTime];
 }
 
 - (void)makeDoubleStarAppearWithName:(NSString *)name{
@@ -294,9 +283,7 @@
     NSString *latitude_str = [NSString stringWithFormat:@"%f", latitude];
     
     //***** make url request
-    NSString *server_ip = [defaults objectForKey:@"server_ip"];
-    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
-    NSURL *url = [NSURL URLWithString:url_str];
+    NSURL *url = [NSURL URLWithString:SERVER_URL];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
                             token, @"token",
@@ -389,7 +376,7 @@
     
     //login when need
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:@"gsf_using_sns"] || [[defaults objectForKey:@"gsf_using_sns"] isEqualToString:@"0,0,0,0"]){
+    if (![defaults objectForKey:USING_SNS_KEY] || [[defaults objectForKey:USING_SNS_KEY] isEqualToString:@"0,0,0,0"]){
         registViewController *regist = [[[registViewController alloc] initWithNibName:@"registViewController" bundle:nil isUpdate:NO] autorelease];
         [self.navigationController presentModalViewController:regist animated:YES];
     }
@@ -436,11 +423,11 @@
     //call lookfor function to make server find friend nearby
     //!!!Warning:sometimes or some iphone may locate twice, this may cause crash, so you should check whether newlocation and oldlocation are occur recently
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSDate *preStamp = [defaults objectForKey:@"gsf_location_timestamp"];
+    NSDate *preStamp = [defaults objectForKey:LOCATION_TIMESTAMP];
     NSLog(@"1111====%@, %@", [NSDate date], preStamp);
     if (!preStamp || [[NSDate date] timeIntervalSinceDate:preStamp] > 5.0){
         NSLog(@"11111111");
-        [defaults setObject:[NSDate date] forKey:@"gsf_location_timestamp"];
+        [defaults setObject:[NSDate date] forKey:LOCATION_TIMESTAMP];
         [self lookForNearbyWithLatitude:location.coordinate.latitude andLongitude:location.coordinate.longitude];
     }
     else {

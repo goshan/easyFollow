@@ -12,6 +12,7 @@
 #import "ROGetFriendsRequestParam.h"
 #import "ROPublishPhotoRequestParam.h"
 #import "ROGetFriendsInfoRequestParam.h"
+#import "Util.h"    //added by goshan for use util renren info
 
 /**
  * For 3rd-party developers:
@@ -19,8 +20,6 @@
  * of your own application registeried on http://app.renren.com/developers
  * before any using of API methods.
  */
-#define kAPP_ID     @"214568"
-#define kAPI_Key    @"a68774405e5d43fca919fe2436f07fcf"
 
 
 @protocol RenrenDelegate;

@@ -30,7 +30,6 @@
 @property(retain, nonatomic) gTencentApi *tencent;
 @property(retain, nonatomic) gDoubanApi *douban;
 
-@property (retain, nonatomic) IBOutlet UITextField *IPText;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil isUpdate:(BOOL)update;
 

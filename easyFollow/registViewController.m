@@ -7,24 +7,10 @@
 //
 
 #import "registViewController.h"
+#import "Util.h"
 #import "AFHTTPClient.h"
 #import "AFJSONRequestOperation.h"
 #import "UIDevice+IdentifierAddition.h"
-
-
-
-
-#define SinaAPPKey @"1799175553"
-#define SinaSecretKey @"4c2180d2a60b0fa917960e5b7f824a04"
-#define SinaRedirectURI @"http://easyfollow.me/sina_login_success"
-
-#define TencentAPPKey @"801255147"
-#define TencentSecretKey @"875d58fb566cb9e9183830dde6515fbc"
-
-#define DoubanAppKey @"0c342ae9640503b8249c80bc2c0f0b28"
-#define DoubanSecretKey @"f3e0862f5378b28c"
-#define DoubanRedirectURL @"http://www.easyfollow.com"
-
 
 
 
@@ -43,7 +29,6 @@
 @synthesize sina = _sina;
 @synthesize tencent = _tencent;
 @synthesize douban = _douban;
-@synthesize IPText = _IPText;
 
 
 
@@ -106,18 +91,14 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSString *server_ip = _IPText.text;
-    [defaults setObject:server_ip forKey:@"server_ip"];
-    
     //push user regist data to server
     //make url request
-    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
-    NSURL *url = [NSURL URLWithString:url_str];
+    NSURL *url = [NSURL URLWithString:SERVER_URL];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSString *default_info = @"0";
-    NSString *signup_from = @"1";
+    NSString *signup_from = SIGNUP_FROM;
     NSArray *switchArray = [NSArray arrayWithObjects:_renrenSwitch, _sinaSwitch, _tencentSwitch, _doubanSwitch, nil];
     for (int i=0; i<switchArray.count; i++){
         UISwitch *s = [switchArray objectAtIndex:i];
@@ -126,7 +107,7 @@
         }
     }
     NSString *using_sns = [NSString stringWithFormat:@"%d,%d,%d,%d", _renrenSwitch.on, _sinaSwitch.on, _tencentSwitch.on, _doubanSwitch.on];
-    [defaults setObject:using_sns forKey:@"gsf_using_sns"];
+    [defaults setObject:using_sns forKey:USING_SNS_KEY];
     NSString* imei = [[UIDevice currentDevice] uniqueDeviceIdentifier];
     
     [params setObject:signup_from forKey:@"signup_from"];
@@ -136,36 +117,36 @@
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSString *renren_token = [defaults objectForKey:@"gsf_renren_token"];
-    NSString *renren_expire = [dateFormatter stringFromDate:[defaults objectForKey:@"gsf_renren_expire"]];
-    NSString *renren_permissions = [[defaults objectForKey:@"gsf_renren_permissions"] componentsJoinedByString:@","];
+    NSString *renren_token = [defaults objectForKey:RENREN_TOKEN_KEY];
+    NSString *renren_expire = [dateFormatter stringFromDate:[defaults objectForKey:RENREN_EXPIRE_KEY]];
+    NSString *renren_permissions = [[defaults objectForKey:RENREN_PERMISSION_KEY] componentsJoinedByString:@","];
     if (_renrenSwitch.on && renren_token && renren_expire && renren_permissions){
         [params setObject:renren_token forKey:@"renren_token"];
         [params setObject:renren_expire forKey:@"renren_expire"];
         [params setObject:renren_permissions forKey:@"renren_permissions"];
     }
     
-    NSString *sina_token = [defaults objectForKey:@"gsf_sina_token"];
-    NSString *sina_expire = [defaults objectForKey:@"gsf_sina_expire"];
-    NSString *sina_id = [defaults objectForKey:@"gsf_sina_id"];
+    NSString *sina_token = [defaults objectForKey:SINA_TOKEN_KEY];
+    NSString *sina_expire = [defaults objectForKey:SINA_EXPIRE_KEY];
+    NSString *sina_id = [defaults objectForKey:SINA_ID_KEY];
     if (_sinaSwitch.on && sina_id && sina_token && sina_expire){
         [params setObject:sina_id forKey:@"sina_id"];
         [params setObject:sina_token forKey:@"sina_token"];
         [params setObject:sina_expire forKey:@"sina_expire"];
     }
     //******** get tencent data
-    NSString *tencent_token = [defaults objectForKey:@"gsf_tencent_token"];
-    NSString *tencent_expire = [defaults objectForKey:@"gsf_tencent_expire"];
-    NSString *tencent_openid = [defaults objectForKey:@"gsf_tencent_openid"];
+    NSString *tencent_token = [defaults objectForKey:TENCENT_TOKEN_KEY];
+    NSString *tencent_expire = [defaults objectForKey:TENCENT_EXPIRE_KEY];
+    NSString *tencent_openid = [defaults objectForKey:TENCENT_OPENID_KEY];
     if (_tencentSwitch.on && tencent_token && tencent_expire && tencent_openid){
         [params setObject:tencent_token forKey:@"tencent_token"];
         [params setObject:tencent_expire forKey:@"tencent_expire"];
         [params setObject:tencent_openid forKey:@"tencent_openid"];
     }
     //******** get douban data
-    NSString *douban_token = [defaults objectForKey:@"gsf_douban_token"];
-    NSString *douban_expire = [defaults objectForKey:@"gsf_douban_expire"];
-    NSString *douban_id = [defaults objectForKey:@"gsf_douban_id"];
+    NSString *douban_token = [defaults objectForKey:DOUBAN_TOKEN_KEY];
+    NSString *douban_expire = [defaults objectForKey:DOUBAN_EXPIRE_KEY];
+    NSString *douban_id = [defaults objectForKey:DOUBAN_ID_KEY];
     if (_doubanSwitch.on && douban_id && douban_token && douban_expire){
         [params setObject:douban_id forKey:@"douban_id"];
         [params setObject:douban_token forKey:@"douban_token"];
@@ -173,7 +154,7 @@
     }
     //params for update
     if ([_update intValue]){
-        [params setObject:[defaults objectForKey:@"gsf_token"] forKey:@"token"];
+        [params setObject:[defaults objectForKey:TOKEN_KEY] forKey:@"token"];
     }
     NSString *path = [_update intValue] ? @"/update_user.json" : @"/create_user.json";
     NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:path parameters:params];
@@ -191,8 +172,8 @@
         else {
             NSLog(@"user error!!");
         }
-        [defaults setObject:[feedback objectForKey:@"user_id"] forKey:@"gsf_user_id"];
-        [defaults setObject:[feedback objectForKey:@"token"] forKey:@"gsf_token"];
+        [defaults setObject:[feedback objectForKey:@"user_id"] forKey:USERID_KEY];
+        [defaults setObject:[feedback objectForKey:@"token"] forKey:TOKEN_KEY];
         
         //dismiss regist view
         [self performSelector:@selector(hiddenRegistView) withObject:nil afterDelay:3.0];
@@ -216,16 +197,16 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        _sina = [[WBEngine alloc] initWithAppKey:SinaAPPKey appSecret:SinaSecretKey];
+        _sina = [[WBEngine alloc] initWithAppKey:SINA_APPKEY appSecret:SINA_SECRETKEY];
         [_sina setRootViewController:self];
         [_sina setDelegate:self];
-        [_sina setRedirectURI:SinaRedirectURI];
+        [_sina setRedirectURI:SINA_REDIRECTURI];
         [_sina setIsUserExclusive:NO];
         
-        _tencent = [[gTencentApi alloc] initWithAppKey:TencentAPPKey andAppSecret:TencentSecretKey];
+        _tencent = [[gTencentApi alloc] initWithAppKey:TENCENT_APPKEY andAppSecret:TENCENT_SECRETKEY];
         _tencent.delegate = self;
         
-        _douban = [[gDoubanApi alloc] initWithAppKey:DoubanAppKey andAppSecret:DoubanSecretKey andRedirectURL:DoubanRedirectURL];
+        _douban = [[gDoubanApi alloc] initWithAppKey:DOUBAN_APPKEY andAppSecret:DOUBAN_SECRETKEY andRedirectURL:DOUBAN_REDIRECTURL];
         _douban.delegate = self;
         
         _update = [NSNumber numberWithInt:update];
@@ -246,7 +227,6 @@
     [_tencent release];
     [_sina release];
     [_douban release];
-    [_IPText release];
     [_navigationBar release];
     [_registButton release];
     [_navigationTitle release];
@@ -271,7 +251,7 @@
     [_registButton setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *using_sns = [defaults objectForKey:@"gsf_using_sns"];
+    NSString *using_sns = [defaults objectForKey:USING_SNS_KEY];
     if (!using_sns){
         using_sns = @"0,0,0,0";
     }
@@ -283,13 +263,10 @@
         UISwitch *temp_switch = [switchArray objectAtIndex:i];
         temp_switch.on = num;
     }
-    
-    _IPText.text = [defaults objectForKey:@"server_ip"];
 }
 
 - (void)viewDidUnload
 {
-    [self setIPText:nil];
     [self setNavigationBar:nil];
     [self setRegistButton:nil];
     [self setNavigationTitle:nil];
@@ -312,9 +289,9 @@
 - (void)renrenDidLogin:(Renren *)renren
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:renren.accessToken forKey:@"gsf_renren_token"];
-    [defaults setObject:renren.expirationDate forKey:@"gsf_renren_expire"];
-    [defaults setObject:renren.permissions forKey:@"gsf_renren_permissions"];
+    [defaults setObject:renren.accessToken forKey:RENREN_TOKEN_KEY];
+    [defaults setObject:renren.expirationDate forKey:RENREN_EXPIRE_KEY];
+    [defaults setObject:renren.permissions forKey:RENREN_PERMISSION_KEY];
 }
 
 /**
@@ -346,27 +323,13 @@
 
 #pragma mark - WBEngineDelegate Methods
 
-- (void)engineAlreadyLoggedIn:(WBEngine *)engine
-{
-    if ([engine isUserExclusive])
-    {
-        UIAlertView* alertView = [[UIAlertView alloc]initWithTitle:nil 
-                                                           message:@"请先登出！" 
-                                                          delegate:nil
-                                                 cancelButtonTitle:@"确定" 
-                                                 otherButtonTitles:nil];
-        [alertView show];
-        [alertView release];
-    }
-}
-
 - (void)engineDidLogIn:(WBEngine *)engine
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:engine.accessToken forKey:@"gsf_sina_token"];
+    [defaults setObject:engine.accessToken forKey:SINA_TOKEN_KEY];
     NSString *expireeIn = [NSString stringWithFormat:@"%f", engine.expireTime];
-    [defaults setObject:expireeIn forKey:@"gsf_sina_expire"];
-    [defaults setObject:engine.userID forKey:@"gsf_sina_id"];
+    [defaults setObject:expireeIn forKey:SINA_EXPIRE_KEY];
+    [defaults setObject:engine.userID forKey:SINA_ID_KEY];
 }
 
 - (void)engine:(WBEngine *)engine didFailToLogInWithError:(NSError *)error
@@ -403,9 +366,9 @@
 
 - (void) loginSucess:(gTencentApi *)tencentApi{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:tencentApi.tencent.accessToken forKey:@"gsf_tencent_token"];
-    [defaults setObject:tencentApi.tencent.expireIn forKey:@"gsf_tencent_expire"];
-    [defaults setObject:tencentApi.tencent.openid forKey:@"gsf_tencent_openid"];
+    [defaults setObject:tencentApi.tencent.accessToken forKey:TENCENT_TOKEN_KEY];
+    [defaults setObject:tencentApi.tencent.expireIn forKey:TENCENT_EXPIRE_KEY];
+    [defaults setObject:tencentApi.tencent.openid forKey:TENCENT_OPENID_KEY];
 }
 
 - (void) responseDidFinishLoad:(UIWebView *)webView{
@@ -427,9 +390,9 @@
 
 - (void)gDoubanDidLoginSuccess:(gDoubanApi *)douban{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setObject:douban.accessToken forKey:@"gsf_douban_token"];
-    [defaults setObject:douban.expiresIn forKey:@"gsf_douban_expire"];
-    [defaults setObject:douban.userId forKey:@"gsf_douban_id"];
+    [defaults setObject:douban.accessToken forKey:DOUBAN_TOKEN_KEY];
+    [defaults setObject:douban.expiresIn forKey:DOUBAN_EXPIRE_KEY];
+    [defaults setObject:douban.userId forKey:DOUBAN_ID_KEY];
 }
 
 - (void)gDouban:(gDoubanApi *)douban didLoginFailWithError:(NSError *)error{

@@ -11,6 +11,7 @@
 		1661A55B164CB74F007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A55A164CB74F007160EA /* close@2x.png */; };
 		1661A55D164CBABE007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A55C164CBABE007160EA /* close@2x.png */; };
 		16911F2116280DA70000FCF9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16911F2016280DA70000FCF9 /* Default-568h@2x.png */; };
+		16E8F153164CD35D00ADDC8C /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E8F152164CD35D00ADDC8C /* Util.m */; };
 		D80F1FA0161E9EB100F59755 /* AFHTTPClient.m in Sources */ = {isa = PBXBuildFile; fileRef = D80F1F8C161E9EB100F59755 /* AFHTTPClient.m */; };
 		D80F1FA1161E9EB100F59755 /* AFHTTPRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D80F1F8E161E9EB100F59755 /* AFHTTPRequestOperation.m */; };
 		D80F1FA2161E9EB100F59755 /* AFImageRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D80F1F90161E9EB100F59755 /* AFImageRequestOperation.m */; };
@@ -295,6 +296,8 @@
 		1661A55A164CB74F007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "TencentWeibo_API/close@2x.png"; sourceTree = "<group>"; };
 		1661A55C164CBABE007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "Douban_API/close@2x.png"; sourceTree = "<group>"; };
 		16911F2016280DA70000FCF9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		16E8F151164CD35D00ADDC8C /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
+		16E8F152164CD35D00ADDC8C /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		D80F1F8B161E9EB100F59755 /* AFHTTPClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPClient.h; path = AFNetworking/AFHTTPClient.h; sourceTree = "<group>"; };
 		D80F1F8C161E9EB100F59755 /* AFHTTPClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFHTTPClient.m; path = AFNetworking/AFHTTPClient.m; sourceTree = "<group>"; };
 		D80F1F8D161E9EB100F59755 /* AFHTTPRequestOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AFHTTPRequestOperation.h; path = AFNetworking/AFHTTPRequestOperation.h; sourceTree = "<group>"; };
@@ -1312,6 +1315,8 @@
 		D8AD7BBC163D539E00527D62 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				16E8F151164CD35D00ADDC8C /* Util.h */,
+				16E8F152164CD35D00ADDC8C /* Util.m */,
 				D8AD7BBD163D53EF00527D62 /* tipsAlert.h */,
 				D8AD7BBE163D53EF00527D62 /* tipsAlert.m */,
 			);
@@ -2215,6 +2220,7 @@
 				D8AD7BBA163D4D1D00527D62 /* MBProgressHUD.m in Sources */,
 				D8AD7BBB163D4D1D00527D62 /* Toast+UIView.m in Sources */,
 				D8AD7BBF163D53EF00527D62 /* tipsAlert.m in Sources */,
+				16E8F153164CD35D00ADDC8C /* Util.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
