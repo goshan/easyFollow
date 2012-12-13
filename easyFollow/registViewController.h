@@ -19,6 +19,7 @@
 @property (retain, nonatomic) IBOutlet UINavigationBar *navigationBar;
 @property (retain, nonatomic) IBOutlet UINavigationItem *navigationTitle;
 @property (retain, nonatomic) IBOutlet UIBarButtonItem *registButton;
+@property (retain, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (retain, nonatomic) IBOutlet UISwitch *renrenSwitch;
 @property (retain, nonatomic) IBOutlet UISwitch *sinaSwitch;
 @property (retain, nonatomic) IBOutlet UISwitch *tencentSwitch;
@@ -43,5 +44,7 @@
 - (IBAction)doubanLogin:(id)sender;
 
 - (IBAction)regist:(id)sender;
+
+- (IBAction)cancel:(id)sender;
 
 @end

@@ -14,13 +14,14 @@
 
 
 
-BOOL sucess = NO;
+BOOL waiting = YES;
 
 @implementation registViewController
 
 @synthesize navigationBar = _navigationBar;
 @synthesize navigationTitle = _navigationTitle;
 @synthesize registButton = _registButton;
+@synthesize cancelButton = _cancelButton;
 @synthesize renrenSwitch = _renrenSwitch;
 @synthesize sinaSwitch = _sinaSwitch;
 @synthesize tencentSwitch = _tencentSwitch;
@@ -81,7 +82,7 @@ BOOL sucess = NO;
 }
 
 - (void) stopRegist{
-    if (!sucess){
+    if (!waiting){
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [_tips hiddenRegistLoading];
         [_tips netErrorAlert];
@@ -89,7 +90,7 @@ BOOL sucess = NO;
 }
 
 - (IBAction)regist:(id)sender {
-    sucess = NO;
+    waiting = NO;
     [_tips showRegistLoadingWith:self.view];
     
     [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(stopRegist) userInfo:nil repeats:NO];
@@ -183,19 +184,25 @@ BOOL sucess = NO;
         //dismiss regist view
         [self performSelector:@selector(hiddenRegistView) withObject:nil afterDelay:3.0];
         [_tips hiddenRegistLoading];
-        sucess = YES;
+        waiting = YES;
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         [_tips hiddenRegistLoading];
         [_tips netErrorAlert];
-        sucess = YES;
+        waiting = YES;
         
         NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     }];
     [operation start];
     
+}
+
+- (IBAction)cancel:(id)sender {
+    if (waiting){
+        [self hiddenRegistView];
+    }
 }
 
 
@@ -241,6 +248,7 @@ BOOL sucess = NO;
     [_sinaSwitch release];
     [_tencentSwitch release];
     [_doubanSwitch release];
+    [_cancelButton release];
     [super dealloc];
 }
 
@@ -256,6 +264,8 @@ BOOL sucess = NO;
     _navigationTitle.title = @"绑定信息";
     _registButton.title = @"完成";
     [_registButton setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    _cancelButton.title = @"取消";
+    [_cancelButton setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *using_sns = [defaults objectForKey:USING_SNS_KEY];
@@ -281,6 +291,7 @@ BOOL sucess = NO;
     [self setSinaSwitch:nil];
     [self setTencentSwitch:nil];
     [self setDoubanSwitch:nil];
+    [self setCancelButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
