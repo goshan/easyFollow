@@ -12,7 +12,7 @@
 NSString* const SERVER_URL = @"http://localhost:3000";
 #else
 NSString* const SERVER_URL = @"http://easy-follow.com";
-#endif    
+#endif
 
 NSString *const RENREN_APPID = @"214568";
 NSString *const RENREN_APIKEY = @"a68774405e5d43fca919fe2436f07fcf";

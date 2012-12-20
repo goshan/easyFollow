@@ -139,7 +139,8 @@ BOOL isBlink = NO;
 - (void)makeDoubleStarAppearWithName:(NSString *)name{
     [self makeStarBlink:NO];
     CGRect frame = _starViewNormal.frame;
-    frame.origin.x = 16;
+    frame.origin.x = 23;
+    frame.origin.y -= 4;
     [gAnimation moveView:_starViewNormal toFinalFrame:frame withDuration:2*starRotateCycle];
     
     _starViewDynamic.alpha = 1.0;
@@ -306,9 +307,9 @@ BOOL isBlink = NO;
         //get friend json from server
         NSDictionary *feedback = [[NSDictionary alloc] initWithDictionary:JSON];
         NSString *result = [feedback objectForKey:@"result"];
-        NSString *name = [[feedback objectForKey:@"nearby"] objectForKey:@"name"];
         if ([result isEqualToString:@"sucess"]){
             //show person view with feedback data
+            NSString *name = [[feedback objectForKey:@"nearby"] objectForKey:@"name"];
             _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil withData:[feedback objectForKey:@"nearby"]];
             [self makeDoubleStarAppearWithName:name];
         }

@@ -41,9 +41,7 @@
     [_tips showFollowLoadingWith:self.view];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSString *server_ip = [defaults objectForKey:@"server_ip"];
-    NSString *url_str = [NSString stringWithFormat:@"http://%@", server_ip];
-    NSURL *url = [NSURL URLWithString:url_str];
+    NSURL *url = [NSURL URLWithString:SERVER_URL];
     AFHTTPClient *httpClient = [[[AFHTTPClient alloc] initWithBaseURL:url]autorelease];
     
     NSString *token = [defaults objectForKey:@"gsf_token"];

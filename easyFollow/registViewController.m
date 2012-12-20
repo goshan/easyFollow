@@ -260,7 +260,7 @@ BOOL waiting = YES;
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    [_navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg"] forBarMetrics:UIBarMetricsDefault];
+    [_navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg1"] forBarMetrics:UIBarMetricsDefault];
     _navigationTitle.title = @"绑定信息";
     _registButton.title = @"完成";
     [_registButton setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
