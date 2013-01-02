@@ -222,10 +222,6 @@ BOOL isBlink = NO;
     _nameLabel.alpha = 0.0;
     _nameLabel.font = [UIFont fontWithName:nil size:28];
     _nameLabel.textColor = [UIColor colorWithRed:242.0/255.0 green:255.0/255.0 blue:103.0/255.0 alpha:1.0];
-    
-    //init navigation button
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(showRegistPage)] autorelease];
-    [self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
 }
 
 //================function--init config ==end====================//
@@ -376,6 +372,11 @@ BOOL isBlink = NO;
 }
 
 #pragma mark - View lifecycle
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg1"] forBarMetrics:UIBarMetricsDefault];
+    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStyleBordered target:self action:@selector(showRegistPage)] autorelease];
+    [self.navigationItem.rightBarButtonItem setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+}
 
 - (void)viewDidLoad
 {

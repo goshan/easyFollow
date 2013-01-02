@@ -105,16 +105,17 @@
 }
 
 #pragma mark - View lifecycle
+- (void)viewWillAppear:(BOOL)animated{
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"navigation_bg2"] forBarMetrics:UIBarMetricsDefault];
+    self.title = [_friendData objectForKey:@"name"];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)];
+    [self.navigationItem.leftBarButtonItem setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.title = [_friendData objectForKey:@"name"];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"取消" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel)];
-    [self.navigationItem.leftBarButtonItem setBackgroundImage:[UIImage imageNamed:@"navigation_item_bg"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
-    
-    
     UIImageView *avatar = [[UIImageView alloc] initWithFrame:CGRectMake(237, 242, 56, 56)];
     NSURL *url = [NSURL URLWithString:[_friendData objectForKey:@"avatar"]];
     NSData *data = [NSData dataWithContentsOfURL:url];
