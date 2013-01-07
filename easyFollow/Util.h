@@ -21,17 +21,17 @@
 
 
 extern NSString *const SERVER_URL;
+extern NSString *const SEARCHPATH;
 
 extern NSString *const RENREN_APPID;
 extern NSString *const RENREN_APIKEY;
 extern NSString *const SINA_APPKEY;
 extern NSString *const SINA_SECRETKEY;
-extern NSString *const SINA_REDIRECTURI;
 extern NSString *const TENCENT_APPKEY;
 extern NSString *const TENCENT_SECRETKEY;
 extern NSString *const DOUBAN_APPKEY;
 extern NSString *const DOUBAN_SECRETKEY;
-extern NSString *const DOUBAN_REDIRECTURL;
+extern NSString *const REDIRECTURL;
 
 extern NSString *const SIGNUP_FROM;
 extern NSString *const USERID_KEY;

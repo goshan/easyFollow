@@ -28,7 +28,7 @@
 @property(retain, nonatomic) id <gTencentDelegate> delegate;
 
 
-- (gTencentApi *)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret;
+- (gTencentApi *)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andRedirectURL:(NSString *)redirect_url;
 - (void)LoginWith:(UIView *)view;
 - (void)LogOut;
 - (BOOL)isLogin;

@@ -214,13 +214,13 @@ BOOL waiting = YES;
         _sina = [[WBEngine alloc] initWithAppKey:SINA_APPKEY appSecret:SINA_SECRETKEY];
         [_sina setRootViewController:self];
         [_sina setDelegate:self];
-        [_sina setRedirectURI:SINA_REDIRECTURI];
+        [_sina setRedirectURI:REDIRECTURL];
         [_sina setIsUserExclusive:NO];
         
-        _tencent = [[gTencentApi alloc] initWithAppKey:TENCENT_APPKEY andAppSecret:TENCENT_SECRETKEY];
+        _tencent = [[gTencentApi alloc] initWithAppKey:TENCENT_APPKEY andAppSecret:TENCENT_SECRETKEY andRedirectURL:REDIRECTURL];
         _tencent.delegate = self;
         
-        _douban = [[gDoubanApi alloc] initWithAppKey:DOUBAN_APPKEY andAppSecret:DOUBAN_SECRETKEY andRedirectURL:DOUBAN_REDIRECTURL];
+        _douban = [[gDoubanApi alloc] initWithAppKey:DOUBAN_APPKEY andAppSecret:DOUBAN_SECRETKEY andRedirectURL:REDIRECTURL];
         _douban.delegate = self;
         
         _update = [NSNumber numberWithInt:update];

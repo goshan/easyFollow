@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		165DF315169AEBAC005C284C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 165DF314169AEBAC005C284C /* Default@2x.png */; };
+		165DF31D169AF525005C284C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 165DF31C169AF525005C284C /* Default-568h@2x.png */; };
 		1661A558164CA652007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A557164CA652007160EA /* close@2x.png */; };
 		1661A55B164CB74F007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A55A164CB74F007160EA /* close@2x.png */; };
 		1661A55D164CBABE007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A55C164CBABE007160EA /* close@2x.png */; };
-		16911F2116280DA70000FCF9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16911F2016280DA70000FCF9 /* Default-568h@2x.png */; };
 		16E8F153164CD35D00ADDC8C /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E8F152164CD35D00ADDC8C /* Util.m */; };
 		16FAC3901682E3820097B933 /* background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FAC38B1682E3820097B933 /* background1@2x.png */; };
 		16FAC3911682E3820097B933 /* background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FAC38C1682E3820097B933 /* background2@2x.png */; };
@@ -294,10 +295,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		165DF314169AEBAC005C284C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		165DF31C169AF525005C284C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1661A557164CA652007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "SinaWeiBo_API/close@2x.png"; sourceTree = "<group>"; };
 		1661A55A164CB74F007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "TencentWeibo_API/close@2x.png"; sourceTree = "<group>"; };
 		1661A55C164CBABE007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "Douban_API/close@2x.png"; sourceTree = "<group>"; };
-		16911F2016280DA70000FCF9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		16E8F151164CD35D00ADDC8C /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		16E8F152164CD35D00ADDC8C /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		16FAC38B1682E3820097B933 /* background1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background1@2x.png"; sourceTree = "<group>"; };
@@ -1185,9 +1187,10 @@
 		D884C6EC15F9CE5C00E08417 = {
 			isa = PBXGroup;
 			children = (
+				165DF31C169AF525005C284C /* Default-568h@2x.png */,
+				165DF314169AEBAC005C284C /* Default@2x.png */,
 				D8A3F05E163C221800F07BE9 /* icon_57.png */,
 				D8A3F05F163C221800F07BE9 /* icon_114.png */,
-				16911F2016280DA70000FCF9 /* Default-568h@2x.png */,
 				D884C70115F9CE5C00E08417 /* easyFollow */,
 				D884C72215F9CE5C00E08417 /* easyFollowTests */,
 				D884C6FA15F9CE5C00E08417 /* Frameworks */,
@@ -1966,7 +1969,6 @@
 				D82230E11625218500687623 /* small-button-normal.png in Resources */,
 				D82230E21625218500687623 /* small-button-normal@2x.png in Resources */,
 				D82230FC1625218500687623 /* ROCheckOrderCell.xib in Resources */,
-				16911F2116280DA70000FCF9 /* Default-568h@2x.png in Resources */,
 				D87F238E16314E1900FD6284 /* star_normal@2x.png in Resources */,
 				D87F238F16314E1900FD6284 /* star_shining@2x.png in Resources */,
 				D890427F1632734F00162276 /* shake_button@2x.png in Resources */,
@@ -1992,6 +1994,8 @@
 				16FAC3921682E3820097B933 /* navigation_bg1@2x.png in Resources */,
 				16FAC3931682E3820097B933 /* navigation_bg2@2x.png in Resources */,
 				16FAC3941682E3820097B933 /* star_mostshining@2x.png in Resources */,
+				165DF315169AEBAC005C284C /* Default@2x.png in Resources */,
+				165DF31D169AF525005C284C /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

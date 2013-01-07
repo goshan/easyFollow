@@ -51,10 +51,11 @@
 }
 
 
-- (gTencentApi *)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret{
+- (gTencentApi *)initWithAppKey:(NSString *)appKey andAppSecret:(NSString *)appSecret andRedirectURL:(NSString *)redirect_url{
     self = [super init];
     if (self){
         _tencent = [[OpenSdkOauth alloc] initAppKey:appKey appSecret:appSecret];
+        _tencent.redirectURI = redirect_url;
         _tencent.oauthType = InWebView;
         [self readUserInfo];
     }

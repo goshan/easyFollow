@@ -10,20 +10,21 @@
 
 #if TARGET_IPHONE_SIMULATOR
 NSString* const SERVER_URL = @"http://localhost:3000";
+NSString* const SEARCHPATH = @"/lookfor_test.json";
 #else
 NSString* const SERVER_URL = @"http://easy-follow.com";
+NSString* const SEARCHPATH = @"/lookfor.json";
 #endif
 
 NSString *const RENREN_APPID = @"214568";
 NSString *const RENREN_APIKEY = @"a68774405e5d43fca919fe2436f07fcf";
 NSString *const SINA_APPKEY = @"1799175553";
 NSString *const SINA_SECRETKEY = @"4c2180d2a60b0fa917960e5b7f824a04";
-NSString *const SINA_REDIRECTURI = @"http://easy-follow.com";
 NSString *const TENCENT_APPKEY = @"801255147";
 NSString *const TENCENT_SECRETKEY = @"875d58fb566cb9e9183830dde6515fbc";
 NSString *const DOUBAN_APPKEY = @"0c342ae9640503b8249c80bc2c0f0b28";
 NSString *const DOUBAN_SECRETKEY = @"f3e0862f5378b28c";
-NSString *const DOUBAN_REDIRECTURL = @"http://easy-follow.com";
+NSString *const REDIRECTURL = @"http://easy-follow.com";
 
 NSString *const SIGNUP_FROM = @"1";
 NSString *const USERID_KEY = @"gsf_user_id";

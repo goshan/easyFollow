@@ -297,7 +297,7 @@ BOOL isBlink = NO;
                             longitude_str, @"longitude",
                             latitude_str, @"latitude", 
                             nil];
-    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:@"/lookfor.json" parameters:params];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET" path:SEARCHPATH parameters:params];
     
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         //get friend json from server
