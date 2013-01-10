@@ -28,7 +28,8 @@ BOOL isBlink = NO;
 @synthesize shakeButton = _shakeButton;
 @synthesize showButton = _showButton;
 @synthesize nameLabel = _nameLabel;
-@synthesize soundID = _soundID;
+@synthesize lookingForSoundID = _lookingForSoundID;
+@synthesize foundSoundID = _foundSoundID;
 @synthesize locationManager = _locationManager;
 @synthesize personViewController = _personViewController;
 @synthesize starWobbleTimer = _starWobbleTimer;
@@ -231,7 +232,7 @@ BOOL isBlink = NO;
 
 - (void) shakePhone{
     //play sound
-    AudioServicesPlaySystemSound (_soundID);
+    AudioServicesPlaySystemSound (_lookingForSoundID);
     
     //stop star wobble
     [self makeStarWobble:NO];
@@ -308,6 +309,8 @@ BOOL isBlink = NO;
             NSString *name = [[feedback objectForKey:@"nearby"] objectForKey:@"name"];
             _personViewController = [[foundPersonViewController alloc] initWithNibName:@"foundPersonViewController" bundle:nil withData:[feedback objectForKey:@"nearby"]];
             [self makeDoubleStarAppearWithName:name];
+            //play another sound
+            AudioServicesPlaySystemSound (_foundSoundID);
         }
         else if ([result isEqualToString:@"nearby_not_found"]){
             NSLog(@"nearby not found!!");
@@ -347,8 +350,10 @@ BOOL isBlink = NO;
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        NSString *path = [[NSBundle mainBundle] pathForResource:@"glass" ofType:@"wav"];
-        AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:path], &_soundID);
+        NSString *lookingForPath = [[NSBundle mainBundle] pathForResource:@"lookingfor" ofType:@"wav"];
+        AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:lookingForPath], &_lookingForSoundID);
+        NSString *foundPath = [[NSBundle mainBundle] pathForResource:@"found" ofType:@"wav"];
+        AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath:foundPath], &_foundSoundID);
         
         //!!!Warning: here can not use [initWithView:] function, or can not present modal view for regist page.
         _tips = [[tipsAlert alloc] init];

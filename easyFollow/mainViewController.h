@@ -23,7 +23,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *nameLabel;
 @property(retain, nonatomic) tipsAlert *tips;
 
-@property (nonatomic) SystemSoundID soundID;
+@property (nonatomic) SystemSoundID lookingForSoundID;
+@property (nonatomic) SystemSoundID foundSoundID;
 
 @property(retain, nonatomic) CLLocationManager *locationManager;
 

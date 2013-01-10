@@ -8,10 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		165DF315169AEBAC005C284C /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 165DF314169AEBAC005C284C /* Default@2x.png */; };
-		165DF31D169AF525005C284C /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 165DF31C169AF525005C284C /* Default-568h@2x.png */; };
 		1661A558164CA652007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A557164CA652007160EA /* close@2x.png */; };
 		1661A55B164CB74F007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A55A164CB74F007160EA /* close@2x.png */; };
 		1661A55D164CBABE007160EA /* close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1661A55C164CBABE007160EA /* close@2x.png */; };
+		1667EED4169ECC2A00FD6D6E /* found.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1667EED2169ECC2A00FD6D6E /* found.wav */; };
+		1667EED5169ECC2A00FD6D6E /* lookingfor.wav in Resources */ = {isa = PBXBuildFile; fileRef = 1667EED3169ECC2A00FD6D6E /* lookingfor.wav */; };
 		16E8F153164CD35D00ADDC8C /* Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 16E8F152164CD35D00ADDC8C /* Util.m */; };
 		16FAC3901682E3820097B933 /* background1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FAC38B1682E3820097B933 /* background1@2x.png */; };
 		16FAC3911682E3820097B933 /* background2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 16FAC38C1682E3820097B933 /* background2@2x.png */; };
@@ -34,7 +35,6 @@
 		D820FA96161BF0C30085757E /* mainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820FA94161BF0C30085757E /* mainViewController.xib */; };
 		D820FAA4161C13180085757E /* foundPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D820FAA2161C13180085757E /* foundPersonViewController.m */; };
 		D820FAA5161C13180085757E /* foundPersonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D820FAA3161C13180085757E /* foundPersonViewController.xib */; };
-		D820FAB0161C15B90085757E /* glass.wav in Resources */ = {isa = PBXBuildFile; fileRef = D820FAAF161C15B90085757E /* glass.wav */; };
 		D820FABD161C1E390085757E /* shakingWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = D820FABC161C1E390085757E /* shakingWindow.m */; };
 		D8222EAE162401E600687623 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D8222EAD162401E600687623 /* libsqlite3.0.dylib */; };
 		D82230BE1625218500687623 /* FMDatabase.m in Sources */ = {isa = PBXBuildFile; fileRef = D82230361625218500687623 /* FMDatabase.m */; };
@@ -296,10 +296,11 @@
 
 /* Begin PBXFileReference section */
 		165DF314169AEBAC005C284C /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		165DF31C169AF525005C284C /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		1661A557164CA652007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "SinaWeiBo_API/close@2x.png"; sourceTree = "<group>"; };
 		1661A55A164CB74F007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "TencentWeibo_API/close@2x.png"; sourceTree = "<group>"; };
 		1661A55C164CBABE007160EA /* close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "close@2x.png"; path = "Douban_API/close@2x.png"; sourceTree = "<group>"; };
+		1667EED2169ECC2A00FD6D6E /* found.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = found.wav; sourceTree = "<group>"; };
+		1667EED3169ECC2A00FD6D6E /* lookingfor.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lookingfor.wav; sourceTree = "<group>"; };
 		16E8F151164CD35D00ADDC8C /* Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Util.h; sourceTree = "<group>"; };
 		16E8F152164CD35D00ADDC8C /* Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Util.m; sourceTree = "<group>"; };
 		16FAC38B1682E3820097B933 /* background1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "background1@2x.png"; sourceTree = "<group>"; };
@@ -337,7 +338,6 @@
 		D820FAA1161C13180085757E /* foundPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = foundPersonViewController.h; sourceTree = "<group>"; };
 		D820FAA2161C13180085757E /* foundPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = foundPersonViewController.m; sourceTree = "<group>"; };
 		D820FAA3161C13180085757E /* foundPersonViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = foundPersonViewController.xib; sourceTree = "<group>"; };
-		D820FAAF161C15B90085757E /* glass.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = glass.wav; sourceTree = "<group>"; };
 		D820FABB161C1E390085757E /* shakingWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shakingWindow.h; sourceTree = "<group>"; };
 		D820FABC161C1E390085757E /* shakingWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shakingWindow.m; sourceTree = "<group>"; };
 		D8222EAD162401E600687623 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
@@ -874,6 +874,8 @@
 		D820FAAA161C15940085757E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1667EED2169ECC2A00FD6D6E /* found.wav */,
+				1667EED3169ECC2A00FD6D6E /* lookingfor.wav */,
 				16FAC38B1682E3820097B933 /* background1@2x.png */,
 				16FAC38C1682E3820097B933 /* background2@2x.png */,
 				16FAC38D1682E3820097B933 /* navigation_bg1@2x.png */,
@@ -894,7 +896,6 @@
 				D890427E1632734F00162276 /* shake_button@2x.png */,
 				D87F238916314E1800FD6284 /* star_normal@2x.png */,
 				D87F238A16314E1800FD6284 /* star_shining@2x.png */,
-				D820FAAF161C15B90085757E /* glass.wav */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1187,7 +1188,6 @@
 		D884C6EC15F9CE5C00E08417 = {
 			isa = PBXGroup;
 			children = (
-				165DF31C169AF525005C284C /* Default-568h@2x.png */,
 				165DF314169AEBAC005C284C /* Default@2x.png */,
 				D8A3F05E163C221800F07BE9 /* icon_57.png */,
 				D8A3F05F163C221800F07BE9 /* icon_114.png */,
@@ -1947,7 +1947,6 @@
 				D81F4E5B161B041500B58C14 /* registViewController.xib in Resources */,
 				D820FA96161BF0C30085757E /* mainViewController.xib in Resources */,
 				D820FAA5161C13180085757E /* foundPersonViewController.xib in Resources */,
-				D820FAB0161C15B90085757E /* glass.wav in Resources */,
 				D82230CF1625218500687623 /* bottom-bar.png in Resources */,
 				D82230D01625218500687623 /* bottom-bar@2x.png in Resources */,
 				D82230D11625218500687623 /* close.png in Resources */,
@@ -1995,7 +1994,8 @@
 				16FAC3931682E3820097B933 /* navigation_bg2@2x.png in Resources */,
 				16FAC3941682E3820097B933 /* star_mostshining@2x.png in Resources */,
 				165DF315169AEBAC005C284C /* Default@2x.png in Resources */,
-				165DF31D169AF525005C284C /* Default-568h@2x.png in Resources */,
+				1667EED4169ECC2A00FD6D6E /* found.wav in Resources */,
+				1667EED5169ECC2A00FD6D6E /* lookingfor.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
